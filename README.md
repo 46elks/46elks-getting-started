@@ -16,7 +16,7 @@ You can use the [46elks](https://www.46elks.com) api to
 
   * [Quickstart](https://github.com/46elks/46elks-getting-started#sample-code)
   * [Documentation](https://www.46elks.com/api-docs#introduction)
-  * [Sample code](https://github.com/46elks/46elks-getting-started/blob/master/README.md#sample-code)
+  * [Sample code](https://github.com/46elks/46elks-getting-started/blob/master/README.md#code-examples-in-different-languages)
   * [Dashboard](http://dashboard.46elks.com/)
   * [Introduction - Learn about using an API](https://zapier.com/learn/apis/) 
   * [Contact 46elks](46elks.com/help#contact)
