@@ -56,8 +56,8 @@ You've now sent an sms!
 [Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-send-sms.go) -
 [Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-send-sms.gs) -
 [HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-send-sms.html) -
-[PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php) -
-[Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py) -
+[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/sendsms.php) -
+[Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-send-sms.py) -
 [Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
 
 
@@ -67,7 +67,7 @@ You've now sent an sms!
 [Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-calls.go) -
 [Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-calls.gs) -
 [HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-calls.html) -
-[PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php) -
+[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/php-calls.php) -
 [Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py) -
 [Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
 
