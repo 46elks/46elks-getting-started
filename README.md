@@ -4,7 +4,7 @@
 
 Welcome!
 
-The46elks api makes it easy for you to add custom telephony features that are perfectly suited to the way you do things – because let’s face it, sometimes ‘off the shelf’ just doesn't cut it.
+The 46elks api makes it easy for you to add custom telephony features that are perfectly suited to the way you do things – because let’s face it, sometimes ‘off the shelf’ just doesn't cut it.
 
 You can use the [46elks](https://www.46elks.com) api to 
 
