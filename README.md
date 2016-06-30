@@ -24,7 +24,7 @@ You can use the [46elks](https://www.46elks.com) api to
 
 ## Getting started
 
-1. *credentials* (Username & password also known as api keys) to use the 46elks api. Create your free 46elks account at [46elks.com/create-account](https://www.46elks.com/create-account), to get a username and password.
+1. Get your credentials(api keys (username and password to connect to the api)). Create your [free 46elks account](https://www.46elks.com/create-account).
 2. *Documentation* is available at [46elks.com/docs](https://46elks.com/docs).
 3. You might want to dig right into *[Sample code](https://github.com/littlekid/testing-learning-to-create-a-good-getting-started-and-readme/tree/master/samples)*.
 
