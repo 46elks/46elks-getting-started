@@ -1,0 +1,510 @@
+{
+	"id": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+	"name": "46elks-API-Templates",
+	"description": "Templates for the 46elks API the test the API as well as testing incomming traffic.",
+	"order": [],
+	"folders": [
+		{
+			"id": "b1eefc06-dc50-554c-4276-9630e3b69721",
+			"name": "SMS",
+			"description": "",
+			"order": [
+				"1e424eb0-80c0-142a-7b13-1ced74e49456",
+				"9df1f49e-40ee-a327-0dd1-31154a6ebffb",
+				"9720f47d-4549-75d3-6023-afd92547dee2",
+				"3274fe6d-31ee-13da-489a-1142b3230165"
+			],
+			"owner": 0
+		},
+		{
+			"id": "04a81ba0-fda8-e765-e52a-c7b089751063",
+			"name": "Account",
+			"description": "",
+			"order": [
+				"18704c21-77b9-16d9-5692-f1092bb44408",
+				"305e203b-5176-07fb-2643-1f65578886ae",
+				"97798323-f17f-79d8-586e-ba60c4c649f1"
+			],
+			"owner": 0,
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8"
+		},
+		{
+			"id": "785b9523-f9c2-4bfa-abb9-ab9762846d88",
+			"name": "Calls",
+			"description": "",
+			"order": [
+				"e0f18167-e7bb-97f3-1c2a-f175c06f8e7f",
+				"e4b034df-3653-7835-3fbc-66432ebcd01c",
+				"743987c1-43b5-3251-490a-ac230926934b"
+			],
+			"owner": 0
+		},
+		{
+			"id": "6994c490-6150-94d8-3f95-aa942f7f88b2",
+			"name": "Numbers",
+			"description": "",
+			"order": [
+				"aef70dc4-8f23-4ba6-697e-9cf342a6c41d",
+				"3896c561-1144-2d80-0692-e5aaecda60db",
+				"f6ca3219-ef07-98cf-78b0-e27397d04da8"
+			],
+			"owner": 0
+		}
+	],
+	"timestamp": 1455478429681,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "18704c21-77b9-16d9-5692-f1092bb44408",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Subaccounts",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957566522,
+			"name": "Subaccounts",
+			"description": "List all Subaccounts in your account.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "1e424eb0-80c0-142a-7b13-1ced74e49456",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/SMS",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "from",
+					"value": "Yourname",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "to",
+					"value": "+46723175800",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "message",
+					"value": "Hi this is a message to you",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "flashsms",
+					"value": "yes",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "whendelivered",
+					"value": "http://yourserber/api/smsstatusreport",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957692407,
+			"name": "Send SMS",
+			"description": "Send sms with all paramters.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "305e203b-5176-07fb-2643-1f65578886ae",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Subaccounts",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "SubbacountName",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "usagelimit",
+					"value": "10000",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957579386,
+			"name": "Subaccounts Create",
+			"description": "Create Subbaccount",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "3274fe6d-31ee-13da-489a-1142b3230165",
+			"headers": "",
+			"url": "http://yourserver/rest/receivesms",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "id",
+					"value": "s389475938457394fead88",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "status",
+					"value": "delivered",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "delivered",
+					"value": "2016-02-21T0:00:00.23874",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457957727265,
+			"name": "SMS Callback Example",
+			"description": "Example to use when tesing our callback.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "3896c561-1144-2d80-0692-e5aaecda60db",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Numbers/n1234aaaaaaaaaaaaaaaaaaaaaaaa",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "sms_url",
+					"value": "http://yourserer/incommingSMS",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mms_url",
+					"value": "http://yourserer/incommingMMS",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "voice_start",
+					"value": "http://yourserer/incommingCall",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "active",
+					"value": "no",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957674447,
+			"name": "Numbers Update",
+			"description": "Update URLs for number or deallocate with active = no.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "743987c1-43b5-3251-490a-ac230926934b",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Calls?start=2016-02-05T00:00:00&end=2016-02-06T00:00:00",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957648164,
+			"name": "Calls  History Time Range",
+			"description": "Get 100 Calls at the time that was sent from/to your account in a period of time.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "9720f47d-4549-75d3-6023-afd92547dee2",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/SMS?start=2016-02-05T00:00:00&end=2016-02-06T00:00:00",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957722386,
+			"name": "SMS History Time Range",
+			"description": "Get 100 SMS at the time that was sent from/to your account in a period of time.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "97798323-f17f-79d8-586e-ba60c4c649f1",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Me",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957588368,
+			"name": "Me",
+			"description": "Get your account Data credits left, etc.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "9df1f49e-40ee-a327-0dd1-31154a6ebffb",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/SMS",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957700538,
+			"name": "SMS History",
+			"description": "Get the last 100 SMS that was sent from/to your account.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "aef70dc4-8f23-4ba6-697e-9cf342a6c41d",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Numbers",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "country",
+					"value": "se",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sms_url",
+					"value": "http://yourserer/incommingSMS",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "mms_url",
+					"value": "http://yourserer/incommingMMS",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "voice_start",
+					"value": "http://yourserer/incommingCall",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957664845,
+			"name": "Numbers Allocate",
+			"description": "Allocate phonenumber for incomming traffic.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "e0f18167-e7bb-97f3-1c2a-f175c06f8e7f",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Calls",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "from",
+					"value": "+46723175800",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "to",
+					"value": "+46723175800",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "voice_start",
+					"value": "{\"connect\":\"+463409510\"}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "voice_start",
+					"value": "{\"play\":\"http://yourserber/file.mp3\"}",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "voice_start",
+					"value": "{\"ivr\":\"http://yourserber/file.mp3\",\"1\":{\"play\":\"http://yourserber/file2.mp3\"},\"2\":{\"connect\":\"+463409510\"}}",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957596720,
+			"name": "Calls Make Phone Call",
+			"description": "Make an outgoing phonecall.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "e4b034df-3653-7835-3fbc-66432ebcd01c",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Calls",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957610446,
+			"name": "Calls History",
+			"description": "Get the last 100 Calls that was sent from/to your account.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		},
+		{
+			"id": "f6ca3219-ef07-98cf-78b0-e27397d04da8",
+			"headers": "Authorization: Basic YWJjOjEyMw==\n",
+			"url": "https://api.46elks.com/a1/Numbers",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "abc",
+				"password": "123",
+				"saveToRequest": true
+			},
+			"time": 1457957682295,
+			"name": "Numbers List",
+			"description": "Get all your numbers connected to your account.",
+			"collectionId": "87e3a09f-dae6-d0a0-0c26-ccebfe56d3b8",
+			"responses": []
+		}
+	]
+}
