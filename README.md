@@ -58,7 +58,7 @@ You've now sent an sms!
 [HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-send-sms.html) -
 [PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/sendsms.php) -
 [Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-send-sms.py) -
-[Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
+[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Ruby/ruby-send-sms.rb)
 
 
 * Make phone calls
@@ -68,12 +68,12 @@ You've now sent an sms!
 [Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-calls.gs) -
 [HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-calls.html) -
 [PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/php-calls.php) -
-[Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py) -
+[Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-calls.py) -
 [Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
 
 * Build an interactive voice menu or response (IVR)
 [IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code%20samples/Voice%20-%20IVR%20-%20interactive%20voice%20menues).
-
+ 
 
 ## Tutorials
 *Most popular*
