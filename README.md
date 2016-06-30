@@ -37,7 +37,7 @@ You can use the [46elks](https://www.46elks.com) api to
 curl -X POST \
   -u <API-Username>:<API-Password> \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'from=VILLE' \
+  -d 'from=Victoria' \
   -d 'to=+358503672181' \
   -d 'message=Test Message To your phone.' \
   'https://api.46elks.com/a1/SMS' 
