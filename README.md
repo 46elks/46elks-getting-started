@@ -58,24 +58,8 @@ You've now sent an sms!
 [Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
 [Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
 
-* Receive sms
-[C#](https://github.com/46elks-getting-started/tree/master/code%20samples/C%23/receive-sms)
-[Elixir](https://github.com/46elks-getting-started/tree/master/code%20samples/elixir)
-[Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
-[PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
-[Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
-[Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
-
 * Make phone calls
-[C#](https://github.com/46elks-getting-started/tree/master/code%20samples/C%23/send-sms)
-[Elixir](https://github.com/46elks-getting-started/tree/master/code%20samples/elixir)
-[Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
-[PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
-[Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
-[Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
-
-* Receive phone calls
-[C#](https://github.com/46elks-getting-started/tree/master/code%20samples/C%23/send-sms)
+[C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-calls.cs)
 [Elixir](https://github.com/46elks-getting-started/tree/master/code%20samples/elixir)
 [Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
 [PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
