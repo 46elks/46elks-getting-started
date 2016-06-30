@@ -60,7 +60,7 @@ You've now sent an sms!
 
 * Make phone calls
 [C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-calls.cs)
-[Elixir](https://github.com/46elks-getting-started/tree/master/code%20samples/elixir)
+[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-calls.exs)
 [Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
 [PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
 [Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
