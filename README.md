@@ -14,7 +14,7 @@ You can use the [46elks](https://www.46elks.com) api to
 
 ### Links
 
-  * [Quickstart]()
+  * [Quickstart](https://github.com/46elks/46elks-getting-started#sample-code)
   * [Documentation](https://www.46elks.com/api-docs#introduction)
   * [Sample code](https://github.com/littlekid/testing-learning-to-create-a-good-getting-started-and-readme/tree/master/samples)
   * [Demos & Projects]()
