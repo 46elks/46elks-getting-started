@@ -39,7 +39,7 @@ curl -X POST \
   -u <API-Username>:<API-Password> \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'from=Victoria' \
-  -d 'to=+358503672181' \
+  -d 'to=+46766861004' \
   -d 'message=Test Message To your phone.' \
   'https://api.46elks.com/a1/SMS' 
 ``` 
