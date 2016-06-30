@@ -51,7 +51,7 @@ You've now sent an sms!
 ##### Code examples in different languages
 
 * Send sms
-[C#](https://github.com/46elks-getting-started/tree/master/code%20samples/C%23/send-sms) 
+[C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-sms.cs) 
 [Elixir](https://github.com/46elks-getting-started/tree/master/code%20samples/elixir)
 [Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
 [PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
