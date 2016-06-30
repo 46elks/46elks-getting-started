@@ -48,7 +48,7 @@ You've now sent an sms!
 
 
 <br>
-*Code examples in different languages*
+##### Code examples in different languages
 
 * Send sms
 [C#](https://github.com/46elks-getting-started/tree/master/code%20samples/C%23/send-sms) 
