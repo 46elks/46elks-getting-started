@@ -54,14 +54,17 @@ You've now sent an sms!
 [C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-sms.cs) 
 [Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-send-sms.exs)
 [Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-send-sms.go)
+[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-send-sms.gs)
 [PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
 [Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
 [Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
 
+
 * Make phone calls
 [C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-calls.cs)
 [Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-calls.exs)
-[Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
+[Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-calls.go)
+[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-calls.gs)
 [PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
 [Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
 [Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
