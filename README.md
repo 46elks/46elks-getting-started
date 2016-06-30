@@ -52,7 +52,7 @@ You've now sent an sms!
 
 * Send sms
 [C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-sms.cs) 
-[Elixir](https://github.com/46elks-getting-started/tree/master/code%20samples/elixir)
+[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-send-sms.exs)
 [Go](https://github.com/46elks-getting-started/tree/master/code%20samples/go)
 [PHP](https://github.com/46elks-getting-started/tree/master/code%20samples/php)
 [Python](https://github.com/46elks-getting-started/tree/master/code%20samples/py)
