@@ -12,7 +12,6 @@ You can use the [46elks](https://www.46elks.com) api to
 * initiate and receive phonecalls
 * build interactive voice sessions
 
-<br>
 
 ### Links
 
