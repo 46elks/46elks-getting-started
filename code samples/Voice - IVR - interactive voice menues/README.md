@@ -42,3 +42,29 @@ IVR stands for interactive voice response. You can play a message to the caller,
   }
 }
 ```
+
+
+## Support calls
+```
+//  Calls up one person at the time, with a delay, until someone responds, or there is no longer anyone to call.
+{
+  "connect":"+46704508449",
+  "busy":{
+    "connect":"+46731704032",
+    "busy":{
+      "connect":"+46731704032",
+      "busy":{
+        "connect":"+46731704032"
+      }
+    }
+  }
+}
+```
+
+## !Call everyone!
+```
+// When someone calls your number, call everyone, and the first person to respond, is connected to the caller.
+{
+  "connect":["+46704508449","+46731704032","+46731704032"]
+}
+```
