@@ -70,7 +70,7 @@ You've now sent an sms!
 [HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-calls.html) -
 [PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/php-calls.php) -
 [Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-calls.py) -
-[Ruby](https://github.com/46elks-getting-started/tree/master/code%20samples/ruby)
+[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Ruby/ruby-calls.rb)
 
 * Build an interactive voice menu or response (IVR)
 [IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code%20samples/Voice%20-%20IVR%20-%20interactive%20voice%20menues).
