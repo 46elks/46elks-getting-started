@@ -86,6 +86,7 @@ Let us know at hello@46elks.com!
 
 ## Demos
 * [passer -- self-hosted sms to tweet](https://github.com/46elks/passer) #python
+* [Elkme - Send sms from the command line](https://github.com/46elks/elkme)
 
 ## Resources
 * [Postman app](https://www.getpostman.com/) - interact with apis through a Chrome app, also available as an OSX app.
