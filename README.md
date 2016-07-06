@@ -75,7 +75,6 @@ You've now sent an sms!
 
 * Build an interactive voice menu or response (IVR)
 [IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Voice%20-%20IVR%20-%20interactive%20voice%20menues).
- 
 
 ## Tutorials
 *Most popular*
@@ -84,6 +83,9 @@ You've now sent an sms!
 
 Have you written a tutorial or created an app that you're willing to share?
 Let us know at hello@46elks.com!
+
+## Demos
+* [passer -- self-hosted sms to tweet](https://github.com/46elks/passer) #python
 
 ## Resources
 * [Postman app](https://www.getpostman.com/) - interact with apis through a Chrome app, also available as an OSX app.
