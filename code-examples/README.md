@@ -11,3 +11,5 @@ Pull requests also welcome!
 
   * [Documentation](https://www.46elks.com/api-docs#introduction)
   * [Contact 46elks](46elks.com/help#contact)
+
+Example code is released as public domain. Use freely.
