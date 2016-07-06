@@ -52,29 +52,29 @@ You've now sent an sms!
 ##### Code examples in different languages
 
 * Send sms
-[C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-sms.cs) -
-[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-send-sms.exs) -
-[Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-send-sms.go) -
-[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-send-sms.gs) -
-[haskell](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/haskell/send_sms.hs) -
-[HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-send-sms.html) -
-[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/sendsms.php) -
-[Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-send-sms.py) -
-[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Ruby/ruby-send-sms.rb)
+[C#](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/C%23/csharp-sms.cs) -
+[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Elixir/elixir-send-sms.exs) -
+[Go](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Go/golang-send-sms.go) -
+[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Google%20apps%20script/Google-apps-script-send-sms.gs) -
+[haskell](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/haskell/send_sms.hs) -
+[HTML](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/HTML/form-send-sms.html) -
+[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/PHP/sendsms.php) -
+[Python](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Python/python-send-sms.py) -
+[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Ruby/ruby-send-sms.rb)
 
 
 * Make phone calls
-[C#](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/C%23/csharp-calls.cs) -
-[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-calls.exs) -
-[Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-calls.go) -
-[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-calls.gs) -
-[HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-calls.html) -
-[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/php-calls.php) -
-[Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-calls.py) -
-[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Ruby/ruby-calls.rb)
+[C#](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/C%23/csharp-calls.cs) -
+[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Elixir/elixir-calls.exs) -
+[Go](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Go/golang-calls.go) -
+[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Google%20apps%20script/Google-apps-script-calls.gs) -
+[HTML](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/HTML/form-calls.html) -
+[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/PHP/php-calls.php) -
+[Python](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Python/python-calls.py) -
+[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Ruby/ruby-calls.rb)
 
 * Build an interactive voice menu or response (IVR)
-[IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code%20samples/Voice%20-%20IVR%20-%20interactive%20voice%20menues).
+[IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Voice%20-%20IVR%20-%20interactive%20voice%20menues).
  
 
 ## Tutorials
