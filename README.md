@@ -1,4 +1,4 @@
-# ![46elks-logo](https://www.46elks.com/images/README-on-github/46elks-240-150.png)
+![46elks-logo](https://www.46elks.com/images/README-on-github/46elks-240-150.png)
 
 # Phonecalls, SMS & MMS api
 
