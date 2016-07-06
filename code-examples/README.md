@@ -10,6 +10,7 @@ Pull requests also welcome!
 ## Useful links
 
   * [Documentation](https://www.46elks.com/api-docs#introduction)
+  * [README](https://github.com/46elks/46elks-getting-started/blob/master/README.md)
   * [Contact 46elks](46elks.com/help#contact)
 
 Example code is released as public domain. Use freely.
