@@ -56,6 +56,7 @@ You've now sent an sms!
 [Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Elixir/elixir-send-sms.exs) -
 [Go](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Go/golang-send-sms.go) -
 [Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Google%20apps%20script/Google-apps-script-send-sms.gs) -
+[haskell](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/haskell/send_sms.hs) -
 [HTML](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/HTML/form-send-sms.html) -
 [PHP](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/PHP/sendsms.php) -
 [Python](https://github.com/46elks/46elks-getting-started/blob/master/code%20samples/Python/python-send-sms.py) -
