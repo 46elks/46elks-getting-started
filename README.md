@@ -44,7 +44,7 @@ curl -X POST \
   'https://api.46elks.com/a1/SMS' 
 ``` 
 
-![sms-on-mobile-phone](http://static.46elks.com/sms-iphone-hello-416x85.png)
+![sms-on-mobile-phone](https://static.46elks.com/sms-iphone-hello-416x85.png)
 
 
 <br>
