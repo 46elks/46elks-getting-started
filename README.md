@@ -1,39 +1,42 @@
 ![46elks-logo](https://www.46elks.com/images/README-on-github/46elks-240-150.png)
 
-# Phonecalls, SMS & MMS api
+## Voice, SMS & MMS for developers.
 
-Welcome!
+Welcome to our developer friendly API service! :-)
 
-The 46elks api makes it easy for you to add custom telephony features that are perfectly suited to the way you do things – because let’s face it, sometimes ‘off the shelf’ just doesn't cut it.
+We make it easy for you to add custom telephony features that are perfectly suited to the way you do things – because sometimes ‘off the shelf’ just doesn't cut it.
 
-You can use the [46elks](https://www.46elks.com) api to 
+You can use [46elks](https://www.46elks.com) for:
 
-* send and receive text messages
-* initiate and receive phonecalls
-* build interactive voice sessions
+* Sending SMS text messages
+* Receiving SMS to your applications
+* Sending & receiving MMS pictures
+* Controlling incoming and outgoing telephone calls with code
+* Building interactive voice sessions
+* And other telephony [features](https://www.46elks.com/features).
 
 
 ### Links
 
   * [Quickstart](https://github.com/46elks/46elks-getting-started#sample-code)
-  * [Documentation](https://www.46elks.com/api-docs#introduction)
-  * [Sample code](https://github.com/46elks/46elks-getting-started/blob/master/README.md#code-examples-in-different-languages)
-  * [Dashboard](http://dashboard.46elks.com/)
-  * [Introduction - Learn about using an API](https://zapier.com/learn/apis/) 
-  * [Contact 46elks](46elks.com/help#contact)
+  * [API documentation](https://www.46elks.com/api-docs#introduction)
+  * [Code examples](https://github.com/46elks/46elks-getting-started/blob/master/README.md#code-examples-in-different-languages)
+  * [Login / sign up](https://dashboard.46elks.com/)
+  * [Introduction to using an API](https://zapier.com/learn/apis/) 
+  * [Contact the elks](46elks.com/help#contact)
+
+## Quickstart
+
+1. Create your [46elks account](https://www.46elks.com/create-account) and locate your [api keys](https://dashboard.46elks.com/).
+2. Send your first SMS from the [dashboard](https://dashboard.46elks.com/) or with curl (see below).
+3. Send an SMS code using one of our [code examples](https://github.com/46elks/46elks-getting-started/tree/master/code-examples).
+4. Learn more about what you can do by reading the [documentation](https://46elks.com/docs).
 
 
-## Getting started
+## Send your first SMS with curl
 
-1. Get your credentials(api keys (username and password to connect to the api)). Create your [free 46elks account](https://www.46elks.com/create-account).
-2. *Documentation* is available at [46elks.com/docs](https://46elks.com/docs).
-3. You might want to dig right into *[Sample code](https://github.com/littlekid/testing-learning-to-create-a-good-getting-started-and-readme/tree/master/samples)*.
+Use your [api keys](https://dashboard.46elks.com) and enter this into your terminal:
 
-<br>
-
-## Sample code
-
-**Quick start** - give the api a try! Using your [46elks credentials](https://dashboard.46elks.com) enter this into your terminal:
 ```
 curl -X POST \
   -u <API-Username>:<API-Password> \
@@ -44,8 +47,7 @@ curl -X POST \
   'https://api.46elks.com/a1/SMS' 
 ``` 
 
-You've now sent an sms!  
-![sms-on-mobile-phone](https://www.46elks.com/images/README-on-github/phone-with-lovely-sms-black.png)
+![sms-on-mobile-phone](https://static.46elks.com/sms-iphone-hello-416x85.png)
 
 
 <br>
@@ -61,7 +63,7 @@ You've now sent an sms!
 [Python](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Python) -
 [Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Ruby) -
 [Java]( https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Java) -
-[Node](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Node) -
+[Node.js](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Node) -
 [cURL](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/cURL)
 
 ##### Build an interactive voice menu or response (IVR)
@@ -70,20 +72,28 @@ You've now sent an sms!
 
 [Show all coding examples for all languages](https://github.com/46elks/46elks-getting-started/tree/master/code-examples)
 
-## Tutorials
-*Most popular*
-* [Love messenger](https://github.com/gish/love-messenger)
+## Community resources
+*Tutorials*
+
+* [Love messenger](https://github.com/gish/love-messenger) by Erik Hedberg
 * [Receive SMS into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.9ku01h462)
+
+*Modules, SDKs and libraries*
+
+* [Ruby client](https://github.com/jage/elk) by Johan Eckerström
+* [Wordpress module](https://github.com/tobiasehlert/WP-SMS-46elks) by Tobias Ehlert
+* [Codeigniter extension](https://github.com/nyfagel/codeigniter-46elks) by Jan Lindblom
+* [Node.JS wrapper](https://github.com/leomelin/fortysix-elks) by Leo Melin
 
 Have you written a tutorial or created an app that you're willing to share?
 Let us know at hello@46elks.com!
 
 ## Demos
-* [passer -- self-hosted sms to tweet](https://github.com/46elks/passer) #python
-* [Elkme - Send sms from the command line](https://github.com/46elks/elkme)
+* [passer](https://github.com/46elks/passer) - Self-hosted "sms to twitter" written in Python
+* [elkme](https://github.com/46elks/elkme) - Send SMS from the command line
 
 ## Resources
-* [Postman app](https://www.getpostman.com/) - interact with apis through a Chrome app, also available as an OSX app.
+* [Postman app](https://www.getpostman.com/) - Interact with APIs through a Chrome app, also available as an OSX app.
   
 ## Integrations
   * [Zapier](https://zapier.com/zapbook/46elks/)
