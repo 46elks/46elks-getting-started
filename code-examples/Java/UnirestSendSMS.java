@@ -1,7 +1,7 @@
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-public class ElksTest {
+public class UnirestSendSMS {
     public static void main(String[] args) {
         try {
             System.out.println("Sending SMS");
