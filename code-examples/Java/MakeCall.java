@@ -10,7 +10,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import java.net.URI;
 import java.nio.charset.Charset;
 
-public class ElkTest {
+public class MakeCall {
     public static void main(String[] args) {
         try {
         			

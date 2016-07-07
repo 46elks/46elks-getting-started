@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import javax.xml.bind.DatatypeConverter;
 
 
-class ElksDemo
+class SendSMS
 {  
   static void sendSMS () {
     try {
