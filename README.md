@@ -9,7 +9,7 @@ We make it easy for you to add custom telephony features that are perfectly suit
 You can use [46elks](https://www.46elks.com) for:
 
 * Sending SMS text messages
-* Receiving SMS to your application
+* Receiving SMS to your applications
 * Sending & receiving MMS pictures
 * Controlling incoming and outgoing telephone calls with code
 * Building interactive voice sessions
@@ -33,7 +33,7 @@ You can use [46elks](https://www.46elks.com) for:
 4. Learn more about what you can do by reading the [documentation](https://46elks.com/docs).
 
 
-## Send your first SMS with cURL
+## Send your first SMS with curl
 
 Use your [api keys](https://dashboard.46elks.com) and enter this into your terminal:
 
