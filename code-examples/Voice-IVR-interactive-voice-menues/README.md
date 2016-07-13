@@ -13,7 +13,7 @@ IVR stands for interactive voice response. You can play a message to the caller,
 // Record all incoming calls
 // Configure your 46elks number with voice_start as below:
 {
-  "connect": "+46704508449",
+  "connect": "+46723414646",
   "recordcall": "http://myserver.se/newrecording.php"
 }
 
@@ -48,16 +48,16 @@ IVR stands for interactive voice response. You can play a message to the caller,
 ```
 //  Calls up one person at the time, with a delay, until someone responds, or there is no longer anyone to call.
 {
-  "connect":"+46704508449",
+  "connect":"+46766861004",
   "timeout":"15",
   "next":{
-    "connect":"+46731704032",
+    "connect":"+46723414646",
     "timeout":"15",
     "next":{
-      "connect":"+46731704032",
+      "connect":"+46766861004",
       "timeout":"15",
       "next":{
-        "connect":"+46731704032"
+        "connect":"+46723414646"
       }
     }
   }
@@ -70,7 +70,7 @@ IVR stands for interactive voice response. You can play a message to the caller,
 When someone calls your number, call everyone, and the first person to respond, is connected to the caller.
 ```
 {
-  "connect":"+46704508449,+46731704032,+46731704032"
+  "connect":"+46723414646,+46766861004,+46723414646"
 }
 ```
 
