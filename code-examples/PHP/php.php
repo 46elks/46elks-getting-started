@@ -5,7 +5,11 @@ $username = '<API Username>';
 $password = '<API Password>';
 $sms = array('from' => 'DummyFrom',
              'to' => '+46709751949',
-             'message' => 'Hello hello!');
+             /* 'flashsms' => 'yes', /* Un comment this if you want to send a flash sms. */
+             'message' => 'Hello hello!'
+            );
+             
+
             
 $context = stream_context_create(array(
     'http' => array(
