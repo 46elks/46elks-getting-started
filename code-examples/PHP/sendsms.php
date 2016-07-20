@@ -33,7 +33,7 @@ $sms = array(
   'from' => 'DummyFrom',   /* Can be up to 11 alphanumeric characters */
   'to' => '+46766861004',  /* The mobile number you want to send to */
   'message' => 'Hello hello!',
-  'flashsms' => 'no', /* Default value: no, set to yes if you want to send a flash sms. */
+  /* 'flashsms' => 'yes', /* Un comment this if you want to send a flash sms. */
   
 );
 echo sendSMS ($sms) . "\n";
