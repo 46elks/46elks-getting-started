@@ -53,7 +53,7 @@ curl -X POST \
 <br>
 ##### Code examples
 
-[C#|.NET](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/c-sharp) -
+[C# | .NET](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/c-sharp) -
 [Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Elixir) -
 [Go](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Go) -
 [Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Google%20apps%20script) -
