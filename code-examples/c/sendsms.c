@@ -42,6 +42,9 @@ int main(int argc, char* argv[]) {
 }
 
 bool verify_phonenumber(char* number) {
+    /* A phonenumber might be a phonenumber if it starts with a plus
+     * and has only digits following the initial plus
+     */
     if (strlen(number) < 2) {
         return false;
     } else if (number[0] != '+' && number[0] != ' ') {
@@ -70,8 +73,10 @@ void elks_api_connect(char* message, char* to, char* from) {
     }
 
     curl_easy_setopt(curl, CURLOPT_URL, "https://api.46elks.com/a1/SMS");
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA, head_buffer);
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, elks_store_response);
+#ifndef DEBUG
+    FILE* devnull = fopen("/dev/null", "w");
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, devnull);
+#endif
     curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     curl_easy_setopt(curl, CURLOPT_USERNAME, curl_getenv("ELKS_USERNAME"));
     curl_easy_setopt(curl, CURLOPT_PASSWORD, curl_getenv("ELKS_PASSWORD"));
@@ -95,6 +100,9 @@ void elks_api_connect(char* message, char* to, char* from) {
     curl_easy_getinfo (curl, CURLINFO_RESPONSE_CODE, &http_code);
     free(payload);
     curl_easy_cleanup(curl);
+#ifndef DEBUG
+    fclose(devnull);
+#endif
 
     if (http_code == 401) {
         printf("AUTHENTICATION ERROR\n");
@@ -109,49 +117,7 @@ void elks_api_connect(char* message, char* to, char* from) {
         }
     } else if (http_code == 200) {
         printf("Sent, check the recipient phone!\n");
-#ifdef DEBUG
-        // The raw return data
-        elks_print_sb(head_buffer);
-#endif
-        elks_free_sb(head_buffer);
     }
     return;
 }
 
-void elks_print_sb(string_buffer* head) {
-    string_buffer* buffer = head;
-    while (buffer->len > 0) {
-        printf("%s", buffer->string);
-        if (buffer->next) {
-            buffer = buffer->next;
-        } else {
-            break;
-        }
-    }
-}
-
-void elks_free_sb(string_buffer* head) {
-    string_buffer* current = head;
-    while (current) {
-        string_buffer* next = current->next;
-        if (current->string) {
-            free(current->string);
-        }
-        free(current);
-        current = next;
-    }
-}
-
-size_t elks_store_response(char* ptr, size_t size, size_t nmemb, void* userdata) {
-    string_buffer* buffer = userdata;
-    if (buffer->next) {
-        buffer = buffer->next;
-    };
-    size_t total_bytes = size * nmemb;
-    void* store = calloc(total_bytes + 1, sizeof(char));
-    buffer->next = calloc(1, sizeof(string_buffer));
-    buffer->string = store;
-    buffer->len = total_bytes;
-    strncpy(store, ptr, total_bytes);
-    return total_bytes;
-}
