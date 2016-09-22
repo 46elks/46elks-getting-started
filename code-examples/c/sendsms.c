@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
     size_t counter = 0;
 
     if (argc < 3) {
-        fprintf(stderr, "Usage: %s <RECIPIENT: +46700000000> <MESSAGE...>",
+        fprintf(stderr, "Usage: %s <RECIPIENT: +46700000000> <MESSAGE...>\n",
                 argv[0]);
         return EINVAL;
     }
@@ -76,6 +76,7 @@ void elks_api_connect(char* message, char* to, char* from) {
 #ifndef DEBUG
     FILE* devnull = fopen("/dev/null", "w");
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, devnull);
+    printf("\n");
 #endif
     curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
     curl_easy_setopt(curl, CURLOPT_USERNAME, curl_getenv("ELKS_USERNAME"));
