@@ -74,6 +74,47 @@ When someone calls your number, call everyone, and the first person to respond, 
 }
 ```
 
+
+### IVR - choice - call people - voice mail if busy
+1) Let user make a choice
+2) Try calling people on support for that choice
+3) When choise was made, try calling everyone... if busy, ask caller if they would like to leave a message, and let them know that you will call them back as soon as possible.
+4) In case "2", when buys - what we do depends on what json you serve us back.
+5) Case 3 - code for verification
+{
+    "ivr": "http://myserver.com/welcome-if-you-want-a-press-1-if-other-press-2",
+    "1": {
+        "connect": "+46766861004,+46766861004",
+        "busy": {
+            "play": "http://myserver.com/we-are-busy-please-leave-a-message-and-well-call-you-back.mp3",
+            "next": {
+                "record": "http://myserver.com/store-call"
+            }
+        }
+    },
+    "2": {
+        "connect": "+46766861004,+46766861004",
+        "busy": "http://myserver.com/if-busy-do-this-return-json-response-with-instructions-to-46elks"
+    },
+    "3": {
+      "ivr": "http://myserver.se/enterpin.wav",
+      "digits": 5,
+      "next": "http://myserver.se/login-and-then-return-json-response-with-instructions-to-46elks.php"
+    }
+}
+Docs: 
+[Voice calls](https://www.46elks.com/docs#voice-calls)
+[IVR](https://www.46elks.com/docs#action---ivr)
+
+
+
+
+
+
+
+
+
+
 <br>
 
 ```
