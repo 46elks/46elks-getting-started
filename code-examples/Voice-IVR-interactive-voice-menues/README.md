@@ -81,6 +81,7 @@ When someone calls your number, call everyone, and the first person to respond, 
 3) When choise was made, try calling everyone... if busy, ask caller if they would like to leave a message, and let them know that you will call them back as soon as possible.
 4) In case "2", when buys - what we do depends on what json you serve us back.
 5) Case 3 - code for verification
+```
 {
     "ivr": "http://myserver.com/welcome-if-you-want-a-press-1-if-other-press-2",
     "1": {
@@ -102,6 +103,7 @@ When someone calls your number, call everyone, and the first person to respond, 
       "next": "http://myserver.se/login-and-then-return-json-response-with-instructions-to-46elks.php"
     }
 }
+```
 Docs: 
 [Voice calls](https://www.46elks.com/docs#voice-calls)
 [IVR](https://www.46elks.com/docs#action---ivr)
