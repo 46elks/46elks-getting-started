@@ -75,12 +75,14 @@ When someone calls your number, call everyone, and the first person to respond, 
 ```
 
 
-### IVR - choice - call people - voice mail if busy
-1) Let user make a choice
-2) Try calling people on support for that choice
-3) When choise was made, try calling everyone... if busy, ask caller if they would like to leave a message, and let them know that you will call them back as soon as possible.
-4) In case "2", when buys - what we do depends on what json you serve us back.
-5) Case 3 - code for verification
+### IVR 
+#### Voice mail if busy
+1. Let user make a choice
+2. Try calling people on support for that choice
+3. When choise was made, try calling everyone... if busy, ask caller if they would like to leave a message, and let them know that you will call them back as soon as possible.
+4. In case "2", when buys - what we do depends on what json you serve us back.
+5. Case 3 - code for verification
+
 ```
 {
     "ivr": "http://myserver.com/welcome-if-you-want-a-press-1-if-other-press-2",
