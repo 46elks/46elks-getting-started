@@ -74,7 +74,7 @@ When someone calls your number, call everyone, and the first person to respond, 
 }
 ```
 
-
+<br>
 ### IVR 
 #### Voice mail if busy
 1. Let user make a choice
