@@ -4,7 +4,7 @@ authdata = [basic_auth: {'<API-Username>',
                          '<API-Password>'}]
 
 request = %{
-            "from"    => "Me", 
+            "from"    => "Elks", 
             "to"      => "+46723175800", 
             "message" => "Hej nu testar jag igen! Med alla bokstäver!"
            }
