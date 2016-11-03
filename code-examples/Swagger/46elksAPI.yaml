@@ -494,10 +494,16 @@ paths:
           default: "sms,voice"
         - name: sms_url
           in: formData
-          description: Url where to send incomming messages.
+          description: Url where to send incomming sms.
           required: false
           type: string
           default: "http://www.server.com/incommingsms"
+        - name: mms_url
+          in: formData
+          description: Url where to send incomming MMS.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingmms"
         - name: voice_start
           in: formData
           description: Url / JSON where to send incomming calls.
@@ -606,6 +612,12 @@ paths:
           required: false
           type: string
           default: "http://www.server.com/incommingcall"
+        - name: mms_url
+          in: formData
+          description: Url where to send incomming MMS.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingmms"
         - name: sms_replies
           in: formData
           description: Prevent automatic response from callback server.
