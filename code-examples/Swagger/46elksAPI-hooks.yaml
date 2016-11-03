@@ -139,13 +139,13 @@ paths:
         - name: from
           in: formData
           description: E.164 caller id
-          required: true
+          required: false
           type: string
           default: "+46723175800"
         - name: to
           in: formData
           description: E.164 destination of the call
-          required: true
+          required: false
           type: string
           default: "+46101994214"
         - name: direction
@@ -157,13 +157,13 @@ paths:
         - name: callid
           in: formData
           description: ID of the call in question.
-          required: true
+          required: false
           type: string
           default: "c445e8467d340c73489b61508c1b772b6"
         - name: result
           in: formData
           description: Digits pressed by the user
-          required: true
+          required: false
           type: string
           default: "2394623498"
         - name: key
@@ -208,13 +208,13 @@ paths:
         - name: from
           in: formData
           description: E.164 caller id
-          required: true
+          required: false
           type: string
           default: "+46723175800"
         - name: to
           in: formData
           description: E.164 destination of the call
-          required: true
+          required: false
           type: string
           default: "+46101994214"
         - name: direction
@@ -232,7 +232,7 @@ paths:
         - name: callid
           in: formData
           description: The id of the call.
-          required: true
+          required: false
           type: string
           default: "caaeaeb26d66463c3b43efe37dd0d12ef"
         - name: key
@@ -279,43 +279,43 @@ paths:
         - name: callid
           in: formData
           description: Source callid for this recording
-          required: true
+          required: false
           type: string
           default: "c70df59406a1b4643b96f3f91e0bfb7b0"
         - name: duration
           in: formData
           description: Audio length in seconds
-          required: true
+          required: false
           type: integer
           default: 15
         - name: wav
           in: formData
           description: URL where you can request the WAV audio
-          required: true
+          required: false
           type: string
           default: "https://api.46elks.com/a1/Recordings/c595183c042b1e43d1c8e79b9fd5cbcab-r0.wav"
         - name: direction
           in: formData
           description: Direction of the call
-          required: true
+          required: false
           type: string
           default: "incoming"
         - name: from
           in: formData
           description: E.164 caller id
-          required: true
+          required: false
           type: string
           default: "+46723175800"
         - name: to
           in: formData
           description: E.164 destination of the call
-          required: true
+          required: false
           type: string
           default: "+46766861004"
         - name: created
           in: formData
           description: Time when SMS was receaved.
-          required: true
+          required: false
           type: string
           default: "2016-10-01T12:00:00:00.11"
         - name: key
@@ -419,31 +419,31 @@ paths:
         - name: id
           in: formData
           description: SMS id.
-          required: true
+          required: false
           type: string
           default: "s70df59406a1b4643b96f3f91e0bfb7b0"
         - name: from
           in: formData
           description: Senderid or number like +46723175800.
-          required: true
+          required: false
           type: string
           default: "TestElk"
         - name: to
           in: formData
           description: Number in e164 number like +46723175800.
-          required: true
+          required: false
           type: string
           default: "+46766861004"
         - name: message
           in: formData
           description: Text to send to the phone.
-          required: true
+          required: false
           type: string
           default: "Hi! This is the inomming message"
         - name: created
           in: formData
           description: Time when SMS was receaved.
-          required: true
+          required: false
           type: string
           default: "2016-10-01T12:00:00:00.11"
         - name: key
@@ -472,14 +472,75 @@ paths:
         default:
           description: Unexpected, API will retry every 5 minutes for 24h.
 
-#  /<mms webhook path>/:
-#to: +46766861218
-#image: https://api.46elks.com/a1/images/m84af96809ff8989f3668c93aaaedb69c-i0.jpg
-#from: +46723175800
-#message: Test
-#id: m84af96809ff8989f3668c93aaaedb69c
-#direction: incoming
-#created: 2016-11-03 12:30:18.937464
+  /<mms webhook path>/:
+    post:
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - MMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: id
+          in: formData
+          description: SMS id.
+          required: false
+          type: string
+          default: "m84af96809ff8989f3668c93aaaedb69c"
+        - name: from
+          in: formData
+          description: Senderid or number like +46723175800.
+          required: false
+          type: string
+          default: "+46723175800"
+        - name: to
+          in: formData
+          description: Number in e164 number like +46723175800.
+          required: false
+          type: string
+          default: "+46766861218"
+        - name: message
+          in: formData
+          description: Text sent from the phone
+          required: false
+          type: string
+          default: "Hi! This is the inomming message"
+        - name: created
+          in: formData
+          description: Time when MMS was receaved.
+          required: false
+          type: string
+          default: "2016-11-03 12:30:18.937464"
+        - name: image
+          in: formData
+          description: Url for downloading the image file.
+          required: false
+          type: string
+          default: "https://api.46elks.com/a1/images/m84af96809ff8989f3668c93aaaedb69c-i0.jpg"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+      responses:
+        200:
+          description: Return data is not handeled only http status code is used.
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: No reply
+  
+        default:
+          description: Unexpected, API will retry every 5 minutes for 24h.
+
 
 definitions:
 
