@@ -1,0 +1,1421 @@
+swagger: '2.0'
+info:
+  title: 46elks API
+  description: The 46elks SMS, MMS & Voice API
+  version: "1.0.0"
+
+host: api.46elks.com
+
+schemes:
+  - https
+  
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: HTTP Basic Authentication is used for all API calls.
+    
+basePath: /a1
+
+consumes:
+  - application/x-www-form-urlencoded
+        
+produces:
+  - application/json
+  
+paths:
+
+  /me:
+    get:
+      security:
+        - basicAuth: []
+      description: Get your account data
+      responses:
+        "200":
+          description: The account data
+          schema:
+            $ref: '#/definitions/Account'
+          examples:
+            application/json:
+              mobilenumber: "+46766861004"
+              displayname: "Your name or company"
+              id: "u5a9566c072160b318445d163949bf505"
+              currency: "SEK"
+              trialactivated: "2013-06-20T18:44:27.434000"
+              balance: 9670500
+              email: "help@46elks.com"
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get account.
+
+  /subaccounts:
+    get:
+      security:
+        - basicAuth: []
+      description: Get all subaccounts
+      tags:
+        - Subaccount
+      responses:
+        "200":
+          description: List of subaccounts.
+          schema:
+            $ref: '#/definitions/SubaccountsList'
+          examples:
+            application/json:
+              data:
+                - secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                  created: "2014-12-08T13:18:07.625000"
+                  usagelimit: 67575670000
+                  id: "af3d05a159669e1951c5301bc6a61bac"
+                  name: "This Co"
+                  usage: 0
+                - secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                  created: "2014-12-08T13:18:07.625000"
+                  usagelimit: 345350000
+                  id: "af3d05a159669e1951c5301bc6a61bac2"
+                  name: "This Co2"
+                  usage: 345300
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get accounts.
+    post:
+      description: Create new subaccount.
+      tags:
+        - Subaccount
+      parameters:
+        - name: name
+          in: formData
+          description: Name of subaccount
+          required: true
+          type: string
+          default: "Company XYZ"
+        - name: usagelimit
+          in: formData
+          description: The usage limit for the subaccount.
+          required: false
+          type: integer
+          default: 3423432400
+      responses:
+        "200":
+          description: The created subaccount 
+          schema:
+            $ref: '#/definitions/Subaccount'
+          examples:
+            application/json:
+              secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
+              created: "2014-12-08T13:18:07.625000"
+              usagelimit: 99999999999
+              id: "af3d05a159669e1951c5301bc6a61bac"
+              name: "This Co2"
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to create account.
+              
+  /subaccounts/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get the data about one subaccount.
+      parameters: 
+        - name: id
+          in: path
+          description: Id of the subaccount
+          required: true
+          type: string
+          default: a70df59406a2b4643b96f3f10e1bfb7b1
+      tags:
+        - Subaccount
+      responses:
+        "200":
+          description: The subaccount data
+          schema:
+            $ref: '#/definitions/Subaccount'
+          examples:
+            application/json:
+                secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                created: "2014-12-08T13:18:07.625000"
+                usagelimit: 910000
+                id: "af3d05a159669e1951c5301bc6a61bac"
+                name: "This Co"
+                usage: 12300
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get subaccount.
+    post:
+      security:
+        - basicAuth: []
+      tags:
+        - Subaccount
+      description: Update subaccount.
+      parameters:
+        - name: id
+          in: path
+          description: Id of the subaccount
+          required: true
+          type: string
+          default: a70df59406a1b4643b96f3f10e1bfb7b1
+        - name: name
+          in: formData
+          description: Name of subaccount
+          required: false
+          type: string
+          default: "Company XYZ"
+        - name: usagelimit
+          in: formData
+          description: The usage limit for the subaccount.
+          required: false
+          type: integer
+          default: 3423432400
+  
+      responses:
+        "200":
+          description: The updated subaccount
+          schema:
+            $ref: '#/definitions/Number'
+          examples:
+            application/json:
+                secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                created: "2014-12-08T13:18:07.625000"
+                usagelimit: 99999999999
+                id: "af3d05a159669e1951c5301bc6a61bac"
+                name: "This Co"
+                usage: 12300
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to update subaccount.
+
+  /images:
+    get:
+      security:
+        - basicAuth: []
+      description: Get image list
+      tags:
+        - MMS
+      parameters:
+        - name: start
+          in: query
+          description: Show images older than this date.
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+        - name: end
+          in: query
+          description: Show images newer than this date.
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+      responses:
+        "200":
+          description: The list of images
+          schema:
+            $ref: '#/definitions/ImagesList'
+          examples:
+            application/json:
+              data:
+              - created: "2016-11-03T12:44:56.190000"
+                filetype: "jpg"
+                mmsid: "mf3d05c159aa49e1951c5301bc6af1bac"
+                bytes: 4200
+                id: "mf3d05c159aa49e1951c5301bc6af1bac-i0"
+                digest: "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
+              - created: "2016-11-03T12:30:18.964000"
+                filetype: "png"
+                mmsid: "m84af96809ff8989f3668c93aaaedb69c"
+                bytes: 206210
+                id: "m84af96809ff8989f3668c93aaaedb69c-i0"
+                digest: "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get image list.
+
+  /images/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get metadata of one image.
+      tags:
+        - MMS
+      parameters: 
+        - name: id
+          in: path
+          description: Id of the image.
+          required: true
+          type: string
+          default: m84af96809ff8989f3668c93aaaedb69c-i0
+      responses:
+        "200":
+          description: The metadata for the image
+          schema:
+            $ref: '#/definitions/Image'
+          examples:
+            application/json:
+              created: "2016-11-03T12:30:18.964000"
+              filetype: "jpg"
+              mmsid: "m84af96809ff8989f3668c93aaaedb69c"
+              bytes: 206210
+              id: "m84af96809ff8989f3668c93aaaedb69c-i0"
+              digest: "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get recording.  
+
+  /images/{id}.jpg:
+    get:
+      produces:
+        - application/octet-stream
+      security:
+        - basicAuth: []
+      description: Get image file
+      tags:
+        - MMS
+      parameters: 
+        - name: id
+          in: path
+          description: Id of the image
+          required: true
+          type: string
+          default: m84af96809ff8989f3668c93aaaedb69c-i0
+      responses:
+        "200":
+          description: The imge data
+          schema: 
+            type: file
+          examples:
+            application/octet-stream:
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to download image.
+
+  /recordings:
+    get:
+      security:
+        - basicAuth: []
+      description: Get list of recordings
+      tags:
+        - Calls
+      parameters:
+        - name: start
+          in: query
+          description: Show recordings older than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+        - name: end
+          in: query
+          description: Show recordings newer than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+      responses:
+        "200":
+          description: The list of recordings
+          schema:
+            $ref: '#/definitions/RecordingsList'
+          
+          examples:
+            application/json:
+              data:
+                - duration: 1
+                  id: c361e5927d2c4d7dcf71a142dc0ec6d9b-r0
+                  created: "2016-02-28T23:54:57.075000"
+                - duration: 2
+                  id: c110cf16e8a0e202b7efb345ba4571d2d-r0
+                  created: "2015-02-24T15:09:08.146000"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get recordings.
+              
+  /recordings/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get metadata of one recording.
+      tags:
+        - Calls
+      parameters: 
+        - name: id
+          in: path
+          description: Id of the recording
+          required: true
+          type: string
+          default: c814b5dd6ac2b5881834b710a1dedcad3-r0
+      responses:
+        "200":
+          description: The metadata for the recording
+          schema:
+            $ref: '#/definitions/Recording'
+          examples:
+            application/json:
+              duration: 15
+              id: c361e5927d2c4d7dcf71a142dc0ec6d9b-r0
+              created: "2016-02-28T23:54:57.075000"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get recording.  
+
+  /recordings/{id}.wav:
+    get:
+      produces:
+        - application/octet-stream
+      security:
+        - basicAuth: []
+      description: Get recodring soundfile.
+      tags:
+        - Calls
+      parameters: 
+        - name: id
+          in: path
+          description: Id of the recording
+          required: true
+          type: string
+          default: c814b5dd6ac2b5881834b710a1dedcad3-r0
+      responses:
+        "200":
+          description: The sound file of the recording
+          schema: 
+            type: file
+          examples:
+            application/octet-stream:
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to download recording.
+              
+  /numbers:
+    get:
+      security:
+        - basicAuth: []
+      description: Get all numbers allocated in the API
+      tags:
+        - SMS
+        - MMS
+        - Calls
+      responses:
+        "200":
+          description: The list of the phone numbers.
+          schema:
+            $ref: '#/definitions/NumberList'
+          examples:
+            application/json:
+              data:
+                - id: n53c05a4e002ae26f790cbaf82b93bc37
+                  category: mobile
+                  country: se
+                  expires: "2016-12-01T07:52:15"
+                  voice_start: http://www.server.nu/incommuingcall
+                  number: "+46766861475"
+                  capabilities:
+                   - sms
+                   - voice
+                  sms_replies: yes
+                  active: yes
+                - id: n53c05a4e002ae26f790cbaf82b93bc38
+                  category: mobile
+                  country: se
+                  expires: "2016-12-01T07:52:15"
+                  sms_url: "http://www.server.nu/incommuingcall"
+                  number: "+46766861476"
+                  capabilities:
+                   - sms
+                   - voice
+                   - mms
+                  active: yes
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get numbers.
+    post:
+      tags:
+        - SMS
+        - MMS
+        - Calls
+      description: Allocate new number for usage in the API.
+      parameters:
+        - name: country
+          in: formData
+          description: country
+          required: true
+          type: string
+          default: "se"
+        - name: capabilities
+          in: formData
+          description: SMS, MMS, Voice
+          required: false
+          type: string
+          default: "sms,voice"
+        - name: sms_url
+          in: formData
+          description: Url where to send incomming sms.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingsms"
+        - name: mms_url
+          in: formData
+          description: Url where to send incomming MMS.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingmms"
+        - name: voice_start
+          in: formData
+          description: Url / JSON where to send incomming calls.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingcall"
+        - name: sms_replies
+          in: formData
+          description: Prevent automatic response from callback server.
+          required: false
+          type: string
+          default: "yes"
+          
+      responses:
+        "200":
+          description: Number allocated
+          schema:
+            $ref: '#/definitions/Number'
+          examples:
+            application/json:
+              id: n53c05a4e002ae26f790cbaf82b93bc37
+              category: mobile
+              country: se
+              expires: "2016-12-01T07:52:15"
+              voice_start: http://www.server.nu/incommuingcall
+              number: "+46766861475"
+              capabilities:
+                - sms
+                - voice
+              sms_replies: yes
+              active: yes
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to allocate number.
+              
+  /numbers/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get information about one number.
+      parameters: 
+        - name: id
+          in: path
+          description: Id of the number
+          required: true
+          type: string
+          default: n70df59406a1b4643b96f3f10e1bfb7b1
+      tags:
+        - SMS
+        - Calls
+        - MMS
+      responses:
+        "200":
+          description: The number information
+          schema:
+            $ref: '#/definitions/Number'
+          examples:
+            application/json:
+              id: n53c05a4e002ae26f790cbaf82b93bc37
+              category: mobile
+              country: se
+              expires: "2016-12-01T07:52:15"
+              voice_start: http://www.server.nu/incommuingcall
+              number: "+46766861475"
+              capabilities:
+                - sms
+                - voice
+              sms_replies: yes
+              active: yes
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get number.
+    post:
+      security:
+        - basicAuth: []
+      description: Change parameters of number
+      tags:
+        - SMS
+        - Calls
+        - MMS
+      parameters:
+        - name: id
+          in: path
+          description: Number id
+          required: true
+          type: string
+          default: n53c05a4e002ae26f790cbaf82b93bc37
+        - name: sms_url
+          in: formData
+          description: Url where to send incomming messages.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingsms"
+        - name: voice_start
+          in: formData
+          description: Url / JSON where to send incomming calls.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingcall"
+        - name: mms_url
+          in: formData
+          description: Url where to send incomming MMS.
+          required: false
+          type: string
+          default: "http://www.server.com/incommingmms"
+        - name: sms_replies
+          in: formData
+          description: Prevent automatic response from callback server.
+          required: false
+          type: string
+          default: "yes"
+        - name: active
+          in: formData
+          description: Prevent automatic response from callback server.
+          required: false
+          type: string
+          default: "yes, (setting this to no is irreversible)"
+          
+      responses:
+        "200":
+          description: Number updated
+          schema:
+            $ref: '#/definitions/Number'
+          examples:
+            application/json:
+              id: n53c05a4e002ae26f790cbaf82b93bc37
+              category: mobile
+              country: se
+              expires: "2016-12-01T07:52:15"
+              voice_start: http://www.server.nu/incommuingcall
+              number: "+46766861475"
+              capabilities:
+                - sms
+                - voice
+              sms_replies: yes
+              active: yes
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to change number.
+
+  /Calls:
+    post:
+      tags:
+        - Calls
+      security:
+        - basicAuth: []
+      description: "Start Phonecall"
+      parameters:
+        - name: from
+          in: formData
+          description: Your 46elks umber like +46766861004.
+          required: true
+          type: string
+          default: "TestElk"
+        - name: to
+          in: formData
+          description: Number in e164 number like +46723175800.
+          required: true
+          type: string
+          default: "+46723175800"
+        - name: voice_start
+          in: formData
+          description: The JSON data for the call or URL to access when the call is awnserd.
+          required: true
+          type: string
+          default: "Hi! This is your message."
+        - name: whenhangup
+          in: formData
+          description: Url to send call data to when call ends.
+          required: false
+          type: string
+          default: "http://yourserver/"
+        - name: timeout
+          in: formData
+          description: Secounds to wait before stopping call.
+          required: false
+          type: integer
+          default: 25
+      responses:
+        "200":
+          description: The metataa for the started call.
+          schema:
+            $ref: '#/definitions/Callstart'
+          examples:
+            application/json:
+              direction: "outgoing"
+              from: "+46723175800"
+              created: "2016-11-03T15:08:14.609873"
+              to: "+46723175800"
+              state: "ongoing"
+              id: "c719b1eefbf65b1f89c013e6433dbf537"
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              The message was not sent.
+
+    get:
+      security:
+        - basicAuth: []
+      description: "List latest 100 Calls"
+      parameters:
+        - name: start
+          in: query
+          description: Show Calls older than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+        - name: end
+          in: query
+          description: Show Calls newer than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+      tags:
+        - Calls
+      responses:
+        "200":
+          description: An array of products
+          schema:
+            $ref: '#/definitions/CallsHistory'
+          examples:
+            application/json:
+              data:
+                - direction: "outgoing"
+                  from: "+46723175800"
+                  created: "2016-11-03T15:08:14.609000"
+                  to: "+46723175800"
+                  state: "failed"
+                  id: "c719b1eefbf65b1f89c013e6433dbf537"
+                - direction: "incoming"
+                  from: "+46723175800"
+                  to: "+46101994214"
+                  created: "2016-11-03T09:24:24.355000"
+                  actions:
+                    - connect: "+4634090510"
+                      result: "success"
+                  start: "2016-11-03T09:24:24.333000"
+                  state: "success"
+                  cost: 1500,
+                  duration: 15
+                  legs: 
+                   - duration: 14
+                     to: "+4634090510"
+                     state: "success"
+                     from: "+46723175800"
+                  id: "c595183c042b1e43d1c8e79b9fd5cbcab"
+   
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get calls.
+
+  /Calls/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get one Call.
+      parameters: 
+        - name: id
+          in: path
+          description: Id of call to get
+          required: true
+          type: string
+          default: c70df59406a1b4643b96f3f10e1bfb7b1
+      tags:
+        - Calls
+      responses:
+        "200":
+          description: The Call metadata
+          schema:
+            $ref: '#/definitions/Calls'
+          examples:
+            application/json:
+              direction: "incoming"
+              from: "+46723175800"
+              to: "+46101994214"
+              created: "2016-11-03T09:24:24.355000"
+              actions:
+                - connect: "+4634090510"
+                  result: "success"
+              start: "2016-11-03T09:24:24.333000"
+              state: "success"
+              cost: 1500,
+              duration: 15
+              legs: 
+                - duration: 14
+                  to: "+4634090510"
+                  state: "success"
+                  from: "+46723175800"
+              id: "c595183c042b1e43d1c8e79b9fd5cbcab"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get call data.
+
+
+
+  /SMS:
+    post:
+      tags:
+        - SMS
+      security:
+        - basicAuth: []
+      description: "Send SMS"
+      parameters:
+        - name: from
+          in: formData
+          description: Senderid or number like +46723175800.
+          required: true
+          type: string
+          default: "TestElk"
+        - name: to
+          in: formData
+          description: Number in e164 number like +46723175800.
+          required: true
+          type: string
+          default: "+46723175800"
+        - name: message
+          in: formData
+          description: Text to send to the phone.
+          required: true
+          type: string
+          default: "Hi! This is your message."
+        - name: whendelivered
+          in: formData
+          description: Url to send the Delivery report to
+          required: false
+          type: string
+          default: "http://yourserver/"
+        - name: flashsms
+          in: formData
+          description: Do not store message on the phone.
+          required: false
+          type: string
+          default: "no"
+      responses:
+        "200":
+          description: SMS data
+          schema:
+            $ref: '#/definitions/SMS'
+          examples:
+            application/json:
+              id: s70df59406a1b4643b96f3f91e0bfb7b0
+              from: Lasse
+              to: "+46723175800"
+              message: This is the message sent to the phone.
+              created: "2016-10-11T13:36:13.081000"
+              cost: 3500
+              direction: outgoing
+            
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              The message was not sent.
+
+    get:
+      security:
+        - basicAuth: []
+      description: "List latest 100 SMS"
+      parameters:
+        - name: start
+          in: query
+          description: Show SMS older than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+        - name: end
+          in: query
+          description: Show SMS newer than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+      tags:
+        - SMS
+      responses:
+        "200":
+          description: "List of SMS"
+          schema:
+            $ref: '#/definitions/SMSHistory'
+          examples:
+            application/json:
+              data: 
+              - id: s70df59406a1b4643b96f3f91e0bfb7b0
+                from: Lasse
+                to: "+46723175800"
+                message: This is the message sent to the phone.
+                created: "2016-10-11T13:36:13.081000"
+                cost: 3500
+                direction: outgoing
+              - id: "s3633fa8e62f823e52fbc67ebf6925ab5"
+                direction: incoming
+                from: Martin
+                created: "2016-08-18T09:55:31.116000"
+                to: "+46766861475"
+                message: "TEst 32423"
+            
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get messages.
+
+  /SMS/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get one SMS.
+      parameters: 
+        - name: id
+          in: path
+          description: Id of SMS to get
+          required: true
+          type: string
+          default: s70df59406a1b4643b96f3f10e1bfb7b1
+      tags:
+        - SMS
+      responses:
+        "200":
+          description: The SMS
+          schema:
+            $ref: '#/definitions/SMS'
+          examples:
+            application/json:
+              id: "s3633fa8e62f823e52fbc67ebf6925ab5"
+              direction: incoming
+              from: Martin
+              created: "2016-08-18T09:55:31.116000"
+              to: "+46766861475"
+              message: "TEst 32423"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get message.
+
+  /MMS:
+    post:
+      security:
+        - basicAuth: []
+      description: "Send MMS"
+      parameters:
+        - name: from
+          in: formData
+          description: '"noreply" or number like +46723175800.'
+          required: true
+          type: string
+          default: "TestElk"
+        - name: to
+          in: formData
+          description: Number in E.164 number like +46723175800.
+          required: true
+          type: string
+          default: "+46723175800"
+        - name: message
+          in: formData
+          description: Text to send to the phone.
+          required: true
+          type: string
+          default: "Hi! This is your message."
+        - name: image
+          in: formData
+          description: Url or Base64/url-encoded imagedata to send.
+          required: false
+          type: string
+          default: "http://yourserver/imge.png"
+      responses:
+        "200":
+          description: MMS object
+          schema:
+            $ref: '#/definitions/MMS'
+          examples:
+            application/json:
+              direction: "outgoing"
+              from: "+46766861218"
+              created: "2016-11-03T12:44:56.180704"
+              to: "+46723175800"
+              cost: 12500
+              owner: "u5a0588130b2bfe9dec437a4df1056d15"
+              message: "Hej!"
+              id: "mf3d05c159aa49e1951c5301bc6af1bac"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              The message was not sent.
+
+    get:
+      security:
+        - basicAuth: []
+      description: "List latest 100 MMS"
+      parameters:
+        - name: start
+          in: query
+          description: Show MMS older than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+        - name: end
+          in: query
+          description: Show MMS newer than this date
+          required: false
+          type: string
+          default: "2016-01-01T00:00:00.000"
+      tags:
+        - MMS
+      responses:
+        "200":
+          description: An array of MMS
+          schema:
+            $ref: '#/definitions/MMSHistory'
+          examples:
+            application/json:
+              data: 
+              - id: 'm70df59406a1b4643b96f3f91e0bfb7b0'
+                from: Lasse
+                to: "+46723175800"
+                message: This is the message sent to the phone.
+                created: "2016-10-11T13:36:13.081000"
+                cost: 12500
+                direction: outgoing
+                images:
+                 - m70df59406a1b4643b96f3f91e0bfb7b0-i0
+              - id: "m3633fa8e62f823e52fbc67ebf6925ab5"
+                direction: incoming
+                from: Martin
+                created: "2016-08-18T09:55:31.116000"
+                to: "+46766861475"
+                message: "TEst 32423"
+                images:
+                 - m70df59406a1b4643b96f3f91e0bfb7b0-i0
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get messages.
+
+  /MMS/{id}:
+    get:
+      security:
+        - basicAuth: []
+      description: Get one MMS.
+      parameters: 
+        - name: id
+          in: path
+          description: Id of MMS to get
+          required: true
+          type: string
+          default: s70df59406a1b4643b96f3f10e1bfb7b1
+      tags:
+        - MMS
+      responses:
+        "200":
+          description: The MMS
+          schema:
+            $ref: '#/definitions/MMS'
+          examples:
+            application/json:
+              id: "m84af96809ff8989f3668c93aaaedb69c"
+              direction: incoming
+              from: "+46723175800"
+              created: "2016-08-18T09:55:31.116000"
+              to: "+46766861475"
+              message: "Message text."
+              images:
+               - "m84af96809ff8989f3668c93aaaedb69c-i0"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to get message.
+      
+definitions:
+
+  RecordingsList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Recording'
+
+  Recording:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: "c361e5927d2c4d7dcf71a142dc0ec6d9b-r0"
+      duration:
+        type: integer
+        description: "15"
+      created:
+        type: string
+        description: "2016-02-28T23:54:57.075000"
+
+  NumberList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Number'
+
+  Number:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: n70df59406a1b4643b96f3f91e0bfb7b0
+      country:
+        type: string
+        description: se
+      expires:
+        type: string
+        description: "2016-12-01T07:52:15"
+      voice_start:
+        type: string
+        description: "https://yourserver/hooks/x"
+      sms_url:
+        type: string
+        description: "https://yourserver/hooks/x"
+      mms_url:
+        type: string
+        description: "https://yourserver/hooks/x"
+      number:
+        type: string
+        description: "+46766861475"
+      capabilities:
+        type: array
+        items:
+          type: string
+        description: sms, voice, mms
+      sms_replies:
+        type: string
+        description: yes
+      active:
+        type: string
+        description: yes
+      category:
+        type: string
+        description: mobile
+
+  SMSHistory:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/SMS'
+
+  SMS:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: "s70df59406a1b4643b96f3f91e0bfb7b0"
+      direction: 
+        type: string
+        description: "outgoing"
+      from: 
+        type: string
+        description: "Lasse"
+      to: 
+        type: string
+        description: "+46723175800"
+      message: 
+        type: string
+        description: "test"
+      created: 
+        type: string
+        description: "2016-10-11T13:36:08.951000"
+      cost: 
+        type: integer
+        description: "3500"
+      status: 
+        type: string
+        description: "delivered"
+      delivered: 
+        type: string
+        description: "2016-10-11T13:36:13.081000"
+      flashsms:
+        type: string
+        description: "yes"
+
+  Callstart:
+    type: object
+    properties:
+      direction: 
+        type: string
+        description: "outgoing"
+      from: 
+        type: string
+        description: "+46723175800"
+      created: 
+        type: string
+        description: "2016-11-03T15:08:14.609873"
+      to: 
+        type: string
+        description: "+46723175800"
+      state: 
+        type: string
+        description: "ongoing"
+      id: 
+        type: string
+        description: "c719b1eefbf65b1f89c013e6433dbf537"
+
+  CallsHistory:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Calls'
+      
+  Calls:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: "c595183c042b1e43d1c8e79b9fd5cbcab"
+      direction:
+        type: string
+        description: "incoming"
+      from: 
+        type: string
+        description: "+46723175800"
+      to: 
+        type: string
+        description: "+46101994214"
+      legs: 
+        type: array
+        items:
+          type: object
+        description: "List of all call parts."
+      actions:
+        type: array
+        items:
+          type: object
+        description: "Array of actions taken by the 46elks API"
+      start:
+        type: string
+        description: "2016-11-03T09:24:24.333000"
+      state:
+        type: string
+        description: "success"
+      created: 
+        type: string
+        description: "2016-10-11T13:36:08.951000"
+      cost: 
+        type: integer
+        description: "1500"
+      duration:
+        type: integer
+        description: "15"
+        
+        
+  MMSHistory:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/MMS'
+
+  MMS:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: "s70df59406a1b4643b96f3f91e0bfb7b0"
+      direction: 
+        type: string
+        description: "outgoing"
+      from: 
+        type: string
+        description: "+46723175800"
+      to: 
+        type: string
+        description: "+46723175800"
+      message: 
+        type: string
+        description: "test"
+      created: 
+        type: string
+        description: "2016-10-11T13:36:08.951000"
+      cost: 
+        type: integer
+        description: "3500"
+      images:
+        type: array
+        items:
+          type: string
+        description: m84af96809ff8989f3668c93aaaedb69c-i0
+        
+  ImagesList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Image'
+
+  Image:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: "mf3d05c159aa49e1951c5301bc6af1bac-i0"
+      digest: 
+        type: string
+        description: "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
+      created: 
+        type: string
+        description: "2016-11-03T12:44:56.190000"
+      filetype:
+        type: integer
+        description: "jpg"
+      mmsid:
+        type: string
+        description: "mf3d05c159aa49e1951c5301bc6af1bac"
+      bytes:
+        type: integer
+        description: "42"
+
+  SubaccountsList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Subaccount'
+
+  Subaccount:
+    type: object
+    properties:
+      usage:
+        type: integer
+        description: "10000"
+      id: 
+        type: string
+        description: "af3d05a159669e1951c5301bc6a61bac"
+      secret: 
+        type: string
+        description: "D81DEF1B65E19A83DBCEA0BE0D89D082"
+      created: 
+        type: string
+        description: "2016-11-03T12:44:56.190000"
+      usagelimit:
+        type: integer
+        description: "99999999999"
+      name:
+        type: string
+        description: "This Co"
+
+  Account:
+    type: object
+    properties:
+      id: 
+        type: string
+        description: "u5a9566c072160c398445d163949bf505"
+      mobilenumber: 
+        type: string
+        description: "+46723175800"
+      balance: 
+        type: integer
+        description: "9670500"
+      currency:
+        type: string
+        description: "SEK / EUR"
+      email:
+        type: string
+        description: "martin.thure@gmail.com"
+      displayname:
+        type: string
+        description: "Martin Harari Thuresson"
+
+  Error:
+    type: string
+

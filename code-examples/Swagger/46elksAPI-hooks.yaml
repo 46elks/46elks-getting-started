@@ -1,0 +1,592 @@
+swagger: '2.0'
+info:
+  title: 46elks API - Webhooks
+  description: The 46elks SMS, MMS & Voice API - Webhooks
+  version: "1.0.0"
+
+host: <yourserver>
+
+schemes:
+  - https
+  - http
+  
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: You may use HTTP Basic Authentication.
+    
+basePath: /
+
+paths:
+  /<whenhangup webhook path>/:
+    post:
+      description: Webhook for when call ends.
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - Calls
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: to
+          in: formData
+          description: E.164 destination of the call
+          required: false
+          type: string
+          default: "+46101994214"
+        - name: from
+          in: formData
+          description: E.164 caller id
+          required: false
+          type: string
+          default: "+46723175800"
+        - name: direction
+          in: formData
+          description: Direction of call incoming/outgoing.
+          required: false
+          type: string
+          default: incoming
+        - name: created
+          in: formData
+          description: Time when the call was stored in the DB.
+          required: false
+          type: string
+          default: "2016-11-03T08:46:00.900484"
+        - name: duration
+          in: formData
+          description: Duration of call in seconds.
+          required: false
+          type: integer
+          default: 8
+        - name: start
+          in: formData
+          description: Time when the call was started.
+          required: false
+          type: string
+          default: "2016-11-03T08:46:00.877263"
+        - name: state
+          in: formData
+          description: Status for the call.
+          required: false
+          type: string
+          default: success
+        - name: id
+          in: formData
+          description: Id of the call.
+          required: false
+          type: string
+          default: "ca63e279d8a343b7da49f87569a108f82"
+        - name: actions
+          in: formData
+          description: Actions in the call.
+          required: false
+          type: string
+          default: '[{"connect": "+4634090510", "result": "success"}]'
+        - name: cost
+          in: formData
+          description: Cost for the call.
+          required: false
+          type: integer
+          default: 1500
+        - name: legs
+          in: formData
+          description: Events during call.
+          required: false
+          type: string
+          default: '[{"duration": 7, "to": "+4634090510", "state": "success", "from": "+46723175800"}]'
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trusted servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+
+      responses:
+        "200":
+          description: Report stored by server
+          schema:
+            $ref: '#/definitions/ReplyNone'
+          examples:
+            text/plain; charset=utf-8:
+              OK
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: Same as 200
+          
+        default:
+          description:  Unexpected, API will retry every 5 minutes for 24h.
+
+
+  /<ivr webhook path>/:
+    post:
+      description: Webhook for getting pressed digits in IVR.
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - SMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: from
+          in: formData
+          description: E.164 caller id
+          required: false
+          type: string
+          default: "+46723175800"
+        - name: to
+          in: formData
+          description: E.164 destination of the call
+          required: false
+          type: string
+          default: "+46101994214"
+        - name: direction
+          in: formData
+          description: Direction of call incoming/outgoing.
+          required: false
+          type: string
+          default: incoming
+        - name: callid
+          in: formData
+          description: ID of the call in question.
+          required: false
+          type: string
+          default: "c445e8467d340c73489b61508c1b772b6"
+        - name: result
+          in: formData
+          description: Digits pressed by the user
+          required: false
+          type: string
+          default: "2394623498"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+
+      responses:
+        "200":
+          description: Report stored by server
+          schema:
+            $ref: '#/definitions/ReplyCall'
+          examples:
+            application/json:
+              connect: "+46723175800"
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: Same as 200
+          
+        default:
+          description: Unexpected call will terminate.
+
+  /<call webhook path>/:
+    post:
+      description: Incomming call / next callback.
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - SMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: from
+          in: formData
+          description: E.164 caller id
+          required: false
+          type: string
+          default: "+46723175800"
+        - name: to
+          in: formData
+          description: E.164 destination of the call
+          required: false
+          type: string
+          default: "+46101994214"
+        - name: direction
+          in: formData
+          description: Direction of call incoming/outgoing.
+          required: false
+          type: string
+          default: incoming
+        - name: result
+          in: formData
+          description: Call information.
+          required: false
+          type: string
+          default: newincoming
+        - name: callid
+          in: formData
+          description: The id of the call.
+          required: false
+          type: string
+          default: "caaeaeb26d66463c3b43efe37dd0d12ef"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+
+      responses:
+        "200":
+          description: Call accepted by server
+          schema:
+            $ref: '#/definitions/ReplyCall'
+          examples:
+            application/json:
+              connect: "+46723175800"
+              busy:
+                connect: "+46731704032"
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: Same as 200
+  
+        default:
+          description: Unexpected call will terminate.
+
+  /<recording webhook path>/:
+    post:
+      description: Webhook for new recording completed.
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - SMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: callid
+          in: formData
+          description: Source callid for this recording
+          required: false
+          type: string
+          default: "c70df59406a1b4643b96f3f91e0bfb7b0"
+        - name: duration
+          in: formData
+          description: Audio length in seconds
+          required: false
+          type: integer
+          default: 15
+        - name: wav
+          in: formData
+          description: URL where you can request the WAV audio
+          required: false
+          type: string
+          default: "https://api.46elks.com/a1/Recordings/c595183c042b1e43d1c8e79b9fd5cbcab-r0.wav"
+        - name: direction
+          in: formData
+          description: Direction of the call
+          required: false
+          type: string
+          default: "incoming"
+        - name: from
+          in: formData
+          description: E.164 caller id
+          required: false
+          type: string
+          default: "+46723175800"
+        - name: to
+          in: formData
+          description: E.164 destination of the call
+          required: false
+          type: string
+          default: "+46766861004"
+        - name: created
+          in: formData
+          description: Time when SMS was receaved.
+          required: false
+          type: string
+          default: "2016-10-01T12:00:00:00.11"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+
+      responses:
+        "200":
+          description: Report stored by server
+          schema:
+            $ref: '#/definitions/ReplyNone'
+          examples:
+            text/plain; charset=utf-8:
+              OK
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: Same as 200
+  
+        default:
+          description: Unexpected, API will retry every 5 minutes for 24h.
+
+  
+
+  /<delivery report webhook path>/:
+    post:
+      description: Webhook for delivery report for SMS
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - SMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: id
+          in: formData
+          description: SMS id.
+          required: false
+          type: string
+          default: "s70df59406a1b4643b96f3f91e0bfb7b0"
+        - name: status
+          in: formData
+          description: The status of the SMS sent/delivered/failed.
+          required: false
+          type: string
+          default: "delivered"
+        - name: delivered
+          in: formData
+          description: Text to send to the phone.
+          required: false
+          type: string
+          default: "2016-10-01T12:00:00:00.11"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+
+      responses:
+        "200":
+          description: Report stored by server
+          schema:
+            $ref: '#/definitions/ReplyNone'
+          examples:
+            text/plain; charset=utf-8:
+              OK
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: Same as 200
+  
+        default:
+          description: Unexpected, API will retry every 5 minutes for 24h.
+
+  /<sms webhook path>/:
+    post:
+      description: Webhook for reicaving incoming SMS.
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - SMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: id
+          in: formData
+          description: SMS id.
+          required: false
+          type: string
+          default: "s70df59406a1b4643b96f3f91e0bfb7b0"
+        - name: from
+          in: formData
+          description: Senderid or number like +46723175800.
+          required: false
+          type: string
+          default: "TestElk"
+        - name: to
+          in: formData
+          description: Number in e164 number like +46723175800.
+          required: false
+          type: string
+          default: "+46766861004"
+        - name: message
+          in: formData
+          description: Text to send to the phone.
+          required: false
+          type: string
+          default: "Hi! This is the inomming message"
+        - name: created
+          in: formData
+          description: Time when SMS was receaved.
+          required: false
+          type: string
+          default: "2016-10-01T12:00:00:00.11"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+      responses:
+        "200":
+          description: SMS text response
+          schema:
+            $ref: '#/definitions/ReplyText'
+          examples:
+            text/plain; charset=utf-8:
+              Thank you for the message, it have been receaved.
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: No reply
+  
+        default:
+          description: Unexpected, API will retry every 5 minutes for 24h.
+
+  /<mms webhook path>/:
+    post:
+      description: Webhook for reicaving incoming MMS.
+      security:
+        - basicAuth: []
+      tags:
+        - Webhook
+        - MMS
+      produces:
+        - text/plain; charset=utf-8
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: id
+          in: formData
+          description: SMS id.
+          required: false
+          type: string
+          default: "m84af96809ff8989f3668c93aaaedb69c"
+        - name: from
+          in: formData
+          description: Senderid or number like +46723175800.
+          required: false
+          type: string
+          default: "+46723175800"
+        - name: to
+          in: formData
+          description: Number in e164 number like +46723175800.
+          required: false
+          type: string
+          default: "+46766861218"
+        - name: message
+          in: formData
+          description: Text sent from the phone
+          required: false
+          type: string
+          default: "Hi! This is the inomming message"
+        - name: created
+          in: formData
+          description: Time when MMS was receaved.
+          required: false
+          type: string
+          default: "2016-11-03 12:30:18.937464"
+        - name: image
+          in: formData
+          description: Url for downloading the image file.
+          required: false
+          type: string
+          default: "https://api.46elks.com/a1/images/m84af96809ff8989f3668c93aaaedb69c-i0.jpg"
+        - name: key
+          in: query
+          description: You may use a Key value in the request to verify that the request is from trustes servers.
+          required: false
+          type: string
+          default: "xxxxxyyyyyzzzzz123456789"
+      responses:
+        "200":
+          description: Return data is not handeled only http status code is used.
+        201:
+          description: Same as 200
+        202:
+          description: Same as 200
+        203:
+          description: Same as 200   
+        204:
+          description: No reply
+  
+        default:
+          description: Unexpected, API will retry every 5 minutes for 24h.
+
+
+definitions:
+
+  ReplyCall:
+    type: object
+    description: "JSON struct for Call control."
+    properties:
+      connect:
+        type: string
+        default: "+46723175800"
+      next:
+        type: string
+        default: "http://www.idg.se"
+      ivr:
+        type: string
+        default: "http://www.sound.com/file.mp3"
+      recordcall:
+        type: string
+        default: "http://youtserver/path/recordingdone"
+      record:
+        type: string
+        default: "http://youtserver/path/recordingdone"
+      timeout:
+        type: string
+        default: "10"
+      play:
+        type: string
+        default: "http://www.sound.com/file.mp3"
+      hangup:
+        type: string
+        default: 'reject'
+      whenhangup:
+        type: string
+        default: "http://youtserver/path/callend"
+
+  ReplyNone:
+    type: string
+    description: "Data will not be handeled only http status code used"
+        
+  ReplyText:
+    type: string
+    description: "Text to reply with."
