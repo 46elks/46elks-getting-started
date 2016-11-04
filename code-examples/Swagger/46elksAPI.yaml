@@ -236,17 +236,17 @@ paths:
             application/json:
               data:
               - created: "2016-11-03T12:44:56.190000"
-                filetype": "jpg"
-                mmsid": "mf3d05c159aa49e1951c5301bc6af1bac"
-                bytes": 42
-                id": "mf3d05c159aa49e1951c5301bc6af1bac-i0"
-                digest": "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
+                filetype: "jpg"
+                mmsid: "mf3d05c159aa49e1951c5301bc6af1bac"
+                bytes: 4200
+                id: "mf3d05c159aa49e1951c5301bc6af1bac-i0"
+                digest: "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
               - created: "2016-11-03T12:30:18.964000"
-                filetype": "png"
-                mmsid": "m84af96809ff8989f3668c93aaaedb69c"
-                bytes": 206210
-                id": "m84af96809ff8989f3668c93aaaedb69c-i0"
-                digest": "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+                filetype: "png"
+                mmsid: "m84af96809ff8989f3668c93aaaedb69c"
+                bytes: 206210
+                id: "m84af96809ff8989f3668c93aaaedb69c-i0"
+                digest: "c7e02bad59c63f8616fda84ac1ef689d017fa906"
         default:
           description: Unexpected error
           schema:
@@ -277,11 +277,11 @@ paths:
           examples:
             application/json:
               created: "2016-11-03T12:30:18.964000"
-              filetype": "jpg"
-              mmsid": "m84af96809ff8989f3668c93aaaedb69c"
-              bytes": 206210
-              id": "m84af96809ff8989f3668c93aaaedb69c-i0"
-              digest": "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+              filetype: "jpg"
+              mmsid: "m84af96809ff8989f3668c93aaaedb69c"
+              bytes: 206210
+              id: "m84af96809ff8989f3668c93aaaedb69c-i0"
+              digest: "c7e02bad59c63f8616fda84ac1ef689d017fa906"
         default:
           description: Unexpected error
           schema:
@@ -746,11 +746,11 @@ paths:
             application/json:
               data:
                 - direction: "outgoing"
-                  from": "+46723175800"
-                  created": "2016-11-03T15:08:14.609000"
-                  to": "+46723175800"
-                  state": "failed"
-                  id": "c719b1eefbf65b1f89c013e6433dbf537"
+                  from: "+46723175800"
+                  created: "2016-11-03T15:08:14.609000"
+                  to: "+46723175800"
+                  state: "failed"
+                  id: "c719b1eefbf65b1f89c013e6433dbf537"
                 - direction: "incoming"
                   from: "+46723175800"
                   to: "+46101994214"
@@ -1010,11 +1010,11 @@ paths:
               direction: "outgoing"
               from: "+46766861218"
               created: "2016-11-03T12:44:56.180704"
-              to": "+46723175800"
-              cost": 12500
-              owner": "u5a0588130b2bfe9dec437a4df1056d15"
-              message": "Hej!"
-              id": "mf3d05c159aa49e1951c5301bc6af1bac"
+              to: "+46723175800"
+              cost: 12500
+              owner: "u5a0588130b2bfe9dec437a4df1056d15"
+              message: "Hej!"
+              id: "mf3d05c159aa49e1951c5301bc6af1bac"
         default:
           description: Unexpected error
           schema:
@@ -1167,7 +1167,7 @@ definitions:
       number:
         type: string
         description: "+46766861475"
-      capabilities":
+      capabilities:
         type: array
         items:
           type: string
