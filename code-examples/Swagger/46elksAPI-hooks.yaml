@@ -20,6 +20,7 @@ basePath: /
 paths:
   /<whenhangup webhook path>/:
     post:
+      description: Webhook for when call ends.
       security:
         - basicAuth: []
       tags:
@@ -104,7 +105,7 @@ paths:
           default: "xxxxxyyyyyzzzzz123456789"
 
       responses:
-        200:
+        "200":
           description: Report stored by server
           schema:
             $ref: '#/definitions/ReplyNone'
@@ -126,6 +127,7 @@ paths:
 
   /<ivr webhook path>/:
     post:
+      description: Webhook for getting pressed digits in IVR.
       security:
         - basicAuth: []
       tags:
@@ -174,7 +176,7 @@ paths:
           default: "xxxxxyyyyyzzzzz123456789"
 
       responses:
-        200:
+        "200":
           description: Report stored by server
           schema:
             $ref: '#/definitions/ReplyCall'
@@ -195,6 +197,7 @@ paths:
 
   /<call webhook path>/:
     post:
+      description: Incomming call / next callback.
       security:
         - basicAuth: []
       tags:
@@ -243,7 +246,7 @@ paths:
           default: "xxxxxyyyyyzzzzz123456789"
 
       responses:
-        200:
+        "200":
           description: Call accepted by server
           schema:
             $ref: '#/definitions/ReplyCall'
@@ -266,6 +269,7 @@ paths:
 
   /<recording webhook path>/:
     post:
+      description: Webhook for new recording completed.
       security:
         - basicAuth: []
       tags:
@@ -326,7 +330,7 @@ paths:
           default: "xxxxxyyyyyzzzzz123456789"
 
       responses:
-        200:
+        "200":
           description: Report stored by server
           schema:
             $ref: '#/definitions/ReplyNone'
@@ -349,6 +353,7 @@ paths:
 
   /<delivery report webhook path>/:
     post:
+      description: Webhook for delivery report for SMS
       security:
         - basicAuth: []
       tags:
@@ -385,7 +390,7 @@ paths:
           default: "xxxxxyyyyyzzzzz123456789"
 
       responses:
-        200:
+        "200":
           description: Report stored by server
           schema:
             $ref: '#/definitions/ReplyNone'
@@ -406,6 +411,7 @@ paths:
 
   /<sms webhook path>/:
     post:
+      description: Webhook for reicaving incoming SMS.
       security:
         - basicAuth: []
       tags:
@@ -453,7 +459,7 @@ paths:
           type: string
           default: "xxxxxyyyyyzzzzz123456789"
       responses:
-        200:
+        "200":
           description: SMS text response
           schema:
             $ref: '#/definitions/ReplyText'
@@ -474,6 +480,7 @@ paths:
 
   /<mms webhook path>/:
     post:
+      description: Webhook for reicaving incoming MMS.
       security:
         - basicAuth: []
       tags:
@@ -527,7 +534,7 @@ paths:
           type: string
           default: "xxxxxyyyyyzzzzz123456789"
       responses:
-        200:
+        "200":
           description: Return data is not handeled only http status code is used.
         201:
           description: Same as 200
@@ -583,4 +590,3 @@ definitions:
   ReplyText:
     type: string
     description: "Text to reply with."
-

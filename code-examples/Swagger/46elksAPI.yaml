@@ -30,7 +30,7 @@ paths:
         - basicAuth: []
       description: Get your account data
       responses:
-        200:
+        "200":
           description: The account data
           schema:
             $ref: '#/definitions/Account'
@@ -60,7 +60,7 @@ paths:
       tags:
         - Subaccount
       responses:
-        200:
+        "200":
           description: List of subaccounts.
           schema:
             $ref: '#/definitions/SubaccountsList'
@@ -105,7 +105,7 @@ paths:
           type: integer
           default: 3423432400
       responses:
-        200:
+        "200":
           description: The created subaccount 
           schema:
             $ref: '#/definitions/Subaccount'
@@ -140,7 +140,7 @@ paths:
       tags:
         - Subaccount
       responses:
-        200:
+        "200":
           description: The subaccount data
           schema:
             $ref: '#/definitions/Subaccount'
@@ -164,7 +164,7 @@ paths:
         - basicAuth: []
       tags:
         - Subaccount
-      description: Create subaccount.
+      description: Update subaccount.
       parameters:
         - name: id
           in: path
@@ -186,7 +186,7 @@ paths:
           default: 3423432400
   
       responses:
-        200:
+        "200":
           description: The updated subaccount
           schema:
             $ref: '#/definitions/Number'
@@ -228,7 +228,7 @@ paths:
           type: string
           default: "2016-01-01T00:00:00.000"
       responses:
-        200:
+        "200":
           description: The list of images
           schema:
             $ref: '#/definitions/ImagesList'
@@ -270,7 +270,7 @@ paths:
           type: string
           default: m84af96809ff8989f3668c93aaaedb69c-i0
       responses:
-        200:
+        "200":
           description: The metadata for the image
           schema:
             $ref: '#/definitions/Image'
@@ -307,7 +307,7 @@ paths:
           type: string
           default: m84af96809ff8989f3668c93aaaedb69c-i0
       responses:
-        200:
+        "200":
           description: The imge data
           schema: 
             type: file
@@ -342,7 +342,7 @@ paths:
           type: string
           default: "2016-01-01T00:00:00.000"
       responses:
-        200:
+        "200":
           description: The list of recordings
           schema:
             $ref: '#/definitions/RecordingsList'
@@ -379,7 +379,7 @@ paths:
           type: string
           default: c814b5dd6ac2b5881834b710a1dedcad3-r0
       responses:
-        200:
+        "200":
           description: The metadata for the recording
           schema:
             $ref: '#/definitions/Recording'
@@ -413,7 +413,7 @@ paths:
           type: string
           default: c814b5dd6ac2b5881834b710a1dedcad3-r0
       responses:
-        200:
+        "200":
           description: The sound file of the recording
           schema: 
             type: file
@@ -437,7 +437,7 @@ paths:
         - MMS
         - Calls
       responses:
-        200:
+        "200":
           description: The list of the phone numbers.
           schema:
             $ref: '#/definitions/NumberList'
@@ -518,7 +518,7 @@ paths:
           default: "yes"
           
       responses:
-        200:
+        "200":
           description: Number allocated
           schema:
             $ref: '#/definitions/Number'
@@ -561,7 +561,7 @@ paths:
         - Calls
         - MMS
       responses:
-        200:
+        "200":
           description: The number information
           schema:
             $ref: '#/definitions/Number'
@@ -588,7 +588,7 @@ paths:
     post:
       security:
         - basicAuth: []
-      description: Change parameters of number, note that acctive=no can not be undone.
+      description: Change parameters of number
       tags:
         - SMS
         - Calls
@@ -629,10 +629,10 @@ paths:
           description: Prevent automatic response from callback server.
           required: false
           type: string
-          default: "yes"
+          default: "yes, (setting this to no is irreversible)"
           
       responses:
-        200:
+        "200":
           description: Number updated
           schema:
             $ref: '#/definitions/Number'
@@ -697,7 +697,7 @@ paths:
           type: integer
           default: 25
       responses:
-        200:
+        "200":
           description: The metataa for the started call.
           schema:
             $ref: '#/definitions/Callstart'
@@ -738,7 +738,7 @@ paths:
       tags:
         - Calls
       responses:
-        200:
+        "200":
           description: An array of products
           schema:
             $ref: '#/definitions/CallsHistory'
@@ -792,7 +792,7 @@ paths:
       tags:
         - Calls
       responses:
-        200:
+        "200":
           description: The Call metadata
           schema:
             $ref: '#/definitions/Calls'
@@ -864,7 +864,7 @@ paths:
           type: string
           default: "no"
       responses:
-        200:
+        "200":
           description: SMS data
           schema:
             $ref: '#/definitions/SMS'
@@ -906,7 +906,7 @@ paths:
       tags:
         - SMS
       responses:
-        200:
+        "200":
           description: "List of SMS"
           schema:
             $ref: '#/definitions/SMSHistory'
@@ -950,7 +950,7 @@ paths:
       tags:
         - SMS
       responses:
-        200:
+        "200":
           description: The SMS
           schema:
             $ref: '#/definitions/SMS'
@@ -1001,7 +1001,7 @@ paths:
           type: string
           default: "http://yourserver/imge.png"
       responses:
-        200:
+        "200":
           description: MMS object
           schema:
             $ref: '#/definitions/MMS'
@@ -1043,7 +1043,7 @@ paths:
       tags:
         - MMS
       responses:
-        200:
+        "200":
           description: An array of MMS
           schema:
             $ref: '#/definitions/MMSHistory'
@@ -1090,7 +1090,7 @@ paths:
       tags:
         - MMS
       responses:
-        200:
+        "200":
           description: The MMS
           schema:
             $ref: '#/definitions/MMS'
