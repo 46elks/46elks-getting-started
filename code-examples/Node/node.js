@@ -9,7 +9,7 @@ var postFields = {
   message: "Hej Vad trevligt att se dig!"
   }
 
-var key = new Buffer(uusername + ':' + password..toString('base64');
+var key = new Buffer(username + ':' + password).toString('base64');
 var postData = querystring.stringify(postFields);
 
 var options = {
@@ -21,16 +21,8 @@ var options = {
     }
   };
 
-// Start the web request.
-var request = https.request(options, callback);
 
-// Send the real data away to the server.
-request.write(postData);
-
-// Finish sending the request.
-request.end();
-
-callback = function(response) {
+var callback = function(response) {
   var str = ''
   response.on('data', function (chunk) {
     str += chunk;
@@ -40,3 +32,12 @@ callback = function(response) {
     console.log(str);
   });
 }
+
+// Start the web request.
+var request = https.request(options, callback);
+
+// Send the real data away to the server.
+request.write(postData);
+
+// Finish sending the request.
+request.end();
