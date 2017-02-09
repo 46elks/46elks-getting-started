@@ -51,7 +51,7 @@ curl -X POST \
 
 
 <br>
-##### Code examples
+## Code examples
 
 [C](code-examples/c) -
 [C# | .NET](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/c-sharp) -
