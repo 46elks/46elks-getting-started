@@ -18,7 +18,7 @@ You can use [46elks](https://www.46elks.com) for:
 
 ### Links
 
-  * [Quickstart](https://github.com/46elks/46elks-getting-started#sample-code)
+  * [Quickstart](#quickstart)
   * [API documentation](https://www.46elks.com/api-docs#introduction)
   * [Code examples](#code-examples)
   * [Login / sign up](https://dashboard.46elks.com/)
