@@ -20,7 +20,7 @@ You can use [46elks](https://www.46elks.com) for:
 
   * [Quickstart](https://github.com/46elks/46elks-getting-started#sample-code)
   * [API documentation](https://www.46elks.com/api-docs#introduction)
-  * [Code examples](https://github.com/46elks/46elks-getting-started/blob/master/README.md#code-examples-in-different-languages)
+  * [Code examples](#code-examples)
   * [Login / sign up](https://dashboard.46elks.com/)
   * [Introduction to using an API](https://zapier.com/learn/apis/) 
   * [Contact the elks](46elks.com/help#contact)
