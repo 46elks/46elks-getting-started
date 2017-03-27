@@ -26,6 +26,8 @@ paths:
 
   /me:
     get:
+      tags:
+        - Account
       security:
         - basicAuth: []
       description: Get your account data
@@ -35,14 +37,16 @@ paths:
           schema:
             $ref: '#/definitions/Account'
           examples:
-            application/json:
-              mobilenumber: "+46766861004"
-              displayname: "Your name or company"
-              id: "u5a9566c072160b318445d163949bf505"
-              currency: "SEK"
-              trialactivated: "2013-06-20T18:44:27.434000"
-              balance: 9670500
-              email: "help@46elks.com"
+            application/json: |
+              {
+              "mobilenumber": "+46766861004"
+              "displayname": "Your name or company"
+              "id": "u5a9566c072160b318445d163949bf505"
+              "currency": "SEK"
+              "trialactivated": "2013-06-20T18:44:27.434000"
+              "balance": 9670500
+              "email": "help@46elks.com"
+              }
 
         default:
           description: Unexpected error
@@ -52,6 +56,10 @@ paths:
             text/plain; charset=utf-8:
               Unable to get account.
     post:
+      tags:
+        - Account
+      security:
+        - basicAuth: []
       description: Set level for when credit alert e-mail to be sent
       parameters:
         - name: creditalert
@@ -66,15 +74,17 @@ paths:
           schema:
             $ref: '#/definitions/Account'
           examples:
-            application/json:
-              mobilenumber: "+46766861004"
-              displayname: "Your name or company"
-              id: "u5a9566c072160b318445d163949bf505"
-              currency: "SEK"
-              trialactivated: "2013-06-20T18:44:27.434000"
-              balance: 9670500
-              email: "help@46elks.com"
-              creditalert: 200000
+            application/json: |
+              {
+              "mobilenumber": "+46766861004",
+              "displayname": "Your name or company",
+              "id": "u5a9566c072160b318445d163949bf505",
+              "currency": "SEK",
+              "trialactivated": "2013-06-20T18:44:27.434000",
+              "balance": 9670500,
+              "email": "help@46elks.com",
+              "creditalert": 200000
+              }
 
         default:
           description: Unexpected error
@@ -97,21 +107,26 @@ paths:
           schema:
             $ref: '#/definitions/SubaccountsList'
           examples:
-            application/json:
-              data:
-                - secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
-                  created: "2014-12-08T13:18:07.625000"
-                  usagelimit: 67575670000
-                  id: "af3d05a159669e1951c5301bc6a61bac"
-                  name: "This Co"
-                  usage: 0
-                - secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
-                  created: "2014-12-08T13:18:07.625000"
-                  usagelimit: 345350000
-                  id: "af3d05a159669e1951c5301bc6a61bac2"
-                  name: "This Co2"
-                  usage: 345300
-
+            application/json: |
+              {data:[
+                  {
+                  "secret": "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                  "created": "2014-12-08T13:18:07.625000"
+                  "usagelimit": 67575670000
+                  "id": "af3d05a159669e1951c5301bc6a61bac"
+                  "name": "This Co"
+                  "usage": 0
+                  },
+                  {
+                  "secret": "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                  "created": "2014-12-08T13:18:07.625000"
+                  "usagelimit": 345350000
+                  "id": "af3d05a159669e1951c5301bc6a61bac2"
+                  "name": "This Co2"
+                  "usage": 345300
+                  }
+                  ]
+              }
         default:
           description: Unexpected error
           schema:
@@ -120,6 +135,8 @@ paths:
             text/plain; charset=utf-8:
               Unable to get accounts.
     post:
+      security:
+        - basicAuth: []
       description: Create new subaccount.
       tags:
         - Subaccount
@@ -142,12 +159,14 @@ paths:
           schema:
             $ref: '#/definitions/Subaccount'
           examples:
-            application/json:
-              secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
-              created: "2014-12-08T13:18:07.625000"
-              usagelimit: 99999999999
-              id: "af3d05a159669e1951c5301bc6a61bac"
-              name: "This Co2"
+            application/json: |
+              {
+              "secret": "D81DEF1B65E19A83DBCEA0BE0D89D082"
+              "created": "2014-12-08T13:18:07.625000"
+              "usagelimit": 99999999999
+              "id": "af3d05a159669e1951c5301bc6a61bac"
+              "name": "This Co2"
+              }
 
         default:
           description: Unexpected error
@@ -177,13 +196,15 @@ paths:
           schema:
             $ref: '#/definitions/Subaccount'
           examples:
-            application/json:
-                secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
-                created: "2014-12-08T13:18:07.625000"
-                usagelimit: 910000
-                id: "af3d05a159669e1951c5301bc6a61bac"
-                name: "This Co"
-                usage: 12300
+            application/json: |
+                {
+                "secret": "D81DEF1B65E19A83DBCEA0BE0D89D082"
+                "created": "2014-12-08T13:18:07.625000"
+                "usagelimit": 910000
+                "id": "af3d05a159669e1951c5301bc6a61bac"
+                "name": "This Co"
+                "usage": 12300
+                }
         default:
           description: Unexpected error
           schema:
@@ -223,13 +244,15 @@ paths:
           schema:
             $ref: '#/definitions/Number'
           examples:
-            application/json:
-                secret: "D81DEF1B65E19A83DBCEA0BE0D89D082"
-                created: "2014-12-08T13:18:07.625000"
-                usagelimit: 99999999999
-                id: "af3d05a159669e1951c5301bc6a61bac"
-                name: "This Co"
-                usage: 12300
+            application/json: |
+                {
+                  "secret": "D81DEF1B65E19A83DBCEA0BE0D89D082",
+                  "created": "2014-12-08T13:18:07.625000",
+                  "usagelimit": 99999999999,
+                  "id": "af3d05a159669e1951c5301bc6a61bac",
+                  "name": "This Co",
+                  "usage": 12300
+                }
 
         default:
           description: Unexpected error
@@ -265,20 +288,27 @@ paths:
           schema:
             $ref: '#/definitions/ImagesList'
           examples:
-            application/json:
-              data:
-              - created: "2016-11-03T12:44:56.190000"
-                filetype: "jpg"
-                mmsid: "mf3d05c159aa49e1951c5301bc6af1bac"
-                bytes: 4200
-                id: "mf3d05c159aa49e1951c5301bc6af1bac-i0"
-                digest: "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
-              - created: "2016-11-03T12:30:18.964000"
-                filetype: "png"
-                mmsid: "m84af96809ff8989f3668c93aaaedb69c"
-                bytes: 206210
-                id: "m84af96809ff8989f3668c93aaaedb69c-i0"
-                digest: "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+            application/json: |
+                {
+                  "data": [
+                    {
+                      "created": "2016-11-03T12:44:56.190000",
+                      "filetype": "jpg",
+                      "mmsid": "mf3d05c159aa49e1951c5301bc6af1bac",
+                      "bytes": 4200,
+                      "id": "mf3d05c159aa49e1951c5301bc6af1bac-i0",
+                      "digest": "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
+                    },
+                    {
+                      "created": "2016-11-03T12:30:18.964000",
+                      "filetype": "png",
+                      "mmsid": "m84af96809ff8989f3668c93aaaedb69c",
+                      "bytes": 206210,
+                      "id": "m84af96809ff8989f3668c93aaaedb69c-i0",
+                      "digest": "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+                    }
+                  ]
+                }
         default:
           description: Unexpected error
           schema:
@@ -307,13 +337,15 @@ paths:
           schema:
             $ref: '#/definitions/Image'
           examples:
-            application/json:
-              created: "2016-11-03T12:30:18.964000"
-              filetype: "jpg"
-              mmsid: "m84af96809ff8989f3668c93aaaedb69c"
-              bytes: 206210
-              id: "m84af96809ff8989f3668c93aaaedb69c-i0"
-              digest: "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+            application/json: |
+                {
+                  "created": "2016-11-03T12:30:18.964000",
+                  "filetype": "jpg",
+                  "mmsid": "m84af96809ff8989f3668c93aaaedb69c",
+                  "bytes": 206210,
+                  "id": "m84af96809ff8989f3668c93aaaedb69c-i0",
+                  "digest": "c7e02bad59c63f8616fda84ac1ef689d017fa906"
+                }
         default:
           description: Unexpected error
           schema:
@@ -380,14 +412,21 @@ paths:
             $ref: '#/definitions/RecordingsList'
           
           examples:
-            application/json:
-              data:
-                - duration: 1
-                  id: c361e5927d2c4d7dcf71a142dc0ec6d9b-r0
-                  created: "2016-02-28T23:54:57.075000"
-                - duration: 2
-                  id: c110cf16e8a0e202b7efb345ba4571d2d-r0
-                  created: "2015-02-24T15:09:08.146000"
+            application/json: |
+                {
+                  "data": [
+                    {
+                      "duration": 1,
+                      "id": "c361e5927d2c4d7dcf71a142dc0ec6d9b-r0",
+                      "created": "2016-02-28T23:54:57.075000"
+                    },
+                    {
+                      "duration": 2,
+                      "id": "c110cf16e8a0e202b7efb345ba4571d2d-r0",
+                      "created": "2015-02-24T15:09:08.146000"
+                    }
+                  ]
+                }
         default:
           description: Unexpected error
           schema:
@@ -416,10 +455,12 @@ paths:
           schema:
             $ref: '#/definitions/Recording'
           examples:
-            application/json:
-              duration: 15
-              id: c361e5927d2c4d7dcf71a142dc0ec6d9b-r0
-              created: "2016-02-28T23:54:57.075000"
+            application/json: |
+                {
+                    "duration": 15,
+                    "id": "c361e5927d2c4d7dcf71a142dc0ec6d9b-r0",
+                    "created": "2016-02-28T23:54:57.075000"
+                }
         default:
           description: Unexpected error
           schema:
@@ -474,30 +515,39 @@ paths:
           schema:
             $ref: '#/definitions/NumberList'
           examples:
-            application/json:
-              data:
-                - id: n53c05a4e002ae26f790cbaf82b93bc37
-                  category: mobile
-                  country: se
-                  expires: "2016-12-01T07:52:15"
-                  voice_start: http://www.server.nu/incommuingcall
-                  number: "+46766861475"
-                  capabilities:
-                   - sms
-                   - voice
-                  sms_replies: yes
-                  active: yes
-                - id: n53c05a4e002ae26f790cbaf82b93bc38
-                  category: mobile
-                  country: se
-                  expires: "2016-12-01T07:52:15"
-                  sms_url: "http://www.server.nu/incommuingcall"
-                  number: "+46766861476"
-                  capabilities:
-                   - sms
-                   - voice
-                   - mms
-                  active: yes
+            application/json: |
+                    {
+                      "data": [
+                        {
+                          "id": "n53c05a4e002ae26f790cbaf82b93bc37",
+                          "category": "mobile",
+                          "country": "se",
+                          "expires": "2016-12-01T07:52:15",
+                          "voice_start": "http://www.server.nu/incommuingcall",
+                          "number": "+46766861475",
+                          "capabilities": [
+                            "sms",
+                            "voice"
+                          ],
+                          "sms_replies": "yes",
+                          "active": "yes"
+                        },
+                        {
+                          "id": "n53c05a4e002ae26f790cbaf82b93bc38",
+                          "category": "mobile",
+                          "country": "se",
+                          "expires": "2016-12-01T07:52:15",
+                          "sms_url": "http://www.server.nu/incommuingcall",
+                          "number": "+46766861476",
+                          "capabilities": [
+                            "sms",
+                            "voice",
+                            "mms"
+                          ],
+                          "active": "yes"
+                        }
+                      ]
+                    }
         default:
           description: Unexpected error
           schema:
@@ -506,6 +556,8 @@ paths:
             text/plain; charset=utf-8:
               Unable to get numbers.
     post:
+      security:
+        - basicAuth: []
       tags:
         - SMS
         - MMS
@@ -555,18 +607,21 @@ paths:
           schema:
             $ref: '#/definitions/Number'
           examples:
-            application/json:
-              id: n53c05a4e002ae26f790cbaf82b93bc37
-              category: mobile
-              country: se
-              expires: "2016-12-01T07:52:15"
-              voice_start: http://www.server.nu/incommuingcall
-              number: "+46766861475"
-              capabilities:
-                - sms
-                - voice
-              sms_replies: yes
-              active: yes
+            application/json: |
+                {
+                  "id": "n53c05a4e002ae26f790cbaf82b93bc37",
+                  "category": "mobile",
+                  "country": "se",
+                  "expires": "2016-12-01T07:52:15",
+                  "voice_start": "http://www.server.nu/incommuingcall",
+                  "number": "+46766861475",
+                  "capabilities": [
+                    "sms",
+                    "voice"
+                  ],
+                  "sms_replies": "yes",
+                  "active": "yes"
+                }
 
         default:
           description: Unexpected error
@@ -598,18 +653,21 @@ paths:
           schema:
             $ref: '#/definitions/Number'
           examples:
-            application/json:
-              id: n53c05a4e002ae26f790cbaf82b93bc37
-              category: mobile
-              country: se
-              expires: "2016-12-01T07:52:15"
-              voice_start: http://www.server.nu/incommuingcall
-              number: "+46766861475"
-              capabilities:
-                - sms
-                - voice
-              sms_replies: yes
-              active: yes
+            application/json: |
+                {
+                  "id": "n53c05a4e002ae26f790cbaf82b93bc37",
+                  "category": "mobile",
+                  "country": "se",
+                  "expires": "2016-12-01T07:52:15",
+                  "voice_start": "http://www.server.nu/incommuingcall",
+                  "number": "+46766861475",
+                  "capabilities": [
+                    "sms",
+                    "voice"
+                  ],
+                  "sms_replies": "yes",
+                  "active": "yes"
+                }
         default:
           description: Unexpected error
           schema:
@@ -669,19 +727,21 @@ paths:
           schema:
             $ref: '#/definitions/Number'
           examples:
-            application/json:
-              id: n53c05a4e002ae26f790cbaf82b93bc37
-              category: mobile
-              country: se
-              expires: "2016-12-01T07:52:15"
-              voice_start: http://www.server.nu/incommuingcall
-              number: "+46766861475"
-              capabilities:
-                - sms
-                - voice
-              sms_replies: yes
-              active: yes
-
+            application/json: |
+                {
+                  "id": "n53c05a4e002ae26f790cbaf82b93bc37",
+                  "category": "mobile",
+                  "country": "se",
+                  "expires": "2016-12-01T07:52:15",
+                  "voice_start": "http://www.server.nu/incommuingcall",
+                  "number": "+46766861475",
+                  "capabilities": [
+                    "sms",
+                    "voice"
+                  ],
+                  "sms_replies": "yes",
+                  "active": "yes"
+                }
         default:
           description: Unexpected error
           schema:
@@ -734,13 +794,15 @@ paths:
           schema:
             $ref: '#/definitions/Callstart'
           examples:
-            application/json:
-              direction: "outgoing"
-              from: "+46723175800"
-              created: "2016-11-03T15:08:14.609873"
-              to: "+46723175800"
-              state: "ongoing"
-              id: "c719b1eefbf65b1f89c013e6433dbf537"
+            application/json: |
+                {
+                  "direction": "outgoing",
+                  "from": "+46723175800",
+                  "created": "2016-11-03T15:08:14.609873",
+                  "to": "+46723175800",
+                  "state": "ongoing",
+                  "id": "c719b1eefbf65b1f89c013e6433dbf537"
+                }
 
         default:
           description: Unexpected error
@@ -775,31 +837,44 @@ paths:
           schema:
             $ref: '#/definitions/CallsHistory'
           examples:
-            application/json:
-              data:
-                - direction: "outgoing"
-                  from: "+46723175800"
-                  created: "2016-11-03T15:08:14.609000"
-                  to: "+46723175800"
-                  state: "failed"
-                  id: "c719b1eefbf65b1f89c013e6433dbf537"
-                - direction: "incoming"
-                  from: "+46723175800"
-                  to: "+46101994214"
-                  created: "2016-11-03T09:24:24.355000"
-                  actions:
-                    - connect: "+4634090510"
-                      result: "success"
-                  start: "2016-11-03T09:24:24.333000"
-                  state: "success"
-                  cost: 1500,
-                  duration: 15
-                  legs: 
-                   - duration: 14
-                     to: "+4634090510"
-                     state: "success"
-                     from: "+46723175800"
-                  id: "c595183c042b1e43d1c8e79b9fd5cbcab"
+            application/json: |
+                {
+                  "data": [
+                    {
+                      "direction": "outgoing",
+                      "from": "+46723175800",
+                      "created": "2016-11-03T15:08:14.609000",
+                      "to": "+46723175800",
+                      "state": "failed",
+                      "id": "c719b1eefbf65b1f89c013e6433dbf537"
+                    },
+                    {
+                      "direction": "incoming",
+                      "from": "+46723175800",
+                      "to": "+46101994214",
+                      "created": "2016-11-03T09:24:24.355000",
+                      "actions": [
+                        {
+                          "connect": "+4634090510",
+                          "result": "success"
+                        }
+                      ],
+                      "start": "2016-11-03T09:24:24.333000",
+                      "state": "success",
+                      "cost": 1500,
+                      "duration": 15,
+                      "legs": [
+                        {
+                          "duration": 14,
+                          "to": "+4634090510",
+                          "state": "success",
+                          "from": "+46723175800"
+                        }
+                      ],
+                      "id": "c595183c042b1e43d1c8e79b9fd5cbcab"
+                    }
+                  ]
+                }
    
         default:
           description: Unexpected error
@@ -829,24 +904,32 @@ paths:
           schema:
             $ref: '#/definitions/Calls'
           examples:
-            application/json:
-              direction: "incoming"
-              from: "+46723175800"
-              to: "+46101994214"
-              created: "2016-11-03T09:24:24.355000"
-              actions:
-                - connect: "+4634090510"
-                  result: "success"
-              start: "2016-11-03T09:24:24.333000"
-              state: "success"
-              cost: 1500,
-              duration: 15
-              legs: 
-                - duration: 14
-                  to: "+4634090510"
-                  state: "success"
-                  from: "+46723175800"
-              id: "c595183c042b1e43d1c8e79b9fd5cbcab"
+            application/json: |
+                {
+                  "direction": "incoming",
+                  "from": "+46723175800",
+                  "to": "+46101994214",
+                  "created": "2016-11-03T09:24:24.355000",
+                  "actions": [
+                    {
+                      "connect": "+4634090510",
+                      "result": "success"
+                    }
+                  ],
+                  "start": "2016-11-03T09:24:24.333000",
+                  "state": "success",
+                  "cost": 1500,
+                  "duration": 15,
+                  "legs": [
+                    {
+                      "duration": 14,
+                      "to": "+4634090510",
+                      "state": "success",
+                      "from": "+46723175800"
+                    }
+                  ],
+                  "id": "c595183c042b1e43d1c8e79b9fd5cbcab"
+                }
         default:
           description: Unexpected error
           schema:
@@ -901,14 +984,16 @@ paths:
           schema:
             $ref: '#/definitions/SMS'
           examples:
-            application/json:
-              id: s70df59406a1b4643b96f3f91e0bfb7b0
-              from: Lasse
-              to: "+46723175800"
-              message: This is the message sent to the phone.
-              created: "2016-10-11T13:36:13.081000"
-              cost: 3500
-              direction: outgoing
+            application/json: |
+                {
+                  "id": "s70df59406a1b4643b96f3f91e0bfb7b0",
+                  "from": "Lasse",
+                  "to": "+46723175800",
+                  "message": "This is the message sent to the phone.",
+                  "created": "2016-10-11T13:36:13.081000",
+                  "cost": 3500,
+                  "direction": "outgoing"
+                }
             
         default:
           description: Unexpected error
@@ -943,21 +1028,28 @@ paths:
           schema:
             $ref: '#/definitions/SMSHistory'
           examples:
-            application/json:
-              data: 
-              - id: s70df59406a1b4643b96f3f91e0bfb7b0
-                from: Lasse
-                to: "+46723175800"
-                message: This is the message sent to the phone.
-                created: "2016-10-11T13:36:13.081000"
-                cost: 3500
-                direction: outgoing
-              - id: "s3633fa8e62f823e52fbc67ebf6925ab5"
-                direction: incoming
-                from: Martin
-                created: "2016-08-18T09:55:31.116000"
-                to: "+46766861475"
-                message: "TEst 32423"
+            application/json: |
+                {
+                  "data": [
+                    {
+                      "id": "s70df59406a1b4643b96f3f91e0bfb7b0",
+                      "from": "Lasse",
+                      "to": "+46723175800",
+                      "message": "This is the message sent to the phone.",
+                      "created": "2016-10-11T13:36:13.081000",
+                      "cost": 3500,
+                      "direction": "outgoing"
+                    },
+                    {
+                      "id": "s3633fa8e62f823e52fbc67ebf6925ab5",
+                      "direction": "incoming",
+                      "from": "Martin",
+                      "created": "2016-08-18T09:55:31.116000",
+                      "to": "+46766861475",
+                      "message": "TEst 32423"
+                    }
+                  ]
+                }
             
         default:
           description: Unexpected error
@@ -987,13 +1079,15 @@ paths:
           schema:
             $ref: '#/definitions/SMS'
           examples:
-            application/json:
-              id: "s3633fa8e62f823e52fbc67ebf6925ab5"
-              direction: incoming
-              from: Martin
-              created: "2016-08-18T09:55:31.116000"
-              to: "+46766861475"
-              message: "TEst 32423"
+            application/json: |
+                {
+                  "id": "s3633fa8e62f823e52fbc67ebf6925ab5",
+                  "direction": "incoming",
+                  "from": "Martin",
+                  "created": "2016-08-18T09:55:31.116000",
+                  "to": "+46766861475",
+                  "message": "TEst 32423"
+                }
         default:
           description: Unexpected error
           schema:
@@ -1007,6 +1101,8 @@ paths:
       security:
         - basicAuth: []
       description: "Send MMS"
+      tags:
+        - MMS
       parameters:
         - name: from
           in: formData
@@ -1038,15 +1134,17 @@ paths:
           schema:
             $ref: '#/definitions/MMS'
           examples:
-            application/json:
-              direction: "outgoing"
-              from: "+46766861218"
-              created: "2016-11-03T12:44:56.180704"
-              to: "+46723175800"
-              cost: 12500
-              owner: "u5a0588130b2bfe9dec437a4df1056d15"
-              message: "Hej!"
-              id: "mf3d05c159aa49e1951c5301bc6af1bac"
+            application/json: |
+                {
+                  "direction": "outgoing",
+                  "from": "+46766861218",
+                  "created": "2016-11-03T12:44:56.180704",
+                  "to": "+46723175800",
+                  "cost": 12500,
+                  "owner": "u5a0588130b2bfe9dec437a4df1056d15",
+                  "message": "Hej!",
+                  "id": "mf3d05c159aa49e1951c5301bc6af1bac"
+                }
         default:
           description: Unexpected error
           schema:
@@ -1080,25 +1178,34 @@ paths:
           schema:
             $ref: '#/definitions/MMSHistory'
           examples:
-            application/json:
-              data: 
-              - id: 'm70df59406a1b4643b96f3f91e0bfb7b0'
-                from: Lasse
-                to: "+46723175800"
-                message: This is the message sent to the phone.
-                created: "2016-10-11T13:36:13.081000"
-                cost: 12500
-                direction: outgoing
-                images:
-                 - m70df59406a1b4643b96f3f91e0bfb7b0-i0
-              - id: "m3633fa8e62f823e52fbc67ebf6925ab5"
-                direction: incoming
-                from: Martin
-                created: "2016-08-18T09:55:31.116000"
-                to: "+46766861475"
-                message: "TEst 32423"
-                images:
-                 - m70df59406a1b4643b96f3f91e0bfb7b0-i0
+            application/json: |
+                {
+                  "data": [
+                    {
+                      "id": "m70df59406a1b4643b96f3f91e0bfb7b0",
+                      "from": "Lasse",
+                      "to": "+46723175800",
+                      "message": "This is the message sent to the phone.",
+                      "created": "2016-10-11T13:36:13.081000",
+                      "cost": 12500,
+                      "direction": "outgoing",
+                      "images": [
+                        "m70df59406a1b4643b96f3f91e0bfb7b0-i0"
+                      ]
+                    },
+                    {
+                      "id": "m3633fa8e62f823e52fbc67ebf6925ab5",
+                      "direction": "incoming",
+                      "from": "Martin",
+                      "created": "2016-08-18T09:55:31.116000",
+                      "to": "+46766861475",
+                      "message": "TEst 32423",
+                      "images": [
+                        "m70df59406a1b4643b96f3f91e0bfb7b0-i0"
+                      ]
+                    }
+                  ]
+                }
         default:
           description: Unexpected error
           schema:
@@ -1127,15 +1234,18 @@ paths:
           schema:
             $ref: '#/definitions/MMS'
           examples:
-            application/json:
-              id: "m84af96809ff8989f3668c93aaaedb69c"
-              direction: incoming
-              from: "+46723175800"
-              created: "2016-08-18T09:55:31.116000"
-              to: "+46766861475"
-              message: "Message text."
-              images:
-               - "m84af96809ff8989f3668c93aaaedb69c-i0"
+            application/json: |
+                {
+                  "id": "m84af96809ff8989f3668c93aaaedb69c",
+                  "direction": "incoming",
+                  "from": "+46723175800",
+                  "created": "2016-08-18T09:55:31.116000",
+                  "to": "+46766861475",
+                  "message": "Message text.",
+                  "images": [
+                    "m84af96809ff8989f3668c93aaaedb69c-i0"
+                  ]
+                }
         default:
           description: Unexpected error
           schema:
