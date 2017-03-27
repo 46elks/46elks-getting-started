@@ -51,7 +51,39 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to get account.
+    post:
+      description: Set level for when credit alert e-mail to be sent
+      parameters:
+        - name: creditalert
+          in: formData
+          description: Alert credits level
+          required: true
+          type: string
+          default: "200000"
+      responses:
+        "200":
+          description: The account data
+          schema:
+            $ref: '#/definitions/Account'
+          examples:
+            application/json:
+              mobilenumber: "+46766861004"
+              displayname: "Your name or company"
+              id: "u5a9566c072160b318445d163949bf505"
+              currency: "SEK"
+              trialactivated: "2013-06-20T18:44:27.434000"
+              balance: 9670500
+              email: "help@46elks.com"
+              creditalert: 200000
 
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            text/plain; charset=utf-8:
+              Unable to create account.
+              
   /subaccounts:
     get:
       security:
@@ -1406,6 +1438,9 @@ definitions:
       balance: 
         type: integer
         description: "9670500"
+      creditalert:
+        type: integer
+        description: "200000"
       currency:
         type: string
         description: "SEK / EUR"
