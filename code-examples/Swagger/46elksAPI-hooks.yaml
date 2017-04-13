@@ -132,7 +132,7 @@ paths:
         - basicAuth: []
       tags:
         - Webhook
-        - SMS
+        - Calls
       produces:
         - text/plain; charset=utf-8
       consumes:
@@ -202,7 +202,7 @@ paths:
         - basicAuth: []
       tags:
         - Webhook
-        - SMS
+        - Calls
       produces:
         - text/plain; charset=utf-8
       consumes:
@@ -274,7 +274,7 @@ paths:
         - basicAuth: []
       tags:
         - Webhook
-        - SMS
+        - Calls
       produces:
         - text/plain; charset=utf-8
       consumes:
