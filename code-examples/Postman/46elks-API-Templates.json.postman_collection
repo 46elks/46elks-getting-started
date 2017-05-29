@@ -114,7 +114,7 @@
 				},
 				{
 					"key": "whendelivered",
-					"value": "http://yourserber/api/smsstatusreport",
+					"value": "http://yourserver/api/smsstatusreport",
 					"type": "text",
 					"enabled": false
 				}
@@ -219,19 +219,19 @@
 			"data": [
 				{
 					"key": "sms_url",
-					"value": "http://yourserer/incommingSMS",
+					"value": "http://yourserver/incommingSMS",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "mms_url",
-					"value": "http://yourserer/incommingMMS",
+					"value": "http://yourserver/incommingMMS",
 					"type": "text",
 					"enabled": false
 				},
 				{
 					"key": "voice_start",
-					"value": "http://yourserer/incommingCall",
+					"value": "http://yourserver/incommingCall",
 					"type": "text",
 					"enabled": false
 				},
@@ -370,19 +370,19 @@
 				},
 				{
 					"key": "sms_url",
-					"value": "http://yourserer/incommingSMS",
+					"value": "http://yourserver/incommingSMS",
 					"type": "text",
 					"enabled": false
 				},
 				{
 					"key": "mms_url",
-					"value": "http://yourserer/incommingMMS",
+					"value": "http://yourserver/incommingMMS",
 					"type": "text",
 					"enabled": false
 				},
 				{
 					"key": "voice_start",
-					"value": "http://yourserer/incommingCall",
+					"value": "http://yourserver/incommingCall",
 					"type": "text",
 					"enabled": false
 				}
@@ -431,13 +431,13 @@
 				},
 				{
 					"key": "voice_start",
-					"value": "{\"play\":\"http://yourserber/file.mp3\"}",
+					"value": "{\"play\":\"http://yourserver/file.mp3\"}",
 					"type": "text",
 					"enabled": false
 				},
 				{
 					"key": "voice_start",
-					"value": "{\"ivr\":\"http://yourserber/file.mp3\",\"1\":{\"play\":\"http://yourserber/file2.mp3\"},\"2\":{\"connect\":\"+463409510\"}}",
+					"value": "{\"ivr\":\"http://yourserver/file.mp3\",\"1\":{\"play\":\"http://yourserver/file2.mp3\"},\"2\":{\"connect\":\"+463409510\"}}",
 					"type": "text",
 					"enabled": false
 				}
