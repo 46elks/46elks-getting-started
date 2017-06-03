@@ -2,16 +2,16 @@ function elkTest(){
   var user = "<API-username>";
   var pass = "<API-password>";
 
-  var parameters = 
+  var parameters =
     {
     "method": "post",
-    "headers": 
+    "headers":
         {
           "Authorization": "Basic " + Utilities.base64Encode(user+":"+pass)
         },
-      "payload": 
+      "payload":
       {
-        "from" : "+46723175800", 
+        "from" : "+46723175800",
         "to" : "+46766861004",
         "voice_start": '{"connect":"+461890510"}'
       }

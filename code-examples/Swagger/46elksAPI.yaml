@@ -8,20 +8,20 @@ host: api.46elks.com
 
 schemes:
   - https
-  
+
 securityDefinitions:
   basicAuth:
     type: basic
     description: HTTP Basic Authentication is used for all API calls.
-    
+
 basePath: /a1
 
 consumes:
   - application/x-www-form-urlencoded
-        
+
 produces:
   - application/json
-  
+
 paths:
 
   /me:

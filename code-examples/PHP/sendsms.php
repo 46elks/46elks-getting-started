@@ -24,7 +24,7 @@ function sendSMS ($sms) {
 
   if (!strstr($http_response_header[0],"200 OK"))
     return $http_response_header[0];
-  
+
   return $response;
 }
 
@@ -34,7 +34,7 @@ $sms = array(
   'to' => '+46766861004',  /* The mobile number you want to send to */
   'message' => 'Hello hello!',
   /* 'flashsms' => 'yes', /* Un comment this if you want to send a flash sms. */
-  
+
 );
 echo sendSMS ($sms) . "\n";
 
