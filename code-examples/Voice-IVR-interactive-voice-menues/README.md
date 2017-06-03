@@ -48,13 +48,13 @@ IVR stands for interactive voice response. You can play a message to the caller,
 ```
 //  Calls up one person at the time, with a delay, until someone responds, or there is no longer anyone to call.
 {
-  "connect":"+46766861004",
+  "connect":"+46766861647",
   "timeout":"15",
   "next":{
     "connect":"+46723414646",
     "timeout":"15",
     "next":{
-      "connect":"+46766861004",
+      "connect":"+46766861647",
       "timeout":"15",
       "next":{
         "connect":"+46723414646"
@@ -70,7 +70,7 @@ IVR stands for interactive voice response. You can play a message to the caller,
 When someone calls your number, call everyone, and the first person to respond, is connected to the caller.
 ```
 {
-  "connect":"+46723414646,+46766861004,+46723414646"
+  "connect":"+46723414646,+46766861647,+46723414646"
 }
 ```
 
@@ -87,7 +87,7 @@ When someone calls your number, call everyone, and the first person to respond, 
 {
     "ivr": "http://myserver.com/welcome-if-you-want-a-press-1-if-other-press-2",
     "1": {
-        "connect": "+46766861004,+46766861004",
+        "connect": "+46766861647,+46766861647",
         "busy": {
             "play": "http://myserver.com/we-are-busy-please-leave-a-message-and-well-call-you-back.mp3",
             "next": {
@@ -96,7 +96,7 @@ When someone calls your number, call everyone, and the first person to respond, 
         }
     },
     "2": {
-        "connect": "+46766861004,+46766861004",
+        "connect": "+46766861647,+46766861647",
         "busy": "http://myserver.com/if-busy-do-this-return-json-response-with-instructions-to-46elks"
     },
     "3": {

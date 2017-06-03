@@ -12,7 +12,7 @@ function elkTest(){
       "payload":
       {
         "from" : "+46723175800",
-        "to" : "+46766861004",
+        "to" : "+46766861647",
         "message" : "Hi! This is a message to you!"
       }
     };

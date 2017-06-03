@@ -315,7 +315,7 @@ paths:
           description: E.164 destination of the call
           required: false
           type: string
-          default: "+46766861004"
+          default: "+46766861647"
         - name: created
           in: formData
           description: Time when SMS was receaved.
@@ -439,7 +439,7 @@ paths:
           description: Number in e164 number like +46723175800.
           required: false
           type: string
-          default: "+46766861004"
+          default: "+46766861647"
         - name: message
           in: formData
           description: Text to send to the phone.

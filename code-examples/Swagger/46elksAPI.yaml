@@ -39,7 +39,7 @@ paths:
           examples:
             application/json: |
               {
-              "mobilenumber": "+46766861004"
+              "mobilenumber": "+46766861647"
               "displayname": "Your name or company"
               "id": "u5a9566c072160b318445d163949bf505"
               "currency": "SEK"
@@ -76,7 +76,7 @@ paths:
           examples:
             application/json: |
               {
-              "mobilenumber": "+46766861004",
+              "mobilenumber": "+46766861647",
               "displayname": "Your name or company",
               "id": "u5a9566c072160b318445d163949bf505",
               "currency": "SEK",
@@ -760,7 +760,7 @@ paths:
       parameters:
         - name: from
           in: formData
-          description: Your 46elks umber like +46766861004.
+          description: Your 46elks umber like +46766861647.
           required: true
           type: string
           default: "TestElk"

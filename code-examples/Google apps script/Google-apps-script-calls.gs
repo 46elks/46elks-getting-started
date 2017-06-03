@@ -12,7 +12,7 @@ function elkTest(){
       "payload":
       {
         "from" : "+46723175800",
-        "to" : "+46766861004",
+        "to" : "+46766861647",
         "voice_start": '{"connect":"+461890510"}'
       }
     };
