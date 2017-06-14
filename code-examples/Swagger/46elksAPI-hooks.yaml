@@ -179,8 +179,8 @@ paths:
           schema:
             $ref: '#/definitions/ReplyCall'
           examples:
-            application/json:
-              connect: "+46723175800"
+            application/json: |
+              { connect: "+46731704032" }
         201:
           description: Same as 200
         202:
@@ -248,10 +248,11 @@ paths:
           schema:
             $ref: '#/definitions/ReplyCall'
           examples:
-            application/json:
-              connect: "+46723175800"
-              busy:
-                connect: "+46731704032"
+            application/json: |
+              {
+              connect: "+46723175800",
+              busy: { connect: "+46731704032" }
+              }
         201:
           description: Same as 200
         202:
@@ -454,7 +455,7 @@ paths:
           default: "xxxxxyyyyyzzzzz123456789"
       responses:
         "200":
-          description: SMS text response
+          description: SMS text response if emtpy string no response will be sent.
           schema:
             $ref: '#/definitions/ReplyText'
           examples:
@@ -536,7 +537,7 @@ paths:
         203:
           description: Same as 200   
         204:
-          description: No reply
+          description: Same as 200
   
         default:
           description: Unexpected, API will retry every 5 minutes for 24h.
