@@ -24,7 +24,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - Calls
       produces:
         - text/plain; charset=utf-8
@@ -131,7 +130,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - Calls
       produces:
         - text/plain; charset=utf-8
@@ -201,7 +199,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - Calls
       produces:
         - text/plain; charset=utf-8
@@ -273,7 +270,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - Calls
       produces:
         - text/plain; charset=utf-8
@@ -357,7 +353,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - SMS
       produces:
         - text/plain; charset=utf-8
@@ -415,7 +410,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - SMS
       produces:
         - text/plain; charset=utf-8
@@ -484,7 +478,6 @@ paths:
       security:
         - basicAuth: []
       tags:
-        - Webhook
         - MMS
       produces:
         - text/plain; charset=utf-8
