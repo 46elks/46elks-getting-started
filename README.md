@@ -23,7 +23,7 @@ You can use [46elks](https://www.46elks.com) for:
   * [Code examples](#code-examples)
   * [Login / sign up](https://dashboard.46elks.com/)
   * [Introduction to using an API](https://zapier.com/learn/apis/) 
-  * [Contact the elks](46elks.com/help#contact)
+  * [Contact the elks](https://www.46elks.com/help#contact)
 
 ## Quickstart
 
