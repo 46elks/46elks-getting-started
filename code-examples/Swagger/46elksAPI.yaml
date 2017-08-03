@@ -1313,16 +1313,16 @@ definitions:
         type: array
         items:
           type: string
-        description: sms, voice, mms
+        description: "sms, voice, mms"
       sms_replies:
         type: string
-        description: yes
+        description: "yes"
       active:
         type: string
-        description: yes
+        description: "yes"
       category:
         type: string
-        description: mobile
+        description: "mobile"
 
   SMSHistory:
     type: object
