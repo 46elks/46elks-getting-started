@@ -1,7 +1,8 @@
 # Contributions welcome!
 
-An example missing?! Perhaps you'll build it before we do?! How about sharing it?
-See an error or something that can be improved? Share and help others!
+An example missing?!  
+Perhaps you'll build it before we do?! How about sharing it?  
+See an error or something that can be improved? Share and help others!  
 Pull requests are very welcome. Feel free to e-mail us at hello@46elks.com to make a suggestion, send us a request, or just get in touch because you feel like it!
 
 ## IVR
