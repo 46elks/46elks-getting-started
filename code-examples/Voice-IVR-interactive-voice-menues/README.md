@@ -1,10 +1,3 @@
-# Contributions welcome!
-
-An example missing?!  
-Perhaps you'll build it before we do?! How about sharing it?  
-See an error or something that can be improved? Share and help others!  
-Pull requests are very welcome. Feel free to e-mail us at hello@46elks.com to make a suggestion, send us a request, or just get in touch because you feel like it!
-
 ## IVR
 IVR stands for interactive voice response. You can play a message to the caller, and then do different actions depending on what the users does next. React to user pressing one, let the user press a pincode to access information, Let them know about your opening hours.
 
@@ -111,11 +104,11 @@ Docs:
 [IVR](https://www.46elks.com/docs#action---ivr)
 
 
+# Contributions welcome!
 
-
-
-
-
+An example missing?  
+See an error or something that can be improved? Share and help others!  
+Pull requests are very welcome. Feel free to e-mail us at hello@46elks.com to make a suggestion, send us a request, or just get in touch because you feel like it!
 
 
 
@@ -154,3 +147,4 @@ MMMMMMMMMMMMMMMBYMMJOHANNESLMMOFMM46ELKSMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 \MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMP
 `\MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`
 ```
+
