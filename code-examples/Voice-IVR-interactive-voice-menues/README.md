@@ -1,9 +1,8 @@
-# Call for contributions
+# Contributions welcome!
 
-Are you missing an example?! Perhaps you'll build it before we do?! How about sharing it?
-Help others who'll be in your current state in the future! :)
-
-Se an error or something that can be improved? Pull requests are very welcome. Feel free to e-mail us at hello@46elks.com to make a suggestion, send us a request, or just get in touch because you feel like it!
+An example missing?! Perhaps you'll build it before we do?! How about sharing it?
+See an error or something that can be improved? Share and help others!
+Pull requests are very welcome. Feel free to e-mail us at hello@46elks.com to make a suggestion, send us a request, or just get in touch because you feel like it!
 
 ## IVR
 IVR stands for interactive voice response. You can play a message to the caller, and then do different actions depending on what the users does next. React to user pressing one, let the user press a pincode to access information, Let them know about your opening hours.
