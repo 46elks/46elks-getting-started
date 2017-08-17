@@ -69,7 +69,7 @@ curl -X POST \
 
 ##### Build an interactive voice menu or response (IVR)
 
-[IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Voice%20-%20IVR%20-%20interactive%20voice%20menues).
+[IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Voice-IVR-interactive-voice-menues).
 
 [Show all coding examples for all languages](https://github.com/46elks/46elks-getting-started/tree/master/code-examples)
 
