@@ -12,7 +12,7 @@ fields = {
     }
 
 response = requests.post(
-    "https://api.46elks.com/a1/Call",
+    "https://api.46elks.com/a1/Calls",
     data=fields,
     auth=auth
     )
