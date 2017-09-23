@@ -26,20 +26,20 @@ Bonus points for integrating open data!
 
 ## Resources
 ### 46elks
-[46elks api](http://46elks.com/)
-[46elks getting started](https://github.com/46elks/46elks-getting-started)
-[46elks api code examples](https://github.com/46elks/46elks-getting-started/tree/master/code-examples)
+* [46elks api](http://46elks.com/)
+* [46elks getting started](https://github.com/46elks/46elks-getting-started)
+* [46elks api code examples](https://github.com/46elks/46elks-getting-started/tree/master/code-examples)
 
 ### Open data & apis
-[Open data in Sweden - Hack for Sweden](http://hackforsweden.se/sv/data/)
-[Trafiklab](https://www.trafiklab.se/)
-[APIkatalogen](http://apikatalogen.se/)
-[Speech recognition api](https://cloud.google.com/speech/)
+* [Open data in Sweden - Hack for Sweden](http://hackforsweden.se/sv/data/)
+* [Trafiklab](https://www.trafiklab.se/)
+* [APIkatalogen](http://apikatalogen.se/)
+* [Speech recognition api](https://cloud.google.com/speech/)
 
 ### Tools
-[Requestbin](https://requestb.in/)
-[POSTman](https://www.getpostman.com/)
+* [Requestbin](https://requestb.in/)
+* [POSTman](https://www.getpostman.com/)
 
 
 ### Tutorials
-[Capture incoming sms to 46elks to Google spreadsheet](https://medium.com/46-thoughts/receive-sms-into-google-spreadsheet-435b51393493)
+* [Capture incoming sms to 46elks to Google spreadsheet](https://medium.com/46-thoughts/receive-sms-into-google-spreadsheet-435b51393493)
