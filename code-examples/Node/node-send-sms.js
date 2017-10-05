@@ -4,7 +4,7 @@ var querystring = require('querystring');
 var username = '<API Username>';
 var password = '<API Password>';
 var postFields = {
-  from:    "Hello", 
+  from:    "NodeElk",
   to:      "+46723175800", 
   message: "Hej Vad trevligt att se dig!"
   }
