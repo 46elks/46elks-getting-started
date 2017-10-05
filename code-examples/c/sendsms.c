@@ -21,8 +21,8 @@ int main(int argc, char* argv[]) {
         char* word = argv[i];
         size_t word_len = strlen(word);
         if (counter + word_len + 1 > sms_size) {
-            fprintf(stderr, 
-                "Payload too big, should be at most %ld bytes\n", 
+            fprintf(stderr,
+                "Payload too big, should be at most %ld bytes\n",
                 (long) sms_size);
             return EOVERFLOW;
         }
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
         }
     }
     char* from = "CMOSe";
-    char* to = argv[1]; 
+    char* to = argv[1];
     if (verify_phonenumber(to)) {
         elks_api_connect(message, to, from);
     }

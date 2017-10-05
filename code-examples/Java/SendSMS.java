@@ -12,7 +12,7 @@ class SendSMS
   static void sendSMS () {
     try {
         // Construct POST data
-        String data = URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("Mattias", "UTF-8");
+        String data = URLEncoder.encode("from", "UTF-8") + "=" + URLEncoder.encode("JavaElk", "UTF-8");
         data += "&" + URLEncoder.encode("to", "UTF-8") + "=" + URLEncoder.encode("+46705569900", "UTF-8");
         data += "&" + URLEncoder.encode("message", "UTF-8") + "=" + URLEncoder.encode("Freshly brewed coffee is tasteful!", "UTF-8");
     

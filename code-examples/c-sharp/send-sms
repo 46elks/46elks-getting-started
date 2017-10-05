@@ -23,7 +23,7 @@ namespace elktest {
                   string.Format("{0}:{1}", user, pwd))));
 
           var content = new FormUrlEncodedContent(new[] {
-            new KeyValuePair < string, string > ("from", "ElkTest"),
+            new KeyValuePair < string, string > ("from", "SharpElk"),
             new KeyValuePair < string, string > (
               "to", "+46735417172"),
             new KeyValuePair < string, string > (
