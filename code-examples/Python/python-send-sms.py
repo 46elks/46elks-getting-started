@@ -6,7 +6,7 @@ auth = (
     )
 
 fields = {
-    'from': 'Hello',
+    'from': 'PythonElk',
     'to': '+46723175800',
     'message': 'Test Message To your phone.'
     }
