@@ -21,5 +21,5 @@ def sendSms(String from, String to, String message) {
 			.execute().returnContent()
 }
 
-Content content = sendSms("Someone", "+34617112338", "Freshly brewed coffee is tasteful!")
+Content content = sendSms("GroovyElk", "+34617112338", "Freshly brewed coffee is tasteful!")
 System.out.println(content)
