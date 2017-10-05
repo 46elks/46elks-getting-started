@@ -12,7 +12,7 @@ func main() {
     fmt.Println("I will now try to send a Message!")
 
     data := url.Values{
-        "from": {"FromGO"},
+        "from": {"GoElk"},
         "to": {"+46700000000"},
         "message":{"Hej på dig!"}}
 
