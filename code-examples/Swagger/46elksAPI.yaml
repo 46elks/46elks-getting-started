@@ -950,13 +950,13 @@ paths:
       parameters:
         - name: from
           in: formData
-          description: Senderid or number like +46723175800.
+          description: Senderid like "Elks" 3-11 chars a-Z and 0-9 starting with a char, or a 46elks number like "+46766861004" or a unlocked from number like your own number "+46723175800".
           required: true
           type: string
           default: "TestElk"
         - name: to
           in: formData
-          description: Number in e164 number like +46723175800.
+          description: Number in e164 number like "+46723175800" or in local format for: AU,CA,DK,FI,IN,NO,SE,US prefix with country code like "SE0723175800"
           required: true
           type: string
           default: "+46723175800"
