@@ -4,7 +4,7 @@ info:
   description: The 46elks SMS, MMS & Voice API
   version: "1.0.0"
 
-host: api.46elks.com
+host: api.46elks.comfor
 
 schemes:
   - https
@@ -956,7 +956,7 @@ paths:
           default: "TestElk"
         - name: to
           in: formData
-          description: Number in e164 number like +46723175800 or in local format for: AU,CA,DK,FI,IN,NO,SE,US prefix with country code like SE0723175800
+          description: Number in e164 number like +46723175800 or in local format for AU,CA,DK,FI,IN,NO,SE and US prefix with country code like SE0723175800
           required: true
           type: string
           default: "+46723175800"
