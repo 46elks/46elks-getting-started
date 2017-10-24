@@ -978,6 +978,18 @@ paths:
           required: false
           type: string
           default: "no"
+        - name: dryrun
+          in: formData
+          description: Do not send the message, get price estimation and verify parameters.
+          required: false
+          type: string
+          default: "no"
+        - name: dontlog
+          in: formData
+          description: Do not store data about SMS in the API platform, set to "message" to hide message content.
+          required: false
+          type: string
+          default: "none"
       responses:
         "200":
           description: SMS data
