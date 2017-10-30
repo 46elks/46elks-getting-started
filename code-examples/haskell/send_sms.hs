@@ -54,7 +54,7 @@ prepareRequest sms req =
   . setRequestBasicAuth username secret
   $ req
 
--- | Sends an sms to a number through 463elks api.
+-- | Sends a sms to a number through 46elks api.
 send_sms :: IO ()
 send_sms = do
     -- Send SMS POST to 46elks
