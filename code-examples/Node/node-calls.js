@@ -9,7 +9,7 @@ var postFields = {
   voice_start: '{"connect":"+461890510"}'
   }
 
-var key = new Buffer(uusername + ':' + password..toString('base64');
+var key = new Buffer(username + ':' + password).toString('base64');
 var postData = querystring.stringify(postFields);
 
 var options = {
@@ -18,17 +18,8 @@ var options = {
   method:   'POST',
   headers:  {
     'Authorization': 'Basic ' + key
-    }
-  };
-
-// Start the web request.
-var request = https.request(options, callback);
-
-// Send the real data away to the server.
-request.write(postData);
-
-// Finish sending the request.
-request.end();
+  }
+};
 
 callback = function(response) {
   var str = ''
@@ -40,3 +31,12 @@ callback = function(response) {
     console.log(str);
   });
 }
+
+// Start the web request.
+var request = https.request(options, callback);
+
+// Send the real data away to the server.
+request.write(postData);
+
+// Finish sending the request.
+request.end();
