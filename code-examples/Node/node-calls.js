@@ -21,7 +21,6 @@ var options = {
   }
 };
 
-
 callback = function(response) {
   var str = ''
   response.on('data', function (chunk) {
