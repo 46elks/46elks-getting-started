@@ -7,7 +7,7 @@ request.post("https://api.46elks.com/a1/SMS", {
 	},
 
 	"form": {
-		"from":		"TestUser",
+		"from":		"NodeElk",
 		"to":		"<TEL. NO>", // See https://www.46elks.com/docs#get-started how phone numbers should be formatted
 		"message":	"It works!",
 		"flashsms":	"yes" // Read more about it here: https://www.46elks.com/docs#flashsms
