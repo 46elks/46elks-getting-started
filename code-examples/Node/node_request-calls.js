@@ -1,14 +1,22 @@
-var request = require('request');
+const request = require("request")
 
-var hej = request.post("https://api.46elks.com/a1/Calls", 
-    { form: { 
-        from: "+46723175800",
-        to: "+46760261899",
-        voice_start: '{"connect":"+461890510"}'
-         },
+request.post("https://api.46elks.com/a1/Calls", {
+	"auth": {
+		"user": "<API-Username>",
+		"pass": "<API-Password>"
+	},
 
-    'auth': {
-    'user': '<API Username>',
-    'pass': '<API Password>'}},
-    function (error, response, body) {console.log(body) 
-    });
+	"form": {
+		"from":		    "<TEL. NO>", // See https://www.46elks.com/docs#get-started how phone numbers should be formatted
+		"to":		    "<TEL. NO>",
+		"voice_start":  '{ "connect": "<TEL. NO>" }'
+	}
+}, function(err, response, body) {
+	if (err) {
+		console.error(err)
+	} else if (response.statusCode != 200) {
+		console.error("Error", response.statusCode, body)
+	} else {
+		console.log("Success!")
+	}
+})
