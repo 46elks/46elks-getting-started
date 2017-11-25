@@ -1,14 +1,23 @@
-var request = require('request');
+const request = require("request")
 
-var hej = request.post("https://api.46elks.com/a1/SMS", 
-    { form: { 
-        from: "royden",
-        to: "+46760261899",
-        message: "Test message 1", 
-        flashsms: 'yes'
-         },
+request.post("https://api.46elks.com/a1/SMS", {
+	"auth": {
+		"user": "<API-Username>",
+		"pass": "<API-Password>"
+	},
 
-    'auth': {
-    'user': '<API Username>',
-    'pass': '<API Password>'}},
-    function (error, response, body) {console.log(body) });
+	"form": {
+		"from":		"NodeElk",
+		"to":		"<TEL. NO>", // See https://www.46elks.com/docs#get-started how phone numbers should be formatted
+		"message":	"It works!",
+		"flashsms":	"yes" // Read more about it here: https://www.46elks.com/docs#flashsms
+	}
+}, function(err, response, body) {
+	if (err) {
+		console.error(err)
+	} else if (response.statusCode != 200) {
+		console.error("Error", response.statusCode, body)
+	} else {
+		console.log("Success!")
+	}
+})
