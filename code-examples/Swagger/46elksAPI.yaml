@@ -4,7 +4,7 @@ info:
   description: The 46elks SMS, MMS & Voice API
   version: "1.0.0"
 
-host: api.46elks.comfor
+host: api.46elks.com
 
 schemes:
   - https
