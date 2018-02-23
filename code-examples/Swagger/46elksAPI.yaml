@@ -93,7 +93,7 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to create account.
-              
+
   /subaccounts:
     get:
       security:
@@ -155,7 +155,7 @@ paths:
           default: 3423432400
       responses:
         "200":
-          description: The created subaccount 
+          description: The created subaccount
           schema:
             $ref: '#/definitions/Subaccount'
           examples:
@@ -175,13 +175,13 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to create account.
-              
+
   /subaccounts/{id}:
     get:
       security:
         - basicAuth: []
       description: Get the data about one subaccount.
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of the subaccount
@@ -237,7 +237,7 @@ paths:
           required: false
           type: integer
           default: 3423432400
-  
+
       responses:
         "200":
           description: The updated subaccount
@@ -324,7 +324,7 @@ paths:
       description: Get metadata of one image.
       tags:
         - MMS
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of the image.
@@ -352,7 +352,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             text/plain; charset=utf-8:
-              Unable to get recording.  
+              Unable to get recording.
 
   /images/{id}.jpg:
     get:
@@ -363,7 +363,7 @@ paths:
       description: Get image file
       tags:
         - MMS
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of the image
@@ -373,7 +373,7 @@ paths:
       responses:
         "200":
           description: The imge data
-          schema: 
+          schema:
             type: file
           examples:
             application/octet-stream:
@@ -410,7 +410,7 @@ paths:
           description: The list of recordings
           schema:
             $ref: '#/definitions/RecordingsList'
-          
+
           examples:
             application/json: |
                 {
@@ -434,7 +434,7 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to get recordings.
-              
+
   /recordings/{id}:
     get:
       security:
@@ -442,7 +442,7 @@ paths:
       description: Get metadata of one recording.
       tags:
         - Calls
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of the recording
@@ -467,7 +467,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             text/plain; charset=utf-8:
-              Unable to get recording.  
+              Unable to get recording.
 
   /recordings/{id}.wav:
     get:
@@ -478,7 +478,7 @@ paths:
       description: Get recodring soundfile.
       tags:
         - Calls
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of the recording
@@ -488,7 +488,7 @@ paths:
       responses:
         "200":
           description: The sound file of the recording
-          schema: 
+          schema:
             type: file
           examples:
             application/octet-stream:
@@ -499,7 +499,7 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to download recording.
-              
+
   /numbers:
     get:
       security:
@@ -578,19 +578,19 @@ paths:
           default: "sms,voice"
         - name: sms_url
           in: formData
-          description: Url where to send incomming sms.
+          description: Url where to send incomming sms. Set to "none" to clear.
           required: false
           type: string
           default: "http://www.server.com/incommingsms"
         - name: mms_url
           in: formData
-          description: Url where to send incomming MMS.
+          description: Url where to send incomming MMS. Set to "none" to clear.
           required: false
           type: string
           default: "http://www.server.com/incommingmms"
         - name: voice_start
           in: formData
-          description: Url / JSON where to send incomming calls.
+          description: Url / JSON where to send incomming calls. Set to "none" to clear.
           required: false
           type: string
           default: "http://www.server.com/incommingcall"
@@ -600,7 +600,7 @@ paths:
           required: false
           type: string
           default: "yes"
-          
+
       responses:
         "200":
           description: Number allocated
@@ -630,13 +630,13 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to allocate number.
-              
+
   /numbers/{id}:
     get:
       security:
         - basicAuth: []
       description: Get information about one number.
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of the number
@@ -720,7 +720,7 @@ paths:
           required: false
           type: string
           default: "yes, (setting this to no is irreversible)"
-          
+
       responses:
         "200":
           description: Number updated
@@ -875,7 +875,7 @@ paths:
                     }
                   ]
                 }
-   
+
         default:
           description: Unexpected error
           schema:
@@ -889,7 +889,7 @@ paths:
       security:
         - basicAuth: []
       description: Get one Call.
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of call to get
@@ -1006,7 +1006,7 @@ paths:
                   "cost": 3500,
                   "direction": "outgoing"
                 }
-            
+
         default:
           description: Unexpected error
           schema:
@@ -1062,7 +1062,7 @@ paths:
                     }
                   ]
                 }
-            
+
         default:
           description: Unexpected error
           schema:
@@ -1076,7 +1076,7 @@ paths:
       security:
         - basicAuth: []
       description: Get one SMS.
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of SMS to get
@@ -1231,7 +1231,7 @@ paths:
       security:
         - basicAuth: []
       description: Get one MMS.
-      parameters: 
+      parameters:
         - name: id
           in: path
           description: Id of MMS to get
@@ -1265,7 +1265,7 @@ paths:
           examples:
             text/plain; charset=utf-8:
               Unable to get message.
-      
+
 definitions:
 
   RecordingsList:
@@ -1279,7 +1279,7 @@ definitions:
   Recording:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: "c361e5927d2c4d7dcf71a142dc0ec6d9b-r0"
       duration:
@@ -1300,7 +1300,7 @@ definitions:
   Number:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: n70df59406a1b4643b96f3f91e0bfb7b0
       country:
@@ -1347,31 +1347,31 @@ definitions:
   SMS:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: "s70df59406a1b4643b96f3f91e0bfb7b0"
-      direction: 
+      direction:
         type: string
         description: "outgoing"
-      from: 
+      from:
         type: string
         description: "Lasse"
-      to: 
+      to:
         type: string
         description: "+46723175800"
-      message: 
+      message:
         type: string
         description: "test"
-      created: 
+      created:
         type: string
         description: "2016-10-11T13:36:08.951000"
-      cost: 
+      cost:
         type: integer
         description: "3500"
-      status: 
+      status:
         type: string
         description: "delivered"
-      delivered: 
+      delivered:
         type: string
         description: "2016-10-11T13:36:13.081000"
       flashsms:
@@ -1381,22 +1381,22 @@ definitions:
   Callstart:
     type: object
     properties:
-      direction: 
+      direction:
         type: string
         description: "outgoing"
-      from: 
+      from:
         type: string
         description: "+46723175800"
-      created: 
+      created:
         type: string
         description: "2016-11-03T15:08:14.609873"
-      to: 
+      to:
         type: string
         description: "+46723175800"
-      state: 
+      state:
         type: string
         description: "ongoing"
-      id: 
+      id:
         type: string
         description: "c719b1eefbf65b1f89c013e6433dbf537"
 
@@ -1407,23 +1407,23 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Calls'
-      
+
   Calls:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: "c595183c042b1e43d1c8e79b9fd5cbcab"
       direction:
         type: string
         description: "incoming"
-      from: 
+      from:
         type: string
         description: "+46723175800"
-      to: 
+      to:
         type: string
         description: "+46101994214"
-      legs: 
+      legs:
         type: array
         items:
           type: object
@@ -1439,17 +1439,17 @@ definitions:
       state:
         type: string
         description: "success"
-      created: 
+      created:
         type: string
         description: "2016-10-11T13:36:08.951000"
-      cost: 
+      cost:
         type: integer
         description: "1500"
       duration:
         type: integer
         description: "15"
-        
-        
+
+
   MMSHistory:
     type: object
     properties:
@@ -1461,25 +1461,25 @@ definitions:
   MMS:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: "s70df59406a1b4643b96f3f91e0bfb7b0"
-      direction: 
+      direction:
         type: string
         description: "outgoing"
-      from: 
+      from:
         type: string
         description: "+46723175800"
-      to: 
+      to:
         type: string
         description: "+46723175800"
-      message: 
+      message:
         type: string
         description: "test"
-      created: 
+      created:
         type: string
         description: "2016-10-11T13:36:08.951000"
-      cost: 
+      cost:
         type: integer
         description: "3500"
       images:
@@ -1487,7 +1487,7 @@ definitions:
         items:
           type: string
         description: m84af96809ff8989f3668c93aaaedb69c-i0
-        
+
   ImagesList:
     type: object
     properties:
@@ -1499,13 +1499,13 @@ definitions:
   Image:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: "mf3d05c159aa49e1951c5301bc6af1bac-i0"
-      digest: 
+      digest:
         type: string
         description: "6f15a43f350b49a02e6cdb0dd1863feeaa9f2fc4"
-      created: 
+      created:
         type: string
         description: "2016-11-03T12:44:56.190000"
       filetype:
@@ -1532,13 +1532,13 @@ definitions:
       usage:
         type: integer
         description: "10000"
-      id: 
+      id:
         type: string
         description: "af3d05a159669e1951c5301bc6a61bac"
-      secret: 
+      secret:
         type: string
         description: "D81DEF1B65E19A83DBCEA0BE0D89D082"
-      created: 
+      created:
         type: string
         description: "2016-11-03T12:44:56.190000"
       usagelimit:
@@ -1551,13 +1551,13 @@ definitions:
   Account:
     type: object
     properties:
-      id: 
+      id:
         type: string
         description: "u5a9566c072160c398445d163949bf505"
-      mobilenumber: 
+      mobilenumber:
         type: string
         description: "+46723175800"
-      balance: 
+      balance:
         type: integer
         description: "9670500"
       creditalert:
@@ -1575,4 +1575,3 @@ definitions:
 
   Error:
     type: string
-
