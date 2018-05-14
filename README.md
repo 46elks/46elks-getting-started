@@ -105,6 +105,8 @@ Let us know at hello@46elks.com!
   * Google spreadsheet [Google Script code sample](https://github.com/46elks/SMStoGoogleSheets) | Tutorial: [Receive sms into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.iu690j86w)
   * [Hubot chat bot](https://github.com/github/hubot-scripts/blob/master/src/scripts/46elks.coffee)
 
+<br>
+
 # Hackathons
   We are keen on helping out, and we'd be happy to help you with preparations, mentoring and give away boosted credit packages for participants. [Talk to us](mailto:hello@46elks.com). We're also particularily interested in helping events and organizations working with teaching coding to beginners, initiatives that encourage diversity in IT, and among conferences. We enjoy meetups, let us know if you’d like for someone to come and hold a presentation about APIs - getting started with apis, how to send an sms in PHP/Python/Elixir/Ruby/Go or another language - we love to learn and share!  We exist to help you build useful and cool things!
 
