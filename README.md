@@ -74,6 +74,8 @@ curl -X POST \
 
 [Show all coding examples for all languages](code-examples)
 
+<br>
+
 ## Community resources
 *Tutorials*
 
