@@ -22,14 +22,14 @@ You can use [46elks](https://www.46elks.com) for:
   * [API documentation](https://www.46elks.com/api-docs#introduction)
   * [Code examples](#code-examples)
   * [Login / sign up](https://dashboard.46elks.com/)
-  * [Introduction to using an API](https://zapier.com/learn/apis/) 
+  * [Introduction to using an API](https://zapier.com/learn/apis/)
   * [Contact the elks](https://www.46elks.com/help#contact)
 
 ## Quickstart
 
 1. Create your [46elks account](https://www.46elks.com/create-account) and locate your [api keys](https://dashboard.46elks.com/).
 2. Send your first SMS from the [dashboard](https://dashboard.46elks.com/) or with curl (see below).
-3. Send an SMS code using one of our [code examples](https://github.com/46elks/46elks-getting-started/tree/master/code-examples).
+3. Send an SMS code using one of our [code examples](code-examples).
 4. Learn more about what you can do by reading the [documentation](https://46elks.com/docs).
 
 
@@ -41,46 +41,44 @@ Use your [api keys](https://dashboard.46elks.com) and enter this into your termi
 curl -X POST \
   -u <API-Username>:<API-Password> \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'from=Victoria' \
+  -d 'from=ElkCo' \
   -d 'to=+46766861647' \
-  -d 'message=Test Message To your phone.' \
-  'https://api.46elks.com/a1/SMS' 
-``` 
+  -d 'message=Test message to your phone.' \
+  'https://api.46elks.com/a1/SMS'
+```
 
 ![sms-on-mobile-phone](assets/sms-iphone-hello-416x85.png)
 
 
 <br>
-
 ## Code examples
 
 [C](code-examples/c) -
-[C# | .NET](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/c-sharp) -
-[Elixir](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Elixir) -
-[Go](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Go) -
-[Google apps](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Google%20apps%20script) -
-[haskell](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/haskell) -
-[HTML](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/HTML) -
-[PHP](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/PHP) -
-[Python](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Python) -
-[Ruby](https://github.com/46elks/46elks-getting-started/blob/master/code-examples/Ruby) -
-[Java]( https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Java) -
-[Node.js](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Node) -
-[cURL](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/cURL)
+[C# | .NET](code-examples/c-sharp) -
+[Elixir](code-examples/Elixir) -
+[Go](code-examples/Go) -
+[Google apps](code-examples/Google%20apps%20script) -
+[haskell](code-examples/Haskell) -
+[HTML](code-examples/HTML) -
+[PHP](code-examples/PHP) -
+[Python](code-examples/Python) -
+[Ruby](code-examples/Ruby) -
+[Java]( code-examples/Java) -
+[Node.js](code-examples/Node) -
+[cURL](code-examples/cURL)
 
 ##### Build an interactive voice menu or response (IVR)
 
-[IVR samples collection](https://github.com/46elks/46elks-getting-started/tree/master/code-examples/Voice-IVR-interactive-voice-menues).
+[IVR samples collection](code-examples/Voice-IVR-interactive-voice-menues).
 
-[Show all coding examples for all languages](https://github.com/46elks/46elks-getting-started/tree/master/code-examples)
+[Show all coding examples for all languages](code-examples)
 
 ## Community resources
 *Tutorials*
 
 * [Love messenger](https://github.com/gish/love-messenger) by Erik Hedberg
 * [Receive SMS into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.9ku01h462)
-* [Answering machine - record incoming phone calls ](https://github.com/nicevo/46elks_recorder) by nicevo 
-
+* [Answering machine - record incoming phone calls ](https://github.com/nicevo/46elks_recorder) by nicevo
 *Modules, SDKs and libraries*
 
 * [Ruby client](https://github.com/jage/elk) by Johan Eckerström
@@ -97,7 +95,7 @@ Let us know at hello@46elks.com!
 
 ## Resources
 * [Postman app](https://www.getpostman.com/) - Interact with APIs through a Chrome app, also available as an OSX app.
-  
+
 ## Integrations
   * [Zapier](https://zapier.com/zapbook/46elks/)
   * [Microsoft Excel](https://excel.46elks.com/)
