@@ -101,7 +101,7 @@ class SMSNotifier_46elks_Provider implements SMSNotifier_ISMSProvider_Model {
 
 		$params = array();
 		$params['from'] = $this->getParameter('46elks_from','elks');
-		$params['message'] = $message;
+		$params['message'] = html_entity_decode($message);
 		$params['to'] = implode(',', $toNumbers);
 
 		$serviceURL = $this->getServiceURL(self::SERVICE_SEND);
