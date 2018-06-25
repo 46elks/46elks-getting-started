@@ -864,7 +864,7 @@ paths:
           schema:
             $ref: '#/definitions/Error'
           examples:
-            text/plain; charset=utf-8: Unable to delete message.
+            text/plain; charset=utf-8: Unable to delete call.
     get:
       security:
         - basicAuth: []
