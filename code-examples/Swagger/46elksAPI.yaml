@@ -1236,7 +1236,7 @@ paths:
         - MMS
       responses:
         '200':
-          description: The Deleted SMS
+          description: The deleted MMS
           schema:
             $ref: '#/definitions/DeletedMMS'
           examples:
