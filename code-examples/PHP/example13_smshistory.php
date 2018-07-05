@@ -1,5 +1,5 @@
 <?
-// Example to send SMS using the 46elks service
+// Example show SMS history using the 46elks service
 // Change $username, $password and print_r() to some more useful code
 
 function getHistory ($extra = '') {
