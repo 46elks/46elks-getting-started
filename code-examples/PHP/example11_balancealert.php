@@ -1,5 +1,5 @@
 <?
-// Example of howto check status of account in the 46elks service
+// Example of how to check status of account in the 46elks service
 // Change $username, $password to yout account values. 
 
 function checkBalance() {
