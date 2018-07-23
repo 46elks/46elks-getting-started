@@ -9,7 +9,7 @@ import "strconv"
 
 func main() {
 
-    fmt.Println("I will now try to send a Message!")
+    fmt.Println("I will now try to make a call!")
 
     data := url.Values{
         "from": {"+46709751949"},
