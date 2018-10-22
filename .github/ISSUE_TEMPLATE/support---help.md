@@ -1,6 +1,6 @@
 ---
 name: Support / Help
-about: If you're looking for help
+about: Don't ask here! See 46elks.com/support.
 
 ---
 
