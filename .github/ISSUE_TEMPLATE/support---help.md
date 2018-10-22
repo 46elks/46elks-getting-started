@@ -1,6 +1,6 @@
 ---
 name: Support / Help
-about: Points to the official support channels.
+about: If you're looking for help
 
 ---
 
