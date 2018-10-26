@@ -12,10 +12,10 @@ request.post("https://api.46elks.com/a1/SMS", {
 		"message":	"It works!",
 		"flashsms":	"yes" // Read more about it here: https://www.46elks.com/docs#flashsms
 	}
-}, function(err, response, body) {
+}, (err, response, body) => {
 	if (err) {
 		console.error(err)
-	} else if (response.statusCode != 200) {
+	} else if (response.statusCode !== 200) {
 		console.error("Error", response.statusCode, body)
 	} else {
 		console.log("Success!")

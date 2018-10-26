@@ -1,43 +1,43 @@
-var https = require('https');
-var querystring = require('querystring');
+const https = require('https')
+const querystring = require('querystring')
 
-var username = '<API Username>';
-var password = '<API Password>';
-var postFields = {
+const username = '<API Username>'
+const password = '<API Password>'
+const postFields = {
   from:    "NodeElk",
   to:      "+46723175800", 
   message: "Hej Vad trevligt att se dig!"
-  }
+}
 
-var key = new Buffer(username + ':' + password).toString('base64');
-var postData = querystring.stringify(postFields);
+const key = new Buffer(username + ':' + password).toString('base64')
+const postData = querystring.stringify(postFields)
 
-var options = {
+const options = {
   hostname: 'api.46elks.com',
   path:     '/a1/SMS',
   method:   'POST',
   headers:  {
     'Authorization': 'Basic ' + key
-    }
-  };
+  }
+}
 
 
-var callback = function(response) {
+const callback = (response) => {
   var str = ''
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
+  response.on('data', (chunk) => {
+    str += chunk
+  })
 
-  response.on('end', function () {
-    console.log(str);
-  });
+  response.on('end', () => {
+    console.log(str)
+  })
 }
 
 // Start the web request.
-var request = https.request(options, callback);
+var request = https.request(options, callback)
 
 // Send the real data away to the server.
-request.write(postData);
+request.write(postData)
 
 // Finish sending the request.
-request.end();
+request.end()

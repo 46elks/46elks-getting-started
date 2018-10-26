@@ -11,10 +11,10 @@ request.post("https://api.46elks.com/a1/Calls", {
 		"to":		    "<TEL. NO>",
 		"voice_start":  '{ "connect": "<TEL. NO>" }'
 	}
-}, function(err, response, body) {
+}, (err, response, body) => {
 	if (err) {
 		console.error(err)
-	} else if (response.statusCode != 200) {
+	} else if (response.statusCode !== 200) {
 		console.error("Error", response.statusCode, body)
 	} else {
 		console.log("Success!")
