@@ -113,3 +113,6 @@ Let us know at hello@46elks.com!
 **Contact 46elks**  
 Email: hello@46elks.com
 On twitter: [@46elks](https://twitter.com/46elks)  
+
+# License
+[MIT](LICENSE) © [46elks](https://46elks.com)
