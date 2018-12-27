@@ -35,16 +35,15 @@ You can use [46elks](https://www.46elks.com) for:
 
 ## Send your first SMS with curl
 
-Use your [api keys](https://dashboard.46elks.com) and enter this into your terminal:
+Use your [api keys](https://dashboard.46elks.com) and run this in your terminal:
 
 ```
-curl -X POST \
-  -u <API-Username>:<API-Password> \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'from=ElkCo' \
-  -d 'to=+46766861647' \
-  -d 'message=Test message to your phone.' \
-  'https://api.46elks.com/a1/SMS'
+curl https://api.46elks.com/a1/sms \
+  -u <api_username>:<api_password> \
+  -d from=CurlyElk \
+  -d to=+46766861004 \
+  -d message="Test message to your phone." \
+
 ```
 
 ![sms-on-mobile-phone](assets/sms-iphone-hello-416x85.png)
