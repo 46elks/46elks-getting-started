@@ -54,6 +54,8 @@ curl -X POST \
 
 ## Code examples
 
+All code examples are public domain and can be used freely.
+
 [C](code-examples/c) -
 [C# | .NET](code-examples/c-sharp) -
 [Elixir](code-examples/Elixir) -
