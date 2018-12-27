@@ -42,8 +42,7 @@ curl https://api.46elks.com/a1/sms \
   -u <api_username>:<api_password> \
   -d from=CurlyElk \
   -d to=+46766861004 \
-  -d message="Test message to your phone." \
-
+  -d message="Test message to your phone."
 ```
 
 ![sms-on-mobile-phone](assets/sms-iphone-hello-416x85.png)
