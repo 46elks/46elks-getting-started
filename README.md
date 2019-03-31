@@ -1,4 +1,4 @@
-![46elks-logo](assets/logo-240x150.png)
+![46elks-logo](code-examples/logo-240x150.png)
 
 ## Voice, SMS & MMS for developers.
 
@@ -45,7 +45,7 @@ curl https://api.46elks.com/a1/sms \
   -d message="Test message to your phone."
 ```
 
-![sms-on-mobile-phone](assets/sms-iphone-hello-416x85.png)
+![sms-on-mobile-phone](code-examples/sms-iphone-hello-416x85.png)
 
 
 <br>
