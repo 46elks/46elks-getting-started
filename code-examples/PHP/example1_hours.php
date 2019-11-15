@@ -1,4 +1,4 @@
-<?
+<?php
 // Send a reply with information when an incoming SMS is received
 //
 // 1. Upload the below script to your web server
