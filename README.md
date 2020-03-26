@@ -97,6 +97,9 @@ Let us know at hello@46elks.com!
 
 
 ## Integrations
+
+Here is a list of the current integration we have. If there is an integration that you could benefit from please [get in touch](mailto:ben@46elks.com).
+
   * [Zapier](https://zapier.com/zapbook/46elks/)
   * [Just Send](https://justsend.46elks.com/)
   * [Github Actions](https://github.com/marketplace/actions/46elks-sms)
