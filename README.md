@@ -107,6 +107,14 @@ Let us know at hello@46elks.com!
 
 <br>
 
+# Teachers
+Are you helping others learn how to code? Doing a workshop or a lesson on APIs?
+Get in touch if you'd like to use the 46elks API to help more people learn about APIs.
+
+Email: community@46elks.com  
+
+<br>
+
 # Hackathons
   We are keen on helping out, and we'd be happy to help you with preparations, mentoring and give away boosted credit packages for participants. [Talk to us](mailto:hello@46elks.com). We're also particularily interested in helping events and organizations working with teaching coding to beginners, initiatives that encourage diversity in IT, and among conferences. We enjoy meetups, let us know if you’d like for someone to come and hold a presentation about APIs - getting started with apis, how to send an sms in PHP/Python/Elixir/Ruby/Go or another language - we love to learn and share!  We exist to help you build useful and cool things!
 
@@ -114,3 +122,5 @@ Let us know at hello@46elks.com!
 Email: hello@46elks.com  
 Twitter: [@46elks](https://twitter.com/46elks)  
 Instagram: [@46elks](https://www.instagram.com/46elks/)
+
+
