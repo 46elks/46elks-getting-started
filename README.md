@@ -70,7 +70,7 @@ All code examples are public domain and can be used freely.
 
 ##### Build an interactive voice menu or response (IVR)
 
-[IVR samples collection](code-examples/Voice-IVR-interactive-voice-menues).
+[IVR samples collection](code-examples/Voice-IVR-interactive-voice-menus).
 
 [Show all coding examples for all languages](code-examples)
 
@@ -102,6 +102,11 @@ Let us know at hello@46elks.com!
 ## Integrations
   * [Zapier](https://zapier.com/zapbook/46elks/)
   * [Just Send](https://justsend.46elks.com/)
+  * [Github Actions](https://github.com/marketplace/actions/46elks-sms)
+  * [Flow XO](https://46elks.com/integrations#flowxo)
+  * [Joomla](https://46elks.com/integrations#joomla)
+  * [Filemaker](https://www.fmsms.com/)
+  * [WordPress](https://github.com/tobiasehlert/WP-SMS-46elks)
   * [Microsoft Excel](https://excel.46elks.com/)
   * Google spreadsheet [Google Script code sample](https://github.com/46elks/SMStoGoogleSheets) | Tutorial: [Receive sms into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.iu690j86w)
   * [Hubot chat bot](https://github.com/github/hubot-scripts/blob/master/src/scripts/46elks.coffee)
