@@ -101,6 +101,7 @@ Let us know at hello@46elks.com!
 
 ## Integrations
   * [Zapier](https://zapier.com/zapbook/46elks/)
+  * [Just Send](https://justsend.46elks.com/)
   * [Microsoft Excel](https://excel.46elks.com/)
   * Google spreadsheet [Google Script code sample](https://github.com/46elks/SMStoGoogleSheets) | Tutorial: [Receive sms into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.iu690j86w)
   * [Hubot chat bot](https://github.com/github/hubot-scripts/blob/master/src/scripts/46elks.coffee)
