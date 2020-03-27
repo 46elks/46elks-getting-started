@@ -76,10 +76,12 @@ All code examples are public domain and can be used freely.
 
 <br>
 
-## Community resources
+## Community
 *Projects*
 * [Love messenger](https://github.com/gish/love-messenger) by Erik Hedberg
 * [Answering machine - record incoming phone calls ](https://github.com/nicevo/46elks_recorder) by nicevo
+* [passer](https://github.com/46elks/passer) - Self-hosted "sms to twitter" written in Python
+* [elkme](https://github.com/46elks/elkme) - Send SMS from the command line
 
 *Modules, SDKs and libraries*
 * [Ruby client](https://github.com/jage/elk) by Johan Eckerström
@@ -93,12 +95,6 @@ All code examples are public domain and can be used freely.
 Have you written a tutorial or created an app that you're willing to share?
 Let us know at hello@46elks.com!
 
-## Demos
-* [passer](https://github.com/46elks/passer) - Self-hosted "sms to twitter" written in Python
-* [elkme](https://github.com/46elks/elkme) - Send SMS from the command line
-
-## Resources
-* [Postman app](https://www.getpostman.com/) - Interact with APIs through a Chrome app, also available as an OSX app.
 
 ## Integrations
   * [Zapier](https://zapier.com/zapbook/46elks/)
