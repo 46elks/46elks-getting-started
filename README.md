@@ -21,21 +21,21 @@ You can use [46elks](https://www.46elks.com) for:
   * [Quickstart](#quickstart)
   * [API documentation](https://www.46elks.com/api-docs#introduction)
   * [Code examples](#code-examples)
-  * [Login / sign up](https://dashboard.46elks.com/)
+  * [Login / sign up](https://46elks.com/dashboard)
   * [Introduction to using an API](https://zapier.com/learn/apis/)
   * [Contact the elks](https://www.46elks.com/help#contact)
 
 ## Quickstart
 
-1. Create your [46elks account](https://www.46elks.com/create-account) and locate your [api keys](https://dashboard.46elks.com/).
-2. Send your first SMS from the [dashboard](https://dashboard.46elks.com/) or with curl (see below).
+1. Create your [46elks account](https://www.46elks.com/create-account) and locate your [api keys](https://46elks.com/account).
+2. Send your first SMS from the [dashboard](https://www.46elks.com/dashboard) or with curl (see below).
 3. Send an SMS code using one of our [code examples](code-examples).
 4. Learn more about what you can do by reading the [documentation](https://46elks.com/docs).
 
 
 ## Send your first SMS with curl
 
-Use your [api keys](https://dashboard.46elks.com) and run this in your terminal:
+Use your [api keys](https://46elks.com/dashboard) and run this in your terminal:
 
 ```
 curl https://api.46elks.com/a1/sms \
