@@ -77,18 +77,18 @@ All code examples are public domain and can be used freely.
 <br>
 
 ## Community resources
-*Tutorials*
-
+*Projects*
 * [Love messenger](https://github.com/gish/love-messenger) by Erik Hedberg
-* [Receive SMS into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.9ku01h462)
 * [Answering machine - record incoming phone calls ](https://github.com/nicevo/46elks_recorder) by nicevo
-    
-*Modules, SDKs and libraries*
 
+*Modules, SDKs and libraries*
 * [Ruby client](https://github.com/jage/elk) by Johan Eckerström
 * [Wordpress module](https://github.com/tobiasehlert/WP-SMS-46elks) by Tobias Ehlert
 * [Codeigniter extension](https://github.com/nyfagel/codeigniter-46elks) by Jan Lindblom
-* [Node.JS wrapper](https://github.com/leomelin/fortysix-elks) by Leo Melin
+
+*Tutorials*
+* [Receive SMS into Google spreadsheet](https://medium.com/@46elks/receive-sms-into-google-spreadsheet-435b51393493#.9ku01h462)
+
 
 Have you written a tutorial or created an app that you're willing to share?
 Let us know at hello@46elks.com!
