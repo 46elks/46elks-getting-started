@@ -103,6 +103,7 @@ Here is a list of the current integration we have. If there is an integration th
   * [Zapier](https://zapier.com/zapbook/46elks/)
   * [Just Send](https://justsend.46elks.com/)
   * [Github Actions](https://github.com/marketplace/actions/46elks-sms)
+  * [Sigfox](https://46elks.com/integrations#sigfox)
   * [Flow XO](https://46elks.com/integrations#flowxo)
   * [Joomla](https://46elks.com/integrations#joomla)
   * [Filemaker](https://www.fmsms.com/)
