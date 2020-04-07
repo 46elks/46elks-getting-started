@@ -11,7 +11,8 @@ def home():
         "ivr": "https://46elks.com/static/sound/ivr-menu.mp3",
         "digits": 1,
         "skippable":True,
-        "next":"https://www.yourserver.com/ivr"
+        "next":"https://yourapp.example/elks/ivr"
+    }
     return json.dumps(response)
 
 @app.route("/ivr", methods=['POST'])
