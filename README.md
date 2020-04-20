@@ -104,6 +104,7 @@ If there is an integration that you could benefit from please [get in touch](mai
   * [Just Send](https://justsend.46elks.com/)
   * [Github Actions](https://github.com/marketplace/actions/46elks-sms)
   * [Sigfox](https://46elks.com/integrations#sigfox)
+  * [Laravel](https://46elks.com/integrations#laravel)
   * [Flow XO](https://46elks.com/integrations#flowxo)
   * [Joomla](https://46elks.com/integrations#joomla)
   * [Filemaker](https://www.fmsms.com/)
