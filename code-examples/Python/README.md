@@ -1,4 +1,4 @@
-![46elks-logo](code-examples/logo-240x150.png)
+![46elks-logo](../../code-examples/logo-240x150.png)
 
 ## Here is a brief explanation of the Python demos in this repo
 
