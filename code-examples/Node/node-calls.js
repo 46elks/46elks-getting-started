@@ -4,32 +4,32 @@ const querystring = require('querystring')
 const username = '<API Username>'
 const password = '<API Password>'
 const postFields = {
-  from:    "+46723175800", 
-  to:      "+46723175800", 
-  voice_start: '{"connect":"+461890510"}'
+    from: "+46723175800",
+    to: "+46723175800",
+    voice_start: '{"connect":"+461890510"}'
 }
 
-const key = new Buffer(username + ':' + password).toString('base64')
+const key = Buffer.from(username + ':' + password).toString("base64");
 const postData = querystring.stringify(postFields)
 
 const options = {
-  hostname: 'api.46elks.com',
-  path:     '/a1/Calls',
-  method:   'POST',
-  headers:  {
-    'Authorization': 'Basic ' + key
-  }
+    hostname: 'api.46elks.com',
+    path: '/a1/Calls',
+    method: 'POST',
+    headers: {
+        'Authorization': 'Basic ' + key
+    }
 }
 
 const callback = (response) => {
-  var str = ''
-  response.on('data', (chunk) => {
-    str += chunk
-  })
+    var str = ''
+    response.on('data', (chunk) => {
+        str += chunk
+    })
 
-  response.on('end', () => {
-    console.log(str)
-  })
+    response.on('end', () => {
+        console.log(str)
+    })
 }
 
 // Start the web request.
