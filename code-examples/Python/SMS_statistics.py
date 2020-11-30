@@ -1,6 +1,6 @@
 import requests, json
 
-# Retrieves outgoing SMS and sorts them by sender, counting the ammount of sms
+# Retrieves outgoing SMS and sorts them by sender, counting the amount of sms
 # and the total number of parts.
 #
 # Works in both python 2.7 and 3.X but requires the requests library
