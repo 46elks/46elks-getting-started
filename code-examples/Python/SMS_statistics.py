@@ -30,12 +30,12 @@ for sms in sms_list:
         continue
 
     if sms["from"] not in out:
-        out[sms["from"]] = {"ammount":1, "parts":sms["parts"], "last":sms["created"], "first":sms["created"]}
+        out[sms["from"]] = {"amount":1, "parts":sms["parts"], "last":sms["created"], "first":sms["created"]}
 
     else:
-        out[sms["from"]]["ammount"] += 1
+        out[sms["from"]]["amount"] += 1
         out[sms["from"]]["parts"] += sms["parts"]
         out[sms["from"]]["first"] = sms["created"]
 
 for key in out:
-    print("sender: {}, messages: {}, parts: {}, first sms: {}, last sms: {}".format(key, out[key]["ammount"], out[key]["parts"], out[key]["first"], out[key]["last"]))
+    print("sender: {}, messages: {}, parts: {}, first sms: {}, last sms: {}".format(key, out[key]["amount"], out[key]["parts"], out[key]["first"], out[key]["last"]))
