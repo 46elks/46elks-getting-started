@@ -1,6 +1,5 @@
 <?php
 
-
 function sendcalls ($calls) {
   $username = 'API-USERNAME';
   $password = 'API-PASSWORD';

@@ -36,7 +36,7 @@ $limit = 1000;
 // Check balance
 $accountdata =  checkBalance();
 
-// Change to real numbers:
+// Convert from credits into SEK:
 $balance = $accountdata->balance/10000;
 
 // Check if below limit.
