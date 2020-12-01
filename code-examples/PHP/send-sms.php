@@ -33,7 +33,9 @@ $sms = array(
   'from' => 'PHPElk',   /* Can be up to 11 alphanumeric characters */
   'to' => '+46766861647',  /* The mobile number you want to send to */
   'message' => 'Hello hello!',
-  /* 'flashsms' => 'yes', /* Un comment this if you want to send a flash sms. */
+  // 'flashsms' => 'yes', Uncomment this if you want to send a flash sms.
+  // 'whendelivered':'https://YOUR-SERVER/whendelivered', Uncomment this if you want to setup delivery reports
+  // "dryrun":"no" Uncomment this if you want to test the message. Enabling dryrun will show you the expected response without sending the SMS or charging your account
 
 );
 echo sendSMS ($sms) . "\n";

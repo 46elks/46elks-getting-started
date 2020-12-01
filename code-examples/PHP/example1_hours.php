@@ -23,5 +23,4 @@ if (isset($hours[$weekday]))
   echo 'We are open today between '. $hours[$weekday];
 else
   echo 'We are closed today';
-
 ?>
