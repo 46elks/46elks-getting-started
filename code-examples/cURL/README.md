@@ -16,6 +16,6 @@
 * Make a phone call to a number
 * If connected, play an audio file from a URL
 
-### curl-set-creditalert.sh
+### curl-set-credit-alert.sh
 
 * Set the credit alert limit on your account
