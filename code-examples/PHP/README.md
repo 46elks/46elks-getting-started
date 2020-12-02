@@ -20,7 +20,7 @@
 ### php-call-and-play.php
 
 * Make a phone call to a number
-* If connected, play a sound file
+* If connected, play a sound file from a url
 
 ### php-curl-sendsms.php 
 
