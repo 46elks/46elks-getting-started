@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WebRTC calls</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<section>
+		<h1>Make a call</h1>
+		<input id="to" name="to" type="text" placeholder="+46706000001">
+		<br>
+		<p><small>Numbers must be formatted in the <a href="https://46elks.se/kb/e164">E164</a> format. e.g +46706000001</small></p>
+		<br>
+		<p id="status" class="status-message"></p>
+		<button id="call" onclick="make_call();">Call</button>
+		<button id="pickup" onclick="answer_call();">Pickup</button>
+		<button id="hangup" onclick="end_call();">Hangup</button>
+		<br>
+		<audio id="remoteAudio"></audio>
+	</section> 
+
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="jssip-3.7.4.min.js"></script>
+	<script src="script.js"></script>	
+</body>
+</html>
