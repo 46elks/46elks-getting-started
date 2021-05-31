@@ -12,32 +12,35 @@
 
 		function sendcalls($calls) {
 
-		$context = stream_context_create(array(
-			'http' => array(
-				'method' => 'POST',
-				'header'  => 'Authorization: Basic '.
-				base64_encode($username.':'.$password). "\r\n".
-				"Content-type: application/x-www-form-urlencoded\r\n",
-				'content' => http_build_query($calls),
-				'timeout' => 10
-			)));
-		$response = file_get_contents("https://api.46elks.com/a1/calls",
-			false, $context);
+			global $username;
+			global $password;
+			
+			$context = stream_context_create(array(
+				'http' => array(
+					'method' => 'POST',
+					'header'  => 'Authorization: Basic '.
+					base64_encode($username.':'.$password). "\r\n".
+					"Content-type: application/x-www-form-urlencoded\r\n",
+					'content' => http_build_query($calls),
+					'timeout' => 10
+				)));
+			$response = file_get_contents("https://api.46elks.com/a1/calls",
+				false, $context);
 
-		if (!strstr($http_response_header[0],"200 OK"))
-			return $http_response_header[0];
-		return $response;
+			if (!strstr($http_response_header[0],"200 OK"))
+				return $http_response_header[0];
+			return $response;
+		}
+
+		extract($_POST);
+
+		$calls = array(
+			"from" => $from,
+			"to" => $to,
+			"voice_start" => $voice_start
+		);
+
+		sendcalls($calls);
+		
 	}
-
-	extract($_POST);
-
-	$calls = array(
-		"from" => $from,
-		"to" => $to,
-		"voice_start" => $voice_start
-	);
-
-	sendcalls($calls);
-	
-}
 ?>
