@@ -1,7 +1,10 @@
 <?php
 
-// Example to receive SMS using the 46elks service
+// Send an email to oyourself uppon incoming SMS
 // Remember to setup sms_url on your phone number
+//
+// If you don't recieve an email, you might need to use another email library such as PHPMailer where you can add your user/pass.
+// Email providers may block outgoing emails from non-authenticated requests to prevent spam.
 
   $from = $_POST['from'];
   $message = $_POST['message'];

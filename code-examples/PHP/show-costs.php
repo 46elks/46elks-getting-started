@@ -27,7 +27,7 @@ $numbermonth = array();
 $max = 1000;
 while(true){
 
-	if(isset($decodedlist->next) == FALSE)
+	if(isset($decodedlist->next))
 	{
 	
 		if($max < 0)

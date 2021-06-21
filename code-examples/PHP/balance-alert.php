@@ -1,13 +1,14 @@
 <?
 // Example of how to check status of account in the 46elks service
-// Change $username, $password to yout account values. 
+// Change $username, $password to your account values.
+
 
 function checkBalance() {
 
   // Set your 46elks API username and API password here
   // You can find them at https://dashboard.46elks.com/
-  $username = 'u5a95663949bf505c072160c398445d16';
-  $password = 'D01BE1F79FEA298773B66C942873DF74';
+  $username = '';
+  $password = '';
 
   $context = stream_context_create(array(
     'http' => array(
@@ -29,7 +30,7 @@ function checkBalance() {
 
 // Settings
 // Email to send notification to:
-$to = "yurmail@domain.com";
+$to = "your-email@domain.com";
 // Limit for sendning alert message:
 $limit = 1000;
 
@@ -41,7 +42,10 @@ $balance = $accountdata->balance/10000;
 
 // Check if below limit.
 if ($balance < $limit){
-	// Send notification e-mail, you could also send a reminder SMS, see example4_sendsms.php.
+	// Send notification email, you could also send a reminder SMS, see send-sms.php.
+  // If you don't recieve an email, you might need to use another email library such as PHPMailer where you can add your user/pass.
+  // Email providers may block outgoing emails from non-authenticated requests to prevent spam.
+
 	print mail (
 	$to, 
 	"46elks account Balance low" , 
