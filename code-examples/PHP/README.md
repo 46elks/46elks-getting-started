@@ -92,6 +92,12 @@ Be notified by email when someone tried to call you.
 3. Configure [`sms_url`](https://46elks.com/docs/configure-number) on the number you allocated, with your script URL.
 4. Send a text to your allocated number and you will get an email with the SMS contents.
 
+## send-sms-notion.php
+
+This script will get a list of phone numbers from a Notion database and send an SMS to each number.
+
+For more info, please see our tutorial [Send SMS from Notion](https://46elks.com/tutorials/send-sms-notion).
+
 ## send-sms.php
 
 A basic example of [sending SMS](https://46elks.com/docs/send-sms).
