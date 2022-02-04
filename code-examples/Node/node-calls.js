@@ -1,5 +1,4 @@
 const https = require('https')
-const querystring = require('querystring')
 
 const username = '<API Username>'
 const password = '<API Password>'
@@ -10,7 +9,8 @@ const postFields = {
 }
 
 const key = Buffer.from(username + ':' + password).toString("base64");
-const postData = querystring.stringify(postFields)
+const querystring = new URLSearchParams(postFields)
+const postData = querystring.toString()
 
 const options = {
     hostname: 'api.46elks.com',
