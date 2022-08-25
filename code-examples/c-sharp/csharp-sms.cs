@@ -9,12 +9,9 @@ namespace elktest {
 
         public static string user = "<API Username>";
         public static string pwd = "<API Password>";
-        private static HttpClient client;
-        static void Main(string[] args)
-
-        {
-            Task.Run(async() = > {
-                using(client = new HttpClient()) {
+        static void Main(string[] args) {
+            Task.Run(async () => {
+                using (var client = new HttpClient()) {
                     client.BaseAddress = new Uri("https://api.46elks.com");
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
