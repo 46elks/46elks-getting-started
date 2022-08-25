@@ -9,6 +9,7 @@ namespace elktest {
 
         public static string user = "<API Username>";
         public static string pwd = "<API Password>";
+
         static void Main(string[] args) {
             Task.Run(async () => {
                 using (var client = new HttpClient()) {
