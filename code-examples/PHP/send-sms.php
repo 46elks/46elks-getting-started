@@ -15,7 +15,7 @@ function sendSMS ($sms) {
       'header'  => "Authorization: Basic ".
                    base64_encode($username.':'.$password). "\r\n".
                    "Content-type: application/x-www-form-urlencoded\r\n",
-      'content' => http_build_query($sms),
+      'content' => http_build_query($sms,'','&'),
       'timeout' => 10
   )));
 
