@@ -1,28 +1,21 @@
-import base64
-import httpclient
-import uri
+import std/[base64, httpclient, uri]
 
 let
   username = "<api username>"
   secret = "<api password>"
-  data = {
+  b64credentials = encode(username & ":" & secret)
+  headers = newHttpHeaders({
+    "Authorization": "Basic " & b64credentials,
+    "Content-Type": "application/x-www-form-urlencoded"
+  })
+  data = encodeQuery({
     "from": "NimElk",
     "to": "+46700000000",
     "message": "We are the Elks who say \"Nim!\""
-  }
-
-let
-  b64credentials = encode(username & ":" & secret)
-  authHeader = "Basic " & b64credentials
-  headers = {
-    "Authorization": authHeader,
-    "Content-Type": "application/x-www-form-urlencoded"
-  }
+  })
 
 let client = newHttpClient()
-client.headers = newHttpHeaders(headers)
-let encodedData = encodeQuery(data)
-let response = client.request("https://api.46elks.com/a1/sms",
-                              httpMethod = HttpPost, body = encodedData)
+client.headers = headers
+let response = client.post("https://api.46elks.com/a1/sms", body = data)
 echo response.status
 echo response.body
