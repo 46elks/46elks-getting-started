@@ -4,8 +4,12 @@
 
 ### python-send-sms.py and python-send-sms-extended.py
 
-* A basic example of sending SMS
+* A basic example of sending SMS with [Requests](https://requests.readthedocs.io/en/latest/)
 * The extended version gives examples of optional parameters available through the 46elks API
+
+### python-send-sms-urllib.py
+
+* An example of sending SMS without external dependencies by using [urllib](https://docs.python.org/3/library/urllib.html)
 
 ### python-send-sms-multiple-recipients.py
 
