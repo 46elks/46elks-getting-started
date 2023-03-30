@@ -64,7 +64,6 @@ bool verify_phonenumber(char* number) {
 
 void elks_api_connect(char* message, char* to, char* from) {
     int http_code;
-    void* head_buffer = calloc(1, sizeof(string_buffer));
     CURLcode res;
     CURL* curl = curl_easy_init();
 
@@ -78,9 +77,12 @@ void elks_api_connect(char* message, char* to, char* from) {
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, devnull);
     printf("\n");
 #endif
+    char *elks_username = curl_getenv("ELKS_USERNAME");
+    char *elks_password = curl_getenv("ELKS_PASSWORD");
+
     curl_easy_setopt(curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    curl_easy_setopt(curl, CURLOPT_USERNAME, curl_getenv("ELKS_USERNAME"));
-    curl_easy_setopt(curl, CURLOPT_PASSWORD, curl_getenv("ELKS_PASSWORD"));
+    curl_easy_setopt(curl, CURLOPT_USERNAME, elks_username);
+    curl_easy_setopt(curl, CURLOPT_PASSWORD, elks_password);
     char* formatted_message = curl_easy_escape(curl, message, strlen(message));
     char* formatted_to = curl_easy_escape(curl, to, strlen(to));
     char* formatted_from = curl_easy_escape(curl, from, strlen(from));
@@ -95,6 +97,8 @@ void elks_api_connect(char* message, char* to, char* from) {
     curl_free(formatted_message);
     curl_free(formatted_to);
     curl_free(formatted_from);
+    curl_free(elks_username);
+    curl_free(elks_password);
 
     res = curl_easy_perform(curl);
 
