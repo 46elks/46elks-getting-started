@@ -1,4 +1,4 @@
-![46elks-logo](code-examples/logo-240x150.png)
+![46elks-logo](code-examples/logo.png)
 
 ## Voice, SMS & MMS for developers.
 
