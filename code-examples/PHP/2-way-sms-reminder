@@ -1,0 +1,135 @@
+<?php
+
+/*
+ * Reminder System using 46elks API and the `at` command (Linux-based scheduler)
+ *
+ * This script is designed to receive incoming SMS messages through the 46elks API,
+ * extract the reminder details (content and time), and schedule the reminder using the
+ * Linux `at` command.
+ *
+ * Workflow:
+ * 1. The user sends an SMS in the format: Content:"Your message" Time: HH:MMh DD-MM-YYYY
+ * 2. The script extracts the content and time from the message.
+ * 3. It then schedules a reminder for the specified time using the `at` command.
+ * 4. If the time has already passed, an error message is sent back to the user.
+ * 5. If the message format is invalid, an error message is sent back to the user.
+ * 
+ * Prerequisites:
+ * - The `at` command must be installed on your Linux system.
+ * - The web server user (usually `www-data` on Ubuntu) must have permission to use the `at` command.
+ * - Make sure `reminder_log.txt` is writable by the web server.
+ */
+
+// Function to send an SMS using the 46elks API
+// Parameters: $sms (array containing SMS details - 'from', 'to', and 'message')
+function sendSMS($sms) {
+    // Define your 46elks API credentials (replace 'xxxxx' with your actual credentials)
+    $username = 'xxxxx';  // 46elks API username
+    $password = 'xxxxx';  // 46elks API password
+
+    // Prepare the HTTP request for sending the SMS
+    // The SMS array ($sms) contains the 'from', 'to', and 'message' fields
+    $context = stream_context_create(array(
+        'http' => array(
+            'method'  => 'POST',  // We use POST to send data
+            'header'  => "Authorization: Basic " . base64_encode($username.':'.$password) . "\r\n" .
+                         "Content-type: application/x-www-form-urlencoded\r\n",  // Send the data as URL-encoded form data
+            'content' => http_build_query($sms),  // Build the query string from the $sms array
+            'timeout' => 5  // Set a timeout of 5 seconds for the request
+    )));
+
+    // Send the SMS request to 46elks and return the result (true if successful, false otherwise)
+    return false !== file_get_contents('https://api.46elks.com/a1/SMS', false, $context);
+}
+
+// Function to schedule the reminder using the `at` command
+// Parameters: $from (the sender's phone number), $content (the reminder message), $scheduleTime (the time to send the reminder)
+function scheduleReminder($from, $content, $scheduleTime) {
+    // Log the reminder details in reminder_log.txt for tracking/debugging purposes
+    $logEntry = "Reminder: $content - To: $from - Scheduled for: $scheduleTime\n";
+    // Append the log entry to 'reminder_log.txt' (create it if it doesn't exist)
+    // The LOCK_EX flag prevents other processes from writing to the file simultaneously
+    file_put_contents('reminder_log.txt', $logEntry, FILE_APPEND | LOCK_EX);
+
+    // Use the `at` command to schedule the reminder for the specified time
+    // The `at` command will execute a PHP script at the scheduled time to send the reminder SMS
+    $command = "echo 'php send_reminder.php $from \"$content\"' | at $scheduleTime";
+    exec($command);  // Execute the scheduling command
+}
+
+// Function to handle incoming messages, extract reminder details, and schedule the reminder
+// Parameters: $from (the sender's phone number), $message (the content of the SMS)
+function handleIncomingMessage($from, $message) {
+    // Normalize the incoming message by converting it to lowercase
+    // Replace any newlines, commas, and curly quotes with spaces and straight quotes
+    $normalizedMessage = strtolower(preg_replace(['/[\n,]/', '/[“”]/'], [' ', '"'], $message));
+    error_log("Normalized message: $normalizedMessage");  // Log the normalized message for debugging
+
+    // Regular expression to capture "content" and "time" from the normalized message
+    // This regex handles optional quotes, spaces, and colons around "Content" and "Time"
+    $regex = '/content\s*[":\s]*(.*?)\s*time\s*[:\s]*(\d{2}:\d{2})h\s*(\d{2}-\d{2}-\d{4})/i';
+    error_log("Regex being used: $regex");  // Log the regex being used
+
+    // Use the regex to extract the content and time from the message
+    if (preg_match($regex, $normalizedMessage, $matches)) {
+        // Log the captured content, time, and date for debugging
+        error_log("Captured content: " . $matches[1]);
+        error_log("Captured time: " . $matches[2]);
+        error_log("Captured date: " . $matches[3]);
+
+        // Clean up the content by trimming extra spaces and quotes
+        $content = trim($matches[1], ' "');
+        $time = $matches[2];  // Captured time (HH:MM)
+        $date = $matches[3];  // Captured date (DD-MM-YYYY)
+
+        // Create a DateTime object to represent the scheduled reminder time
+        $scheduleDateTime = DateTime::createFromFormat('d-m-Y H:i', "$date $time");
+        $currentDateTime = new DateTime();  // Get the current date and time
+
+        // Check if the scheduled time is in the past
+        if ($scheduleDateTime < $currentDateTime) {
+            // If the scheduled time has passed, send an error message to the user
+            sendSMS([
+                'from' => '+xxxxxxxxxxx',  // Replace with your service number
+                'to' => $from,  // The phone number that sent the SMS
+                'message' => "The time you set for the reminder ($time on $date) has already passed. Please choose a future time."
+            ]);
+            return;  // Exit the function because we cannot schedule past reminders
+        }
+
+        // Format the reminder time for the `at` command (e.g., '12:00 03-10-2024')
+        $formattedReminderTime = $scheduleDateTime->format('H:i d-m-Y');
+        // Call the function to schedule the reminder
+        scheduleReminder($from, $content, $formattedReminderTime);
+
+        // Send a confirmation SMS back to the user to confirm that the reminder has been registered
+        sendSMS([
+            'from' => '+xxxxxxxxxxx',  // Replace with your service number
+            'to' => $from,  // The phone number that sent the SMS
+            'message' => "Reminder \"$content\" has been registered. This message will be sent to you at $formattedReminderTime."
+        ]);
+    } else {
+        // If the message format does not match the expected format, log an error and notify the user
+        error_log("Message format did not match. Input message: $message");
+        sendSMS([
+            'from' => '+xxxxxxxxxxx',  // Replace with your service number
+            'to' => $from,  // The phone number that sent the SMS
+            'message' => 'Invalid format. Please provide: Content "<your message>" Time "<HH:MM>h <DD-MM-YYYY>".'
+        ]);
+    }
+}
+
+// Main script logic
+// Check if the POST request contains the 'from' and 'message' parameters
+if (isset($_POST['from']) && isset($_POST['message'])) {
+    // Extract the 'from' (sender's phone number) and 'message' (SMS content)
+    $from = $_POST['from'];
+    $message = trim($_POST['message']);
+    // Call the function to handle the incoming message and schedule the reminder
+    handleIncomingMessage($from, $message);
+} else {
+    // If 'from' or 'message' is missing, log an error for debugging
+    error_log('Missing "from" or "message" in POST data.');
+}
+
+?>
