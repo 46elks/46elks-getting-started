@@ -1,0 +1,201 @@
+<?php
+/*
+ * SMS Reminder System using 46elks API
+ * 
+ * Description:
+ * This PHP script allows users to schedule and send SMS-based reminders using the 46elks API. The script processes incoming SMS messages 
+ * to extract the reminder details (message and scheduled time) and stores them in a text file (`reminders.txt`). A cron job or periodic 
+ * execution of the script checks the stored reminders and sends out any that are due.
+ *
+ * How It Works:
+ * 1. Incoming SMS messages are handled via a webhook. The message should be in the format:
+ *    `Content "<message>" Time "<HH:MM>h <DD-MM-YYYY>"`. For example: `Content "Buy groceries" Time "16:30h 10-10-2024"`.
+ * 2. The script parses the incoming SMS, extracts the reminder details, and saves them to a text file (`reminders.txt`).
+ *    The text file format is: `phone_number|message|scheduled_time|status`, where status is initially set to `pending`.
+ * 3. A cron job or periodic script execution checks the reminders file for any reminders due to be sent, based on the scheduled time.
+ *    If the reminder is due, it is sent via the 46elks API, and the status is updated to `sent` in the file.
+ *
+ * Prerequisites:
+ * - You need an active 46elks account with API credentials (API username and password).
+ * - PHP must be installed on your server.
+ * - Set up a webhook in your 46elks account to forward incoming SMS messages to this script.
+ * - A cron job should be set up to run this script periodically (e.g., every minute) to send due reminders.
+ *
+ * Setup Instructions:
+ * 1. Place this script on a public web server where it can be accessed by the 46elks webhook.
+ *    - For example, deploy it to `/var/www/html/send_reminder.php`.
+ * 2. Set up a webhook in your 46elks account, pointing to the URL where this script is hosted.
+ *    - Example: `https://yourdomain.com/send_reminder.php`.
+ * 3. Create a `reminders.txt` file to store reminders and ensure it is writable by the web server user.
+ *    - You can create this file manually and set permissions as follows:
+ *      ```bash
+ *      touch reminders.txt
+ *      sudo chown www-data:www-data reminders.txt  # Adjust based on your web server's user
+ *      sudo chmod 664 reminders.txt
+ *      ```
+ * 4. Set up a cron job to run the script periodically and check for due reminders. For example:
+ *    ```bash
+ *    sudo crontab -e
+ *    * * * * * /usr/bin/php /var/www/html/send_reminder.php >/dev/null 2>&1
+ *    ```
+ *    This will check for due reminders every minute.
+ *
+ * Example SMS Format:
+ * - To schedule a reminder, the incoming SMS must follow this format:
+ *   `Content "<your message>" Time "<HH:MM>h <DD-MM-YYYY>"`.
+ *   For example: `Content "Dentist appointment" Time "14:30h 10-10-2024"`.
+ * - If the format is incorrect, the script will send an error message back to the sender.
+ *
+ * Customization:
+ * - You can modify the `FROM_PHONE` constant to match your 46elks service number.
+ * - The time zone can be adjusted by changing `date_default_timezone_set()` to the appropriate time zone for your location.
+ *
+ * Notes:
+ * - This script relies on the 46elks API for sending SMS messages. Ensure that you have adequate balance in your 46elks account to send reminders.
+ * - Security Note: For production environments, avoid hardcoding sensitive API credentials in the script. Consider using environment variables or secure configuration files instead.
+ */
+
+// Set the time zone (update this to the correct time zone)
+date_default_timezone_set('Europe/Zagreb');  // Adjust this to match your local time zone
+
+// Define constants for configuration
+define('REMINDER_FILE', 'reminders.txt');    // Path to store reminders
+define('API_USERNAME', 'xxxxx');             // Replace with your 46elks API username
+define('API_PASSWORD', 'xxxxx');             // Replace with your 46elks API password
+define('FROM_PHONE', '+xxxxxxxxxxx');        // Replace with your service number for sending SMS
+
+// Function to send an SMS using the 46elks API
+function sendSMS($sms) {
+    $auth = base64_encode(API_USERNAME . ':' . API_PASSWORD);
+    
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => "Authorization: Basic $auth\r\nContent-type: application/x-www-form-urlencoded\r\n",
+            'content' => http_build_query($sms),
+            'timeout' => 5
+        ]
+    ]);
+
+    $response = file_get_contents('https://api.46elks.com/a1/SMS', false, $context);
+
+    if ($response === FALSE) {
+        error_log("Failed to send SMS to {$sms['to']}");
+    } else {
+        error_log("SMS sent to {$sms['to']} successfully. Response: " . $response);
+    }
+
+    return $response;
+}
+
+// Function to save a reminder to the text file
+function saveReminder($file, $phoneNumber, $message, $scheduledTime) {
+    $reminder = "$phoneNumber|$message|$scheduledTime|pending\n";  // Format reminder
+    file_put_contents($file, $reminder, FILE_APPEND | LOCK_EX);    // Append to file with exclusive locking
+}
+
+// Function to process and send due reminders
+function processReminders($file) {
+    if (!file_exists($file)) {
+        error_log("Reminder file does not exist.");  // Log if the file doesn't exist
+        return;  // Exit if no reminders file exists
+    }
+
+    $reminders = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $currentDateTime = new DateTime();
+    $updatedReminders = [];
+
+    foreach ($reminders as $reminder) {
+        list($phoneNumber, $message, $scheduledTime, $status) = explode('|', $reminder);
+
+        error_log("Processing reminder: $phoneNumber | $message | $scheduledTime | $status");
+
+        if ($status === 'pending') {
+            $scheduledDateTime = DateTime::createFromFormat('Y-m-d H:i:s', $scheduledTime);
+            
+            // Check if the scheduled time is correctly parsed
+            if (!$scheduledDateTime) {
+                error_log("Invalid date format: $scheduledTime for $phoneNumber");
+                continue;  // Skip to the next reminder if the date format is incorrect
+            }
+
+            // Log current time and scheduled time for debugging
+            error_log("Current time: " . $currentDateTime->format('Y-m-d H:i:s'));
+            error_log("Scheduled time: " . $scheduledDateTime->format('Y-m-d H:i:s'));
+
+            // Convert both current time and scheduled time to timestamps (seconds)
+            $currentTimestamp = $currentDateTime->getTimestamp();
+            $scheduledTimestamp = $scheduledDateTime->getTimestamp();
+
+            // Check if the reminder is due by comparing timestamps
+            if ($scheduledTimestamp <= $currentTimestamp) {
+                error_log("Reminder is due for $phoneNumber at $scheduledTime. Sending SMS.");
+
+                sendSMS([
+                    'from' => FROM_PHONE,
+                    'to' => $phoneNumber,
+                    'message' => $message
+                ]);
+
+                error_log("Reminder sent to $phoneNumber: $message");
+                $reminder = "$phoneNumber|$message|$scheduledTime|sent";
+            } else {
+                error_log("Reminder is not yet due for $phoneNumber. Scheduled for $scheduledTime.");
+            }
+        }
+
+        $updatedReminders[] = $reminder . "\n";
+    }
+
+    // Write the updated reminders back to the file
+    if ($updatedReminders) {
+        file_put_contents($file, implode('', $updatedReminders), LOCK_EX);
+    }
+}
+
+// Function to handle incoming SMS messages
+function handleIncomingMessage($file, $from, $message) {
+    $normalizedMessage = strtolower(trim(preg_replace(['/[\n,]/', '/[“”]/'], [' ', '"'], $message)));
+    $regex = '/content\s*[":\s]*(.*?)\s*time\s*[:\s]*(\d{2}:\d{2})h\s*(\d{2}-\d{2}-\d{4})/i';
+    
+    if (preg_match($regex, $normalizedMessage, $matches)) {
+        $content = trim($matches[1], ' "');
+        $time = $matches[2];
+        $date = $matches[3];
+
+        $scheduleDateTime = DateTime::createFromFormat('d-m-Y H:i', "$date $time");
+        $currentDateTime = new DateTime();
+
+        if ($scheduleDateTime && $scheduleDateTime > $currentDateTime) {
+            saveReminder($file, $from, $content, $scheduleDateTime->format('Y-m-d H:i:s'));
+
+            sendSMS([
+                'from' => FROM_PHONE,
+                'to' => $from,
+                'message' => "Reminder \"$content\" scheduled for $time on $date."
+            ]);
+        } else {
+            sendSMS([
+                'from' => FROM_PHONE,
+                'to' => $from,
+                'message' => "The time set ($time on $date) has already passed. Please choose a future time."
+            ]);
+        }
+    } else {
+        sendSMS([
+            'from' => FROM_PHONE,
+            'to' => $from,
+            'message' => 'Invalid format. Use: Content "<message>" Time "<HH:MM>h <DD-MM-YYYY>".'
+        ]);
+    }
+}
+
+// Main logic
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['from'], $_POST['message'])) {
+    handleIncomingMessage(REMINDER_FILE, $_POST['from'], trim($_POST['message']));
+}
+
+// Periodic check for due reminders (intended for cron job execution)
+processReminders(REMINDER_FILE);
+
+?>
