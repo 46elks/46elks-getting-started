@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SMS Reminder System using 46elks API
  * 
@@ -94,7 +95,15 @@ function saveReminder($file, $phoneNumber, $message, $scheduledTime) {
     file_put_contents($file, $reminder, FILE_APPEND | LOCK_EX);    // Append to file with exclusive locking
 }
 
-// Function to process and send due reminders
+/**
+ * Function to process and send due reminders
+ * 
+ * This function checks if any reminders stored in the reminders.txt file are due to be sent. It uses the
+ * current time and compares it to the scheduled reminder time. A grace period of 2 minutes is added to
+ * ensure that reminders are not missed due to small variations in cron job execution.
+ * 
+ * @param string $file - The path to the file where reminders are stored.
+ */
 function processReminders($file) {
     if (!file_exists($file)) {
         error_log("Reminder file does not exist.");  // Log if the file doesn't exist
@@ -103,6 +112,10 @@ function processReminders($file) {
 
     $reminders = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $currentDateTime = new DateTime();
+    
+    // Set a grace period of 2 minutes (120 seconds) to allow slight variations in cron job execution
+    $gracePeriod = 2 * 60; // 2 minutes in seconds
+
     $updatedReminders = [];
 
     foreach ($reminders as $reminder) {
@@ -127,8 +140,8 @@ function processReminders($file) {
             $currentTimestamp = $currentDateTime->getTimestamp();
             $scheduledTimestamp = $scheduledDateTime->getTimestamp();
 
-            // Check if the reminder is due by comparing timestamps
-            if ($scheduledTimestamp <= $currentTimestamp) {
+            // Check if the reminder is due, allowing for a grace period
+            if ($scheduledTimestamp <= $currentTimestamp + $gracePeriod) {
                 error_log("Reminder is due for $phoneNumber at $scheduledTime. Sending SMS.");
 
                 sendSMS([
