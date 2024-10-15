@@ -1,9 +1,10 @@
 import envoy
 import gleam/bit_array
-import gleam/hackney
+import gleam/dynamic.{type Dynamic}
 import gleam/http
 import gleam/http/request
 import gleam/http/response.{type Response}
+import gleam/httpc
 import gleam/int
 import gleam/io
 import gleam/result
@@ -18,7 +19,7 @@ type Sms {
   Sms(from: String, to: String, message: String)
 }
 
-fn send_sms(auth: Auth, sms: Sms) -> Result(Response(String), hackney.Error) {
+fn send_sms(auth: Auth, sms: Sms) -> Result(Response(String), Dynamic) {
   let b64_auth =
     { auth.username <> ":" <> auth.password }
     |> bit_array.from_string
@@ -42,7 +43,7 @@ fn send_sms(auth: Auth, sms: Sms) -> Result(Response(String), hackney.Error) {
     |> request.set_header("authorization", auth_header)
     |> request.set_body(body)
 
-  hackney.send(req)
+  httpc.send(req)
 }
 
 pub fn main() {
