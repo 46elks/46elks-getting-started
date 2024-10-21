@@ -21,9 +21,9 @@ const authKey     = Buffer.from(username + ":" + password).toString("base64");
 
 // Request data object
 var data = {
-  from: "+46766860001",
-  to: "+46766860002",
-  voice_start: '{"connect":"+46766860003"}'
+  from: "+46700000001",
+  to: "+46700000002",
+  voice_start: '{"connect":"+46700000003"}'
 }
 
 data = new URLSearchParams(data);

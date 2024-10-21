@@ -21,7 +21,7 @@ const sendMMS = async(credentials) => {
             method: "post",
             body: new URLSearchParams({
                 from: "noreply",
-                to: "+46766860001",
+                to: "+46700000001",
                 message: "Bring a sweater, it’s cold outside!",
                 image: "https://46elks.com/press/46elks-blue-png"
             }),

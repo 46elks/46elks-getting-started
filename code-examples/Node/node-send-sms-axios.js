@@ -20,7 +20,7 @@ const sendSMS = async () => {
     // Request data object
     var data = {
       from: "NodeElk",
-      to: "+46766860001",
+      to: "+46700000001",
       message: "Hej Vad trevligt att se dig!"
     }
 
