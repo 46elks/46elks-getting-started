@@ -1,0 +1,159 @@
+<?php
+/*
+Prerequisites:
+--------------
+1. **PHP Environment**: This script requires a PHP environment with session handling and the ability to make HTTP requests.
+2. **46elks API Credentials**:
+   - Ensure you have API credentials for 46elks. This includes:
+     - `API_USERNAME`: The API username for your 46elks account.
+     - `API_PASSWORD`: The API password associated with your account.
+     - `FROM_PHONE`: A valid phone number (in international format) registered with 46elks to send SMS.
+   - For security, these credentials should be stored as environment variables or in a secure credentials manager, not hardcoded in the script.
+3. **OpenAI API Key**:
+   - Obtain an API key from OpenAI to use GPT-4 (or another compatible model) for generating AI responses.
+   - Store the key in a secure location, ideally as an environment variable (`OPENAI_API_KEY`).
+4. **Session and Error Logging**:
+   - This script uses PHP sessions to track conversation history. Ensure session handling is enabled and configured properly on your server.
+   - PHP error logging should be enabled to capture any potential issues with API calls or session handling.
+5. **Timezone Configuration**:
+   - This script sets the default timezone to Europe/Stockholm. Adjust the `date_default_timezone_set` setting as needed for your region.
+6. **Webhook/POST Endpoint**:
+   - This script expects incoming POST requests with `from` and `message` parameters, typically configured as a webhook from an SMS service like 46elks.
+
+*/
+
+
+// Start the PHP session to store conversation data
+session_start();
+
+// Initialize an empty conversations array if it doesn't exist in the session
+if (!isset($_SESSION['conversations'])) {
+    $_SESSION['conversations'] = [];
+}
+
+// Set the default timezone to Stockholm for consistent date handling
+date_default_timezone_set('Europe/Stockholm');
+
+// Define placeholder constants for testing (to be removed or securely replaced in production)
+// Example: define('API_USERNAME', getenv('API_USERNAME')); // Pulling from environment variables
+define('API_USERNAME', 'YOUR_API_USERNAME'); // Placeholder for 46elks API username
+define('API_PASSWORD', 'YOUR_API_PASSWORD'); // Placeholder for 46elks API password
+define('FROM_PHONE', 'YOUR_PHONE_NUMBER');   // Placeholder for the sender's phone number
+define('OPENAI_API_KEY', 'YOUR_OPENAI_API_KEY'); // Placeholder for OpenAI API key
+
+/**
+ * Sends an SMS message using the 46elks API.
+ * @param string $phoneNumber Recipient phone number
+ * @param string $message Message content to be sent
+ * @return string|false API response or false on failure
+ */
+function sendSMS($phoneNumber, $message) {
+    // Basic Auth encoding of API credentials
+    $auth = base64_encode(API_USERNAME . ':' . API_PASSWORD);
+    
+    // Define the SMS content
+    $sms = [
+        'from' => FROM_PHONE,
+        'to' => $phoneNumber,
+        'message' => $message
+    ];
+
+    // Create the context for the HTTP POST request
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => "Authorization: Basic $auth\r\nContent-type: application/x-www-form-urlencoded\r\n",
+            'content' => http_build_query($sms),
+            'timeout' => 5  // Sets a timeout of 5 seconds for API call
+        ]
+    ]);
+
+    // Send the HTTP request to 46elks SMS API
+    $response = file_get_contents('https://api.46elks.com/a1/SMS', false, $context);
+
+    // Log the result of the SMS sending attempt
+    if ($response === FALSE) {
+        error_log("Failed to send SMS to {$sms['to']}");
+    } else {
+        error_log("SMS sent to {$sms['to']} successfully. Response: " . $response);
+    }
+
+    return $response;
+}
+
+/**
+ * Generates a response using OpenAI's API based on user input.
+ * @param string $phoneNumber User's phone number for session tracking
+ * @param string $message User's input message
+ * @return string OpenAI assistant response message
+ */
+function getAIResponse($phoneNumber, $message) {
+    // Predefined context for system instructions for AI responses
+    $system = <<<EOT
+// Add what you want your Bot to talk about (have specific knowledge of)
+EOT;
+
+    // Ensure there is a conversation history for this user
+    if (!isset($_SESSION['conversations'][$phoneNumber])) {
+        $_SESSION['conversations'][$phoneNumber] = [];
+    }
+
+    // Store the user's latest message in session history
+    $_SESSION['conversations'][$phoneNumber][] = ['role' => 'user', 'content' => $message];
+
+    // Prepare data for OpenAI API with model configuration and history
+    $data = [
+        'model' => 'gpt-4',  // Using GPT-4 model
+        'messages' => array_merge(
+            [['role' => 'system', 'content' => $system]],
+            $_SESSION['conversations'][$phoneNumber]
+        )
+    ];
+
+    // HTTP request options for OpenAI API call
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\nAuthorization: Bearer " . OPENAI_API_KEY . "\r\n",
+            'content' => json_encode($data),
+            'timeout' => 10  // Timeout for OpenAI response
+        ]
+    ];
+
+    // Log data and options (for debugging, omit in production)
+    error_log("DATA:" . json_encode($data));
+    error_log("OPTIONS:" . json_encode($options));
+
+    // Send HTTP request to OpenAI
+    $context = stream_context_create($options);
+    $response = file_get_contents('https://api.openai.com/v1/chat/completions', false, $context);
+
+    // Error handling in case of a failed API request
+    if ($response === FALSE) {
+        error_log("Failed to get response from OpenAI.");
+        return "Sorry, we're experiencing technical difficulties. Please try again later.";
+    }
+
+    // Process the response and store it in session
+    $result = json_decode($response, true);
+    $assistantMessage = $result['choices'][0]['message']['content'] ?? "Sorry, we're experiencing technical difficulties. Please try again later.";
+    $_SESSION['conversations'][$phoneNumber][] = ['role' => 'assistant', 'content' => $assistantMessage];
+
+    return $assistantMessage;
+}
+
+// Main process: handle incoming POST request from webhook
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['from'], $_POST['message'])) {
+    $phoneNumber = $_POST['from'];
+    $userMessage = trim($_POST['message']);
+
+    // Log the received message details
+    error_log("Received message from $phoneNumber: $userMessage");
+
+    // Get response from AI and send it back as SMS
+    $responseMessage = getAIResponse($phoneNumber, $userMessage);
+    sendSMS($phoneNumber, $responseMessage);
+}
+
+?>
+
