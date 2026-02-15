@@ -6,29 +6,29 @@ Welcome to our developer friendly API service! :-)
 
 We make it easy for you to add custom telephony features that are perfectly suited to the way you do things – because sometimes ‘off the shelf’ just doesn't cut it.
 
-You can use [46elks](https://www.46elks.com) for:
+You can use [46elks](https://46elks.com) for:
 
 * Sending SMS text messages
 * Receiving SMS to your applications
 * Sending & receiving MMS pictures
 * Controlling incoming and outgoing telephone calls with code
 * Building interactive voice sessions
-* And other telephony [features](https://www.46elks.com/features).
+* And other telephony [features](https://46elks.com/features).
 
 
 ### Links
 
   * [Quickstart](#quickstart)
-  * [API documentation](https://www.46elks.com/api-docs#introduction)
+  * [API documentation](https://46elks.com/api-docs#introduction)
   * [Code examples](#code-examples)
   * [Login / sign up](https://46elks.com/dashboard)
   * [Introduction to using an API](https://zapier.com/learn/apis/)
-  * [Contact the elks](https://www.46elks.com/help#contact)
+  * [Contact the elks](https://46elks.com/help#contact)
 
 ## Quickstart
 
-1. Create your [46elks account](https://www.46elks.com/create-account) and locate your [api keys](https://46elks.com/account).
-2. Send your first SMS from the [dashboard](https://www.46elks.com/dashboard) or with curl (see below).
+1. Create your [46elks account](https://46elks.com/create-account) and locate your [api keys](https://46elks.com/account).
+2. Send your first SMS from the [dashboard](https://46elks.com/dashboard) or with curl (see below).
 3. Send an SMS code using one of our [code examples](code-examples).
 4. Learn more about what you can do by reading the [documentation](https://46elks.com/docs).
 
